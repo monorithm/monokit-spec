@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="760" viewBox="0 0 960 760" font-family="IBM Plex Sans, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="scrimFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.4"></stop>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"></stop>
+    </linearGradient>
+  </defs>
+
+  
+  <rect class="gf-bg" x="0" y="0" width="960" height="760" fill="#FFFFFF"></rect>
+
+  
+  <text class="gf-ink" x="48" y="52" font-size="18" font-weight="700" fill="#090B0C">Layer model — z0 to z5</text>
+  <text class="gf-muted" x="48" y="76" font-size="13" fill="#67787C">Every monokit surface renders at exactly one tier. Depth comes from scrims and glass, not shadows.</text>
+
+  
+  <rect class="gf-surface2" x="112" y="183" width="44" height="24" rx="6" fill="#F1F3F3"></rect>
+  <text class="gf-ink" x="134" y="199" font-size="12" font-weight="600" fill="#090B0C" text-anchor="middle">z5</text>
+  <line class="gs-hairline-strong" x1="156" y1="195" x2="234" y2="195" stroke="#9CA8AB" stroke-width="1"></line>
+  <path class="gf-surface gs-hairline" d="M180,230 h260 l120,-70 h-260 Z" fill="#FFFFFF" stroke="#E3E7E8" stroke-width="1"></path>
+  <path class="gf-ink" d="M292,214 h136 l44,-26 h-136 Z" fill="#090B0C"></path>
+  <line class="gs-hairline-strong" x1="508" y1="195" x2="598" y2="195" stroke="#9CA8AB" stroke-width="1"></line>
+  <text class="gf-ink" x="610" y="185" font-size="14" font-weight="600" fill="#090B0C">z5 — System</text>
+  <text class="gf-muted" x="610" y="205" font-size="12" fill="#67787C">Interrupts above everything; nothing outranks it.</text>
+  <text class="gf-muted" x="610" y="223" font-size="12" fill="#67787C">MonoToast, incoming-call banner, system UI</text>
+
+  
+  <rect class="gf-surface2" x="112" y="275" width="44" height="24" rx="6" fill="#F1F3F3"></rect>
+  <text class="gf-ink" x="134" y="291" font-size="12" font-weight="600" fill="#090B0C" text-anchor="middle">z4</text>
+  <line class="gs-hairline-strong" x1="156" y1="287" x2="234" y2="287" stroke="#9CA8AB" stroke-width="1"></line>
+  <path class="gf-surface gs-hairline" d="M180,322 h260 l120,-70 h-260 Z" fill="#FFFFFF" stroke="#E3E7E8" stroke-width="1"></path>
+  <path class="gf-surface2 gs-hairline" d="M292,306 h136 l44,-26 h-136 Z" fill="#F1F3F3" stroke="#E3E7E8" stroke-width="1"></path>
+  <line class="gs-hairline-strong" x1="508" y1="287" x2="598" y2="287" stroke="#9CA8AB" stroke-width="1"></line>
+  <text class="gf-ink" x="610" y="277" font-size="14" font-weight="600" fill="#090B0C">z4 — Overlays</text>
+  <text class="gf-muted" x="610" y="297" font-size="12" fill="#67787C">Modal tier; sits behind an overlayScrim barrier.</text>
+  <text class="gf-muted" x="610" y="315" font-size="12" fill="#67787C">MonoSheet, MonoDialog, context menus, popovers</text>
+
+  
+  <rect class="gf-surface2" x="112" y="367" width="44" height="24" rx="6" fill="#F1F3F3"></rect>
+  <text class="gf-ink" x="134" y="383" font-size="12" font-weight="600" fill="#090B0C" text-anchor="middle">z3</text>
+  <line class="gs-hairline-strong" x1="156" y1="379" x2="234" y2="379" stroke="#9CA8AB" stroke-width="1"></line>
+  <path class="gf-surface2" d="M180,414 h260 l120,-70 h-260 Z" fill="#0000000D" stroke="#00000014" stroke-width="1"></path>
+  <circle class="gf-surface2" cx="308" cy="379" r="10" fill="#0000000D" stroke="#00000014" stroke-width="1"></circle>
+  <circle class="gf-surface2" cx="344" cy="379" r="10" fill="#0000000D" stroke="#00000014" stroke-width="1"></circle>
+  <circle class="gf-surface2" cx="380" cy="379" r="10" fill="#0000000D" stroke="#00000014" stroke-width="1"></circle>
+  <line class="gs-hairline-strong" x1="508" y1="379" x2="598" y2="379" stroke="#9CA8AB" stroke-width="1"></line>
+  <text class="gf-ink" x="610" y="369" font-size="14" font-weight="600" fill="#090B0C">z3 — Controls / glass</text>
+  <text class="gf-muted" x="610" y="389" font-size="12" fill="#67787C">Translucent chrome over content; recedes on consumption.</text>
+  <text class="gf-muted" x="610" y="407" font-size="12" fill="#67787C">MonoActionRail, MonoCaptureBar, MonoComposerBar</text>
+
+  
+  <rect class="gf-surface2" x="112" y="459" width="44" height="24" rx="6" fill="#F1F3F3"></rect>
+  <text class="gf-ink" x="134" y="475" font-size="12" font-weight="600" fill="#090B0C" text-anchor="middle">z2</text>
+  <line class="gs-hairline-strong" x1="156" y1="471" x2="234" y2="471" stroke="#9CA8AB" stroke-width="1"></line>
+  <path class="gs-hairline" d="M180,506 h260 l120,-70 h-260 Z" fill="url(#scrimFade)" stroke="#E3E7E8" stroke-width="1"></path>
+  <line class="gs-hairline-strong" x1="508" y1="471" x2="598" y2="471" stroke="#9CA8AB" stroke-width="1"></line>
+  <text class="gf-ink" x="610" y="461" font-size="14" font-weight="600" fill="#090B0C">z2 — Scrims</text>
+  <text class="gf-muted" x="610" y="481" font-size="12" fill="#67787C">Legibility layer; floor fade 40% to 0 over bottom third.</text>
+  <text class="gf-muted" x="610" y="499" font-size="12" fill="#67787C">scrim, scrimStrong, caption and title zones</text>
+
+  
+  <rect class="gf-surface2" x="112" y="551" width="44" height="24" rx="6" fill="#F1F3F3"></rect>
+  <text class="gf-ink" x="134" y="567" font-size="12" font-weight="600" fill="#090B0C" text-anchor="middle">z1</text>
+  <line class="gs-hairline-strong" x1="156" y1="563" x2="234" y2="563" stroke="#9CA8AB" stroke-width="1"></line>
+  <path d="M180,598 h260 l120,-70 h-260 Z" fill="#161B1D"></path>
+  <path d="M292,582 h136 l44,-26 h-136 Z" fill="#22292B"></path>
+  <line class="gs-hairline-strong" x1="508" y1="563" x2="598" y2="563" stroke="#9CA8AB" stroke-width="1"></line>
+  <text class="gf-ink" x="610" y="553" font-size="14" font-weight="600" fill="#090B0C">z1 — Content</text>
+  <text class="gf-muted" x="610" y="573" font-size="12" fill="#67787C">Full-bleed media and body content; the primary subject.</text>
+  <text class="gf-muted" x="610" y="591" font-size="12" fill="#67787C">video frame, images, MonoDocReader, chat body</text>
+
+  
+  <rect class="gf-surface2" x="112" y="643" width="44" height="24" rx="6" fill="#F1F3F3"></rect>
+  <text class="gf-ink" x="134" y="659" font-size="12" font-weight="600" fill="#090B0C" text-anchor="middle">z0</text>
+  <line class="gs-hairline-strong" x1="156" y1="655" x2="234" y2="655" stroke="#9CA8AB" stroke-width="1"></line>
+  <path d="M180,690 h260 l120,-70 h-260 Z" fill="#000000"></path>
+  <line class="gs-hairline-strong" x1="508" y1="655" x2="598" y2="655" stroke="#9CA8AB" stroke-width="1"></line>
+  <text class="gf-ink" x="610" y="645" font-size="14" font-weight="600" fill="#090B0C">z0 — Media canvas</text>
+  <text class="gf-muted" x="610" y="665" font-size="12" fill="#67787C">#000000, mode-invariant; always dark under media.</text>
+  <text class="gf-muted" x="610" y="683" font-size="12" fill="#67787C">MonoMediaSurface backdrop, MonoVideoSurface</text>
+
+  
+  <text class="gf-muted" x="48" y="736" font-size="12" fill="#67787C">Nothing interrupts full-screen media except calls and system interrupts (z5). Chrome (z3) auto-hides; scrims (z2) exist only where text meets media.</text>
+</svg>

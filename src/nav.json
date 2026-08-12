@@ -1,0 +1,165 @@
+{
+  "home": "foundations/overview",
+  "sections": [
+    {
+      "title": "Foundations",
+      "note": "The principles. What the language is for, and the rules that hold at every width.",
+      "pages": [
+        {
+          "path": "foundations/overview",
+          "title": "Overview"
+        },
+        {
+          "path": "foundations/accessibility",
+          "title": "Accessibility"
+        },
+        {
+          "path": "foundations/adaptive-design",
+          "title": "Adaptive design"
+        },
+        {
+          "path": "foundations/content",
+          "title": "Content and voice"
+        }
+      ]
+    },
+    {
+      "title": "Styles",
+      "note": "The tokens. Every canonical number, generated from the contract.",
+      "pages": [
+        {
+          "path": "styles/color",
+          "title": "Color"
+        },
+        {
+          "path": "styles/typography",
+          "title": "Typography"
+        },
+        {
+          "path": "styles/space",
+          "title": "Space and layout"
+        },
+        {
+          "path": "styles/elevation",
+          "title": "Elevation"
+        },
+        {
+          "path": "styles/motion",
+          "title": "Motion"
+        },
+        {
+          "path": "styles/iconography",
+          "title": "Iconography"
+        }
+      ]
+    },
+    {
+      "title": "Patterns",
+      "note": "How the language behaves. Interaction, immersion, and honest state.",
+      "pages": [
+        {
+          "path": "patterns/interaction",
+          "title": "Interaction"
+        },
+        {
+          "path": "patterns/immersion",
+          "title": "Immersion"
+        },
+        {
+          "path": "patterns/states",
+          "title": "System states"
+        }
+      ]
+    },
+    {
+      "title": "Primitives",
+      "note": "The three every other component composes from. Read these first.",
+      "pages": [
+        {
+          "path": "components/pressable",
+          "title": "Pressable"
+        },
+        {
+          "path": "components/icon",
+          "title": "Icon"
+        },
+        {
+          "path": "components/modal",
+          "title": "Modal"
+        }
+      ]
+    },
+    {
+      "title": "Components",
+      "note": "One page each, in the order a screen is built: the action, the form, the list, the frame, the overlay, the flow.",
+      "pages": [
+        {
+          "path": "components/button",
+          "title": "Button"
+        },
+        {
+          "path": "components/field",
+          "title": "Field"
+        },
+        {
+          "path": "components/input",
+          "title": "Input"
+        },
+        {
+          "path": "components/input-otp",
+          "title": "InputOtp"
+        },
+        {
+          "path": "components/switch",
+          "title": "Switch"
+        },
+        {
+          "path": "components/list-group",
+          "title": "ListGroup"
+        },
+        {
+          "path": "components/list-row",
+          "title": "ListRow"
+        },
+        {
+          "path": "components/screen",
+          "title": "Screen"
+        },
+        {
+          "path": "components/screen-header",
+          "title": "ScreenHeader"
+        },
+        {
+          "path": "components/sheet",
+          "title": "Sheet"
+        },
+        {
+          "path": "components/pager",
+          "title": "Pager"
+        },
+        {
+          "path": "components/page-dots",
+          "title": "PageDots"
+        },
+        {
+          "path": "components/avatar",
+          "title": "Avatar"
+        }
+      ]
+    },
+    {
+      "title": "About",
+      "note": "How this specification is governed and where it came from.",
+      "pages": [
+        {
+          "path": "about/governance",
+          "title": "Governance"
+        },
+        {
+          "path": "about/status",
+          "title": "Status"
+        }
+      ]
+    }
+  ]
+}

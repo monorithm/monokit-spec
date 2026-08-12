@@ -1,0 +1,414 @@
+{
+  "component": "Icon",
+  "spec": "10-tokens/06-iconography.md",
+  "description": "Stroke-only, permanently. Icons are chrome and chrome recedes: a 1.5-stroke line sits over media like a caption, where a filled glyph would compete with it.",
+  "clauses": {
+    "MUST": [
+      "Render on the 24x24 grid with round caps and joins, fill none, at one of the five sizes: 16, 20, 24, 28, 32.",
+      "Resolve a chrome icon's default size from density: 16 at pointer, 20 at touch.",
+      "Apply the optical stroke floor of 1.75 at 16px, and only at 16px. This is the system's one sanctioned stroke deviation and is never applied per-component.",
+      "Accept a semantic ROLE, never a vendor glyph name. The role to glyph mapping is the system's private concern.",
+      "Inherit the colour of the text it accompanies, via currentColor.",
+      "Render active as stroke 2.0 plus colour.",
+      "Carry a semantic label unless explicitly decorative, and mirror in RTL for exactly these roles: back, forward, chevronLeft, chevronRight, reply, forwardMessage, send.",
+      "Provide a tooltip at pointer density when the action is icon-only."
+    ],
+    "SHOULD": [
+      "Pair with a text label wherever space allows. Icons alone carry meaning only for the universally learned set: back, close, search, play.",
+      "Crossfade glyph swaps (play to pause, mic to micOff) at duration.fast."
+    ],
+    "NEVER": [
+      "Ship a solid or duotone tier. There is no filled active state, reactions included: a liked heart is an outlined heart at stroke 2.0 in colors.live.",
+      "Mix stroke and filled icons on one surface.",
+      "Render below 16px (use nothing) or above 32px (it is an illustration and leaves the system).",
+      "Stretch the glyph to fill a hit target — padding provides the target.",
+      "Hardcode a colour, or use an opacity-modulated brand colour.",
+      "Animate glyph size directly; scaling shimmers the stroke. Animate the container instead.",
+      "Stand alone for a destructive action without a text label.",
+      "Invent a new metaphor for a role that already exists in the catalog."
+    ]
+  },
+  "vendor": {
+    "primary": "HugeIcons stroke-rounded (MIT)",
+    "secondary": "Iconoir regular (MIT)",
+    "shipped": "Iconoir regular — HugeIcons' free set has no SVG assets in its repository, so this realization ships the specification's sanctioned secondary vendor on identical 24-grid, 1.5-stroke, round-cap geometry.",
+    "absentRoles": [
+      "unfold",
+      "cameraFlip",
+      "captions",
+      "live",
+      "record",
+      "waveform",
+      "sticker",
+      "gif",
+      "filePdf",
+      "receipt"
+    ],
+    "absentPolicy": "Absent roles are NOT substituted with look-alikes. live renders as the specified pulsing dot chip; the rest are unavailable until the primary vendor's assets can be supplied."
+  },
+  "roles": {
+    "chevronUp": {
+      "label": "Collapse",
+      "glyph": "nav-arrow-up"
+    },
+    "chevronDown": {
+      "label": "Expand",
+      "glyph": "nav-arrow-down"
+    },
+    "chevronLeft": {
+      "label": "Previous",
+      "glyph": "nav-arrow-left",
+      "mirrorInRtl": true
+    },
+    "chevronRight": {
+      "label": "Next",
+      "glyph": "nav-arrow-right",
+      "mirrorInRtl": true
+    },
+    "back": {
+      "label": "Back",
+      "glyph": "arrow-left",
+      "mirrorInRtl": true
+    },
+    "forward": {
+      "label": "Continue",
+      "glyph": "arrow-right",
+      "mirrorInRtl": true
+    },
+    "close": {
+      "label": "Close",
+      "glyph": "xmark"
+    },
+    "menu": {
+      "label": "Menu",
+      "glyph": "menu"
+    },
+    "more": {
+      "label": "More options",
+      "glyph": "more-horiz"
+    },
+    "search": {
+      "label": "Search",
+      "glyph": "search"
+    },
+    "settings": {
+      "label": "Settings",
+      "glyph": "settings"
+    },
+    "home": {
+      "label": "Home",
+      "glyph": "home"
+    },
+    "notification": {
+      "label": "Notifications",
+      "glyph": "bell"
+    },
+    "sidebar": {
+      "label": "Toggle sidebar",
+      "glyph": "sidebar-collapse"
+    },
+    "unfold": {
+      "label": "Choose",
+      "glyph": null
+    },
+    "sparkles": {
+      "label": "AI",
+      "glyph": "spark"
+    },
+    "add": {
+      "label": "Add",
+      "glyph": "plus"
+    },
+    "remove": {
+      "label": "Remove",
+      "glyph": "minus"
+    },
+    "edit": {
+      "label": "Edit",
+      "glyph": "edit-pencil"
+    },
+    "delete": {
+      "label": "Delete",
+      "glyph": "trash"
+    },
+    "share": {
+      "label": "Share",
+      "glyph": "share-ios"
+    },
+    "copy": {
+      "label": "Copy",
+      "glyph": "copy"
+    },
+    "link": {
+      "label": "Link",
+      "glyph": "link"
+    },
+    "download": {
+      "label": "Download",
+      "glyph": "download"
+    },
+    "upload": {
+      "label": "Upload",
+      "glyph": "upload"
+    },
+    "filter": {
+      "label": "Filter",
+      "glyph": "filter"
+    },
+    "refresh": {
+      "label": "Refresh",
+      "glyph": "refresh"
+    },
+    "check": {
+      "label": "Selected",
+      "glyph": "check"
+    },
+    "success": {
+      "label": "Success",
+      "glyph": "check-circle"
+    },
+    "error": {
+      "label": "Error",
+      "glyph": "xmark-circle"
+    },
+    "warning": {
+      "label": "Warning",
+      "glyph": "warning-triangle"
+    },
+    "info": {
+      "label": "Information",
+      "glyph": "info-circle"
+    },
+    "help": {
+      "label": "Help",
+      "glyph": "help-circle"
+    },
+    "loading": {
+      "label": "Loading",
+      "glyph": "refresh-double"
+    },
+    "visibility": {
+      "label": "Show",
+      "glyph": "eye"
+    },
+    "visibilityOff": {
+      "label": "Hide",
+      "glyph": "eye-closed"
+    },
+    "like": {
+      "label": "Like",
+      "glyph": "heart"
+    },
+    "comment": {
+      "label": "Comment",
+      "glyph": "chat-lines"
+    },
+    "bookmark": {
+      "label": "Save",
+      "glyph": "bookmark"
+    },
+    "follow": {
+      "label": "Follow",
+      "glyph": "user-plus"
+    },
+    "mention": {
+      "label": "Mention",
+      "glyph": "at-sign"
+    },
+    "gift": {
+      "label": "Gift",
+      "glyph": "gift"
+    },
+    "camera": {
+      "label": "Camera",
+      "glyph": "camera"
+    },
+    "cameraFlip": {
+      "label": "Flip camera",
+      "glyph": null
+    },
+    "image": {
+      "label": "Image",
+      "glyph": "media-image"
+    },
+    "video": {
+      "label": "Video",
+      "glyph": "video-camera"
+    },
+    "videoOff": {
+      "label": "Camera off",
+      "glyph": "video-camera-off"
+    },
+    "play": {
+      "label": "Play",
+      "glyph": "play"
+    },
+    "pause": {
+      "label": "Pause",
+      "glyph": "pause"
+    },
+    "volume": {
+      "label": "Volume",
+      "glyph": "sound-high"
+    },
+    "volumeMute": {
+      "label": "Mute",
+      "glyph": "sound-off"
+    },
+    "fullscreen": {
+      "label": "Full screen",
+      "glyph": "expand"
+    },
+    "captions": {
+      "label": "Captions",
+      "glyph": null
+    },
+    "live": {
+      "label": "Live",
+      "glyph": null
+    },
+    "record": {
+      "label": "Record",
+      "glyph": null
+    },
+    "flash": {
+      "label": "Flash",
+      "glyph": "flash"
+    },
+    "timer": {
+      "label": "Timer",
+      "glyph": "timer"
+    },
+    "call": {
+      "label": "Call",
+      "glyph": "phone"
+    },
+    "callEnd": {
+      "label": "End call",
+      "glyph": "phone-xmark"
+    },
+    "callVideo": {
+      "label": "Video call",
+      "glyph": "video-camera"
+    },
+    "addParticipant": {
+      "label": "Add participant",
+      "glyph": "user-plus"
+    },
+    "mic": {
+      "label": "Microphone",
+      "glyph": "microphone"
+    },
+    "micOff": {
+      "label": "Microphone off",
+      "glyph": "microphone-mute"
+    },
+    "waveform": {
+      "label": "Audio",
+      "glyph": null
+    },
+    "chat": {
+      "label": "Chat",
+      "glyph": "chat-bubble-empty"
+    },
+    "send": {
+      "label": "Send",
+      "glyph": "send",
+      "mirrorInRtl": true
+    },
+    "attach": {
+      "label": "Attach",
+      "glyph": "attachment"
+    },
+    "emoji": {
+      "label": "Emoji",
+      "glyph": "emoji"
+    },
+    "sticker": {
+      "label": "Sticker",
+      "glyph": null
+    },
+    "gif": {
+      "label": "GIF",
+      "glyph": null
+    },
+    "reply": {
+      "label": "Reply",
+      "glyph": "reply",
+      "mirrorInRtl": true
+    },
+    "forwardMessage": {
+      "label": "Forward",
+      "glyph": "forward",
+      "mirrorInRtl": true
+    },
+    "delivered": {
+      "label": "Delivered",
+      "glyph": "check"
+    },
+    "read": {
+      "label": "Read",
+      "glyph": "double-check"
+    },
+    "file": {
+      "label": "File",
+      "glyph": "page"
+    },
+    "filePdf": {
+      "label": "PDF",
+      "glyph": null
+    },
+    "folder": {
+      "label": "Folder",
+      "glyph": "folder"
+    },
+    "cart": {
+      "label": "Cart",
+      "glyph": "cart"
+    },
+    "cartAdd": {
+      "label": "Add to cart",
+      "glyph": "cart-plus"
+    },
+    "bag": {
+      "label": "Shop",
+      "glyph": "shopping-bag"
+    },
+    "checkout": {
+      "label": "Pay",
+      "glyph": "credit-card"
+    },
+    "priceTag": {
+      "label": "Price",
+      "glyph": "label"
+    },
+    "order": {
+      "label": "Order",
+      "glyph": "box"
+    },
+    "delivery": {
+      "label": "Delivery",
+      "glyph": "delivery-truck"
+    },
+    "store": {
+      "label": "Store",
+      "glyph": "shop"
+    },
+    "receipt": {
+      "label": "Receipt",
+      "glyph": null
+    },
+    "user": {
+      "label": "Profile",
+      "glyph": "user"
+    },
+    "userGroup": {
+      "label": "Group",
+      "glyph": "group"
+    },
+    "verified": {
+      "label": "Verified",
+      "glyph": "badge-check"
+    }
+  }
+}

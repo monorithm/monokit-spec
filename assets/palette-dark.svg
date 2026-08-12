@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1898" viewBox="0 0 1200 1898" role="img" aria-label="monokit dark palette specimen">
+<rect x="0" y="0" width="1200" height="1898" fill="#090B0C"></rect>
+<text x="48" y="70" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="22" font-weight="700" fill="#F9FBFB">monokit · dark palette</text>
+<text x="48" y="96" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" fill="#9CA8AB">Canonical dark-mode tokens — emerald on mist. Values are sRGB hex (OKLCH design source).</text>
+<text x="48" y="150" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="15" font-weight="700" fill="#F9FBFB">Surfaces &amp; text</text>
+<rect x="48" y="180" width="168" height="56" rx="6" fill="#090B0C" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="255" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">background</text>
+<text x="48" y="272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#090B0C</text>
+<rect x="235" y="180" width="168" height="56" rx="6" fill="#F9FBFB" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="255" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">foreground</text>
+<text x="235" y="272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#F9FBFB</text>
+<rect x="422" y="180" width="168" height="56" rx="6" fill="#161B1D" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="255" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">card</text>
+<text x="422" y="272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#161B1D</text>
+<rect x="609" y="180" width="168" height="56" rx="6" fill="#F9FBFB" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="609" y="255" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">cardForeground</text>
+<text x="609" y="272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#F9FBFB</text>
+<rect x="796" y="180" width="168" height="56" rx="6" fill="#161B1D" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="796" y="255" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">popover</text>
+<text x="796" y="272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#161B1D</text>
+<rect x="983" y="180" width="168" height="56" rx="6" fill="#F9FBFB" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="983" y="255" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">popoverForeground</text>
+<text x="983" y="272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#F9FBFB</text>
+<rect x="48" y="292" width="168" height="56" rx="6" fill="#22292B" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="367" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">muted</text>
+<text x="48" y="384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#22292B</text>
+<rect x="235" y="292" width="168" height="56" rx="6" fill="#9CA8AB" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="367" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">mutedForeground</text>
+<text x="235" y="384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#9CA8AB</text>
+<rect x="422" y="292" width="168" height="56" rx="6" fill="#22292B" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="367" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">accent</text>
+<text x="422" y="384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#22292B</text>
+<rect x="609" y="292" width="168" height="56" rx="6" fill="#F9FBFB" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="609" y="367" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">accentForeground</text>
+<text x="609" y="384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#F9FBFB</text>
+<rect x="796" y="292" width="168" height="56" rx="6" fill="#263033" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="796" y="367" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">secondary</text>
+<text x="796" y="384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#263033</text>
+<rect x="983" y="292" width="168" height="56" rx="6" fill="#F9FBFB" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="983" y="367" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">secondaryForeground</text>
+<text x="983" y="384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#F9FBFB</text>
+<text x="48" y="430" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="15" font-weight="700" fill="#F9FBFB">Brand</text>
+<rect x="48" y="460" width="168" height="56" rx="6" fill="#006045" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="535" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">primary</text>
+<text x="48" y="552" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#006045</text>
+<rect x="235" y="460" width="168" height="56" rx="6" fill="#ECFDF5" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="535" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">primaryForeground</text>
+<text x="235" y="552" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#ECFDF5</text>
+<rect x="422" y="460" width="168" height="56" rx="6" fill="#19342A" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="535" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">primarySoft</text>
+<text x="422" y="552" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#19342A</text>
+<text x="48" y="598" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="15" font-weight="700" fill="#F9FBFB">Status</text>
+<text x="48" y="618" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">Solid fills: badges, icons, large text. Body messaging: soft surface + *Text.</text>
+<rect x="48" y="646" width="168" height="56" rx="6" fill="#05DF72" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="721" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">success</text>
+<text x="48" y="738" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#05DF72</text>
+<rect x="235" y="646" width="168" height="56" rx="6" fill="#090B0C" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="721" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">successForeground</text>
+<text x="235" y="738" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#090B0C</text>
+<rect x="422" y="646" width="168" height="56" rx="6" fill="#0A2E17" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="721" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">successSoft</text>
+<text x="422" y="738" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#0A2E17</text>
+<rect x="609" y="646" width="168" height="56" rx="6" fill="#05DF72" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="609" y="721" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">successText</text>
+<text x="609" y="738" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#05DF72</text>
+<rect x="48" y="758" width="168" height="56" rx="6" fill="#FFB900" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="833" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">warning</text>
+<text x="48" y="850" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#FFB900</text>
+<rect x="235" y="758" width="168" height="56" rx="6" fill="#090B0C" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="833" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">warningForeground</text>
+<text x="235" y="850" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#090B0C</text>
+<rect x="422" y="758" width="168" height="56" rx="6" fill="#332400" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="833" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">warningSoft</text>
+<text x="422" y="850" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#332400</text>
+<rect x="609" y="758" width="168" height="56" rx="6" fill="#FFB900" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="609" y="833" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">warningText</text>
+<text x="609" y="850" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#FFB900</text>
+<rect x="48" y="870" width="168" height="56" rx="6" fill="#51A2FF" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="945" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">info</text>
+<text x="48" y="962" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#51A2FF</text>
+<rect x="235" y="870" width="168" height="56" rx="6" fill="#090B0C" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="945" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">infoForeground</text>
+<text x="235" y="962" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#090B0C</text>
+<rect x="422" y="870" width="168" height="56" rx="6" fill="#14273E" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="945" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">infoSoft</text>
+<text x="422" y="962" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#14273E</text>
+<rect x="609" y="870" width="168" height="56" rx="6" fill="#51A2FF" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="609" y="945" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">infoText</text>
+<text x="609" y="962" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#51A2FF</text>
+<rect x="48" y="982" width="168" height="56" rx="6" fill="#FF6467" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="1057" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">destructive</text>
+<text x="48" y="1074" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#FF6467</text>
+<rect x="235" y="982" width="168" height="56" rx="6" fill="#090B0C" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="1057" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">destructiveForeground</text>
+<text x="235" y="1074" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#090B0C</text>
+<rect x="422" y="982" width="168" height="56" rx="6" fill="#3F1919" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="1057" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">destructiveSoft</text>
+<text x="422" y="1074" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#3F1919</text>
+<rect x="609" y="982" width="168" height="56" rx="6" fill="#FF6467" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="609" y="1057" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">destructiveText</text>
+<text x="609" y="1074" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#FF6467</text>
+<text x="48" y="1120" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="15" font-weight="700" fill="#F9FBFB">Lines &amp; focus</text>
+<rect x="48" y="1150" width="168" height="56" rx="6" fill="#FFFFFF1A" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="1225" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">border</text>
+<text x="48" y="1242" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#FFFFFF1A</text>
+<rect x="235" y="1150" width="168" height="56" rx="6" fill="#FFFFFF26" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="1225" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">input</text>
+<text x="235" y="1242" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#FFFFFF26</text>
+<rect x="422" y="1150" width="168" height="56" rx="6" fill="#67787C" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="1225" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">ring</text>
+<text x="422" y="1242" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#67787C</text>
+<text x="48" y="1288" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="15" font-weight="700" fill="#F9FBFB">Charts</text>
+<rect x="48" y="1318" width="168" height="56" rx="6" fill="#D0D6D8" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="1393" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">chart1</text>
+<text x="48" y="1410" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#D0D6D8</text>
+<rect x="235" y="1318" width="168" height="56" rx="6" fill="#67787C" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="1393" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">chart2</text>
+<text x="235" y="1410" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#67787C</text>
+<rect x="422" y="1318" width="168" height="56" rx="6" fill="#4B585B" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="1393" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">chart3</text>
+<text x="422" y="1410" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#4B585B</text>
+<rect x="609" y="1318" width="168" height="56" rx="6" fill="#9CA8AB" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="609" y="1393" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">chart4</text>
+<text x="609" y="1410" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#9CA8AB</text>
+<rect x="796" y="1318" width="168" height="56" rx="6" fill="#C7CFD1" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="796" y="1393" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">chart5</text>
+<text x="796" y="1410" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#C7CFD1</text>
+<text x="48" y="1456" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="15" font-weight="700" fill="#F9FBFB">Sidebar</text>
+<rect x="48" y="1486" width="168" height="56" rx="6" fill="#161B1D" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="1561" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">sidebar</text>
+<text x="48" y="1578" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#161B1D</text>
+<rect x="235" y="1486" width="168" height="56" rx="6" fill="#F9FBFB" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="1561" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">sidebarForeground</text>
+<text x="235" y="1578" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#F9FBFB</text>
+<rect x="422" y="1486" width="168" height="56" rx="6" fill="#00BC7D" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="1561" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">sidebarPrimary</text>
+<text x="422" y="1578" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#00BC7D</text>
+<rect x="609" y="1486" width="168" height="56" rx="6" fill="#002C22" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="609" y="1561" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">sidebarPrimaryForeground</text>
+<text x="609" y="1578" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#002C22</text>
+<rect x="48" y="1598" width="168" height="56" rx="6" fill="#22292B" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="1673" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">sidebarAccent</text>
+<text x="48" y="1690" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#22292B</text>
+<rect x="235" y="1598" width="168" height="56" rx="6" fill="#F9FBFB" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="1673" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">sidebarAccentForeground</text>
+<text x="235" y="1690" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#F9FBFB</text>
+<rect x="422" y="1598" width="168" height="56" rx="6" fill="#FFFFFF1A" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="422" y="1673" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">sidebarBorder</text>
+<text x="422" y="1690" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#FFFFFF1A</text>
+<rect x="609" y="1598" width="168" height="56" rx="6" fill="#67787C" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="609" y="1673" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">sidebarRing</text>
+<text x="609" y="1690" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#67787C</text>
+<text x="48" y="1736" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="15" font-weight="700" fill="#F9FBFB">Signal</text>
+<rect x="48" y="1766" width="168" height="56" rx="6" fill="#FB2C36" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="48" y="1841" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">live</text>
+<text x="48" y="1858" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#FB2C36</text>
+<rect x="235" y="1766" width="168" height="56" rx="6" fill="#FFFFFF" stroke="#FFFFFF26" stroke-width="1"></rect>
+<text x="235" y="1841" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F9FBFB">liveForeground</text>
+<text x="235" y="1858" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#9CA8AB">#FFFFFF</text>
+</svg>

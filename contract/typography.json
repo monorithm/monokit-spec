@@ -1,0 +1,133 @@
+{
+  "family": "typography",
+  "spec": "10-tokens/03-typography.md",
+  "cssFile": "tokens/typography.css",
+  "dartFile": "dart/monokit_typography.dart",
+  "dartType": "MonokitTextStyle",
+  "description": "IBM Plex, one superfamily, three registers: Sans for chrome and content, Serif strictly for reading surfaces, Mono for machine-shaped strings. Quiet chrome, loud content.",
+  "axes": [
+    "widthClass"
+  ],
+  "notes": [
+    "D7: the IBM Plex superfamily. px is canonical; the rem values are the web pipeline's derived parity.",
+    "The four display and headline roles are FLUID: they interpolate between the top of compact (600px) and the bottom of wide (1280px). Everything else is fixed at every width, because if a design wants bigger chrome on desktop the answer is density and spacing, not font size.",
+    "Hierarchy spans one step: adjacent slots differ by at most one ramp step and/or one weight step.",
+    "Weights 400/500/600/700 only, never below 400. 12px is the floor and nothing renders below it."
+  ],
+  "groups": {
+    "families": {
+      "sans": {
+        "value": "\"IBM Plex Sans\",ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",sans-serif"
+      },
+      "serif": {
+        "value": "\"IBM Plex Serif\",ui-serif,Georgia,Cambria,serif",
+        "description": "The reading register. The document reader and long-form body, nowhere else."
+      },
+      "mono": {
+        "value": "\"IBM Plex Mono\",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace",
+        "description": "Machine-shaped strings the user reads rather than types."
+      }
+    },
+    "weights": {
+      "regular": {
+        "value": "400"
+      },
+      "medium": {
+        "value": "500"
+      },
+      "semibold": {
+        "value": "600"
+      },
+      "bold": {
+        "value": "700"
+      }
+    },
+    "fluid": {
+      "displayLarge": {
+        "min": "2.25rem",
+        "max": "2.75rem",
+        "lineHeight": "1.10",
+        "tracking": "-0.025em"
+      },
+      "displayMedium": {
+        "min": "1.875rem",
+        "max": "2.25rem",
+        "lineHeight": "1.15",
+        "tracking": "-0.02em"
+      },
+      "headlineLarge": {
+        "min": "1.5rem",
+        "max": "1.75rem",
+        "lineHeight": "1.20",
+        "tracking": "-0.015em"
+      },
+      "headlineMedium": {
+        "min": "1.25rem",
+        "max": "1.375rem",
+        "lineHeight": "1.25",
+        "tracking": "-0.01em"
+      }
+    },
+    "fixed": {
+      "titleLarge": {
+        "size": "1.125rem",
+        "lineHeight": "1.30"
+      },
+      "titleMedium": {
+        "size": "1rem",
+        "lineHeight": "1.35"
+      },
+      "bodyLarge": {
+        "size": "1rem",
+        "lineHeight": "1.50"
+      },
+      "bodyMedium": {
+        "size": "0.875rem",
+        "lineHeight": "1.45"
+      },
+      "labelLarge": {
+        "size": "0.875rem",
+        "lineHeight": "1.20"
+      },
+      "labelMedium": {
+        "size": "0.75rem",
+        "lineHeight": "1.20"
+      },
+      "button": {
+        "size": "0.875rem",
+        "lineHeight": "1.20"
+      },
+      "code": {
+        "size": "0.8125rem",
+        "lineHeight": "1.50",
+        "family": "mono"
+      },
+      "prose": {
+        "size": "1.0625rem",
+        "lineHeight": "1.65",
+        "family": "serif"
+      },
+      "proseHeading": {
+        "size": "1.375rem",
+        "lineHeight": "1.30",
+        "tracking": "-0.01em",
+        "family": "serif"
+      },
+      "mediaTitle": {
+        "size": "1rem",
+        "lineHeight": "1.30",
+        "tracking": "-0.0125em"
+      },
+      "mediaCaption": {
+        "size": "0.875rem",
+        "lineHeight": "1.40"
+      }
+    },
+    "floor": {
+      "text": {
+        "value": "0.75rem",
+        "description": "12px. Nothing renders below it."
+      }
+    }
+  }
+}

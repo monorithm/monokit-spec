@@ -1,0 +1,33 @@
+---
+/* The root redirects to whatever src/nav.json calls home, rather than duplicating a landing page
+   that would then be the one page not covered by the nav check. */
+import nav from '../nav.json';
+
+const home = `/${nav.home}/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="canonical" href={new URL(home, Astro.site)} />
+    <title>monokit specification</title>
+
+    {/* This is where the workbench's published URLs land. It routed on the hash of its root
+        document — .../site/index.html#/components/button — so on this domain those arrive as
+        /#/components/button, and the route is in the fragment, here, not on a content page.
+        Redirecting straight to home would drop it and send every old deep link to the overview.
+
+        Runs before the <meta refresh> below, which is the fallback for no-JS and names home
+        unconditionally because it cannot read a fragment. */}
+    <script is:inline define:vars={{ home }}>
+      var hash = location.hash;
+      var route = hash.startsWith('#/') ? hash.slice(2).replace(/\/$/, '') : '';
+      location.replace(route ? '/' + route + '/' : home);
+    </script>
+    <meta http-equiv="refresh" content={`0;url=${home}`} />
+  </head>
+  <body>
+    <p>Redirecting to <a href={home}>the monokit specification</a>.</p>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+/* space — GENERATED FILE, DO NOT EDIT.
+   Source: contract/space.json · Specification: 10-tokens/04-space-and-layout.md
+   Regenerate with `node build/generate.mjs`; verify with `--check`.
+
+   One rhythm: the 4pt grid, one spacing scale, one radius scale, one column grid. Space
+   declares hierarchy — s4 to s8 is one unit, s12 to s16 siblings, s24 and up different
+   sections.
+
+   · Off-scale gaps and paddings are never used; 1px belongs to hairline borders, which are
+   strokes, not space.
+   · Radius is proportional to base 10, scales with surface SIZE rather than importance, and
+   nests concentrically (child radius = parent radius - inset). radiusFull means circle or
+   capsule, never 'very round rectangle'.
+   · D9: density resolves from the primary input device. It is layout-affecting and
+   therefore session-stable — it MUST NOT flip mid-session on hybrid devices.
+*/
+
+:root{
+
+  /* spacing */
+  --space-4:4px;
+  --space-8:8px;
+  --space-12:12px;
+  --space-16:16px;
+  --space-20:20px;
+  --space-24:24px;
+  --space-32:32px;
+  --space-40:40px;
+  --space-48:48px;
+
+  /* radius */
+
+  /* Every other radius is a proportional multiplier of this. */
+  --radius-base:10px;
+  --radius-xs:4px;
+  --radius-sm:6px;
+  --radius-md:8px;
+  --radius-lg:10px;
+  --radius-xl:14px;
+  --radius-xxl:18px;
+  --radius-xxxl:22px;
+  --radius-huge:26px;
+
+  /* Circle or capsule only. */
+  --radius-full:999px;
+
+  /* breakpoints */
+
+  /* Semantic, not device names. A desktop window dragged narrow IS compact and gets the
+  compact composition. */
+  --breakpoint-compact:600px;
+  --breakpoint-medium:960px;
+  --breakpoint-expanded:1280px;
+
+  /* containers */
+
+  /* A phone-proportioned max: the feed never becomes a grid, at any width. */
+  --container-feed:480px;
+  --container-content:640px;
+  --container-sheet:640px;
+  --container-page:1200px;
+  --container-dialog-sm:400px;
+  --container-dialog-md:560px;
+  --container-dialog-lg:720px;
+  --container-sidebar:280px;
+  --container-rail:72px;
+
+  /* chrome */
+
+  /* Compact and medium. The title aligns to the content column, not the screen edge. */
+  --header-height:56px;
+  --border-width:1px;
+
+  /* Expanded and up. Chrome gains height with the layout, not with the type scale. */
+  --header-height-expanded:64px;
+
+  /* icons */
+  --icon-xs:16px;
+  --icon-sm:20px;
+  --icon-md:24px;
+  --icon-lg:28px;
+  --icon-xl:32px;
+  --icon-stroke:1.5;
+  --icon-stroke-active:2;
+
+  /* The system's one sanctioned stroke deviation: an optical floor at 16px. Never applied
+  per-component. */
+  --icon-stroke-xs:1.75;
+
+  /* list */
+
+  /* One swipe-action cell: a comfortable touch target with room for an icon and a label.
+  Wider than the 44 minimum on purpose. At most two per side. */
+  --swipe-action-cell:72px;
+
+  /* The list leading slot when it holds an avatar, at radius full. The separator inset is
+  measured from it. */
+  --leading-avatar:40px;
+
+  /* reach */
+
+  /* D25. A first-class theme token that flips ALL thumb-arc placements together for
+  left/right-handed reach and RTL. Values: start | end. */
+  --reach-side:end;
+
+  /* page inset and gutter — resolved per layout scope, never once per screen */
+  --page-inset:16px;
+  --gutter:16px;
+  --gutter-media:4px;
+
+  /* density — resolved from the primary input device, orthogonal to width */
+  --target-touch:44px; --control-touch:44px; --gap-touch:8px;
+  --row-touch-1:48px; --row-touch-2:64px; --row-touch-3:88px;
+  --target-pointer:32px; --control-pointer:36px; --gap-pointer:4px;
+  --row-pointer-1:40px; --row-pointer-2:56px; --row-pointer-3:76px;
+
+  /* Density resolves from the primary pointer, per spec 12 section 2.2: coarse -> touch,
+     fine -> pointer. Session-stable: it must not flip mid-session on hybrid devices.
+     These are the RESOLVED aliases every component reads; the columns above are the data.
+     They are emitted in three places from ONE definition (resolved(), below), so a scope
+     can never drift from the media query or from :root. */
+  --min-target:var(--target-pointer);
+  --control-height:var(--control-pointer);
+  --gap-density:var(--gap-pointer);
+  --row-1:var(--row-pointer-1);
+  --row-2:var(--row-pointer-2);
+  --row-3:var(--row-pointer-3);
+  --icon-chrome:var(--icon-xs);
+  --icon-stroke-chrome:var(--icon-stroke-xs)
+}
+
+@media (min-width:600px){:root{--page-inset:24px}}
+@media (min-width:960px){:root{--page-inset:32px;--gutter:24px;--header-height:64px}}
+@media (pointer:coarse){:root{--min-target:var(--target-touch);--control-height:var(--control-touch);--gap-density:var(--gap-touch);--row-1:var(--row-touch-1);--row-2:var(--row-touch-2);--row-3:var(--row-touch-3);--icon-chrome:var(--icon-sm);--icon-stroke-chrome:var(--icon-stroke)}}
+
+/* Explicit density scope — the developer-configuration override the spec allows for
+   embedded touch contexts inside pointer apps. Not an end-user setting. */
+[data-density="touch"]{--min-target:var(--target-touch);--control-height:var(--control-touch);--gap-density:var(--gap-touch);--row-1:var(--row-touch-1);--row-2:var(--row-touch-2);--row-3:var(--row-touch-3);--icon-chrome:var(--icon-sm);--icon-stroke-chrome:var(--icon-stroke)}
+[data-density="pointer"]{--min-target:var(--target-pointer);--control-height:var(--control-pointer);--gap-density:var(--gap-pointer);--row-1:var(--row-pointer-1);--row-2:var(--row-pointer-2);--row-3:var(--row-pointer-3);--icon-chrome:var(--icon-xs);--icon-stroke-chrome:var(--icon-stroke-xs)}

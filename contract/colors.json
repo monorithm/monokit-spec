@@ -1,0 +1,376 @@
+{
+  "family": "colors",
+  "spec": "10-tokens/02-color-and-surface.md",
+  "cssFile": "tokens/colors.css",
+  "dartFile": "dart/monokit_colors.dart",
+  "dartType": "Color",
+  "description": "Emerald on mist. A near-monochrome field of cool mist slate neutrals with one rationed accent. Colour is information, never decoration: emerald appears only where the user acts or the brand speaks; status hues only when the system reports state. If a screen is colourful, something is wrong.",
+  "axes": [
+    "theme"
+  ],
+  "notes": [
+    "D1: the design source is OKLCH; a realization may store sRGB hex. These are the verified sRGB hex.",
+    "The on-media set is MODE-INVARIANT: the media canvas is always dark, on both themes.",
+    "Dark mode lowers chrome energy — primary becomes the dimmer #006045 — so media and status own the brightness. #006045 is a SURFACE colour; brand as INK in dark uses sidebarPrimary.",
+    "The brand and neutral axes carry a fourth role, primaryText and mutedText, so each has an ink verified against its own soft surface — the shape every status already had. Both values are existing palette emeralds and mists given a role, not new colours."
+  ],
+  "sets": {
+    "light": {
+      "background": {
+        "value": "#FFFFFF"
+      },
+      "foreground": {
+        "value": "#090B0C"
+      },
+      "card": {
+        "value": "#FFFFFF",
+        "description": "In light mode card and background are the same white, so the hairline IS the card. Never assume a luminance difference."
+      },
+      "cardForeground": {
+        "value": "#090B0C"
+      },
+      "popover": {
+        "value": "#FFFFFF"
+      },
+      "popoverForeground": {
+        "value": "#090B0C"
+      },
+      "muted": {
+        "value": "#F1F3F3",
+        "description": "The de-emphasis well. Native fields are wells rather than bordered boxes."
+      },
+      "mutedForeground": {
+        "value": "#67787C",
+        "description": "De-emphasis is carried by colour, never by a smaller size or lighter weight."
+      },
+      "accent": {
+        "value": "#F1F3F3",
+        "description": "The transient fill for rows and menu items on hover and press."
+      },
+      "accentForeground": {
+        "value": "#161B1D"
+      },
+      "secondary": {
+        "value": "#ECEFEF"
+      },
+      "secondaryForeground": {
+        "value": "#161B1D"
+      },
+      "primary": {
+        "value": "#007A55"
+      },
+      "primaryForeground": {
+        "value": "#ECFDF5"
+      },
+      "primarySoft": {
+        "value": "#CBF3E0"
+      },
+      "destructive": {
+        "value": "#E7000B"
+      },
+      "destructiveForeground": {
+        "value": "#FAFAFA"
+      },
+      "destructiveSoft": {
+        "value": "#FFE1DB"
+      },
+      "destructiveText": {
+        "value": "#9F0712"
+      },
+      "success": {
+        "value": "#00A63E",
+        "description": "success is not primary."
+      },
+      "successForeground": {
+        "value": "#FAFAFA"
+      },
+      "successSoft": {
+        "value": "#D7F9DC"
+      },
+      "successText": {
+        "value": "#016630"
+      },
+      "warning": {
+        "value": "#E17100"
+      },
+      "warningForeground": {
+        "value": "#FAFAFA"
+      },
+      "warningSoft": {
+        "value": "#FFE6CB"
+      },
+      "warningText": {
+        "value": "#973C00"
+      },
+      "info": {
+        "value": "#155DFC"
+      },
+      "infoForeground": {
+        "value": "#FAFAFA"
+      },
+      "infoSoft": {
+        "value": "#DDEFFF"
+      },
+      "infoText": {
+        "value": "#193CB8"
+      },
+      "border": {
+        "value": "#E3E7E8",
+        "description": "1px, everywhere structure is needed. Two stacked hairlines double their alpha and read as a seam, so shared edges are collapsed."
+      },
+      "input": {
+        "value": "#E3E7E8"
+      },
+      "ring": {
+        "value": "#9CA8AB",
+        "description": "Neutral mid-mist by design: focus is not intent."
+      },
+      "chart1": {
+        "value": "#D0D6D8"
+      },
+      "chart2": {
+        "value": "#67787C"
+      },
+      "chart3": {
+        "value": "#4B585B"
+      },
+      "chart4": {
+        "value": "#394447"
+      },
+      "chart5": {
+        "value": "#22292B"
+      },
+      "sidebar": {
+        "value": "#F9FBFB"
+      },
+      "sidebarForeground": {
+        "value": "#090B0C"
+      },
+      "sidebarPrimary": {
+        "value": "#009966"
+      },
+      "sidebarPrimaryForeground": {
+        "value": "#ECFDF5"
+      },
+      "sidebarAccent": {
+        "value": "#F1F3F3"
+      },
+      "sidebarAccentForeground": {
+        "value": "#161B1D"
+      },
+      "sidebarBorder": {
+        "value": "#E3E7E8"
+      },
+      "sidebarRing": {
+        "value": "#9CA8AB"
+      },
+      "primaryText": {
+        "value": "#006045",
+        "description": "Brand ink on primarySoft. The dimmer emerald that dark mode uses as a brand surface; on the light soft fill it is the ink. primary itself measures 4.45 there, under AA."
+      },
+      "mutedText": {
+        "value": "#4B585B",
+        "description": "De-emphasis ink on the muted well. mutedForeground is verified on background, not on muted, where it measures 4.14."
+      }
+    },
+    "dark": {
+      "background": {
+        "value": "#090B0C"
+      },
+      "foreground": {
+        "value": "#F9FBFB"
+      },
+      "card": {
+        "value": "#161B1D"
+      },
+      "cardForeground": {
+        "value": "#F9FBFB"
+      },
+      "popover": {
+        "value": "#161B1D"
+      },
+      "popoverForeground": {
+        "value": "#F9FBFB"
+      },
+      "muted": {
+        "value": "#22292B"
+      },
+      "mutedForeground": {
+        "value": "#9CA8AB"
+      },
+      "accent": {
+        "value": "#22292B"
+      },
+      "accentForeground": {
+        "value": "#F9FBFB"
+      },
+      "secondary": {
+        "value": "#263033"
+      },
+      "secondaryForeground": {
+        "value": "#F9FBFB"
+      },
+      "primary": {
+        "value": "#006045",
+        "description": "A dimmer brand SURFACE, not an ink. Brand ink in dark is sidebarPrimary."
+      },
+      "primaryForeground": {
+        "value": "#ECFDF5"
+      },
+      "primarySoft": {
+        "value": "#19342A"
+      },
+      "destructive": {
+        "value": "#FF6467",
+        "description": "Dark status fills are bright 400-level with DARK foregrounds. White on a dark-mode status fill is a contrast bug."
+      },
+      "destructiveForeground": {
+        "value": "#090B0C"
+      },
+      "destructiveSoft": {
+        "value": "#3F1919"
+      },
+      "destructiveText": {
+        "value": "#FF6467"
+      },
+      "success": {
+        "value": "#05DF72"
+      },
+      "successForeground": {
+        "value": "#090B0C"
+      },
+      "successSoft": {
+        "value": "#0A2E17"
+      },
+      "successText": {
+        "value": "#05DF72"
+      },
+      "warning": {
+        "value": "#FFB900"
+      },
+      "warningForeground": {
+        "value": "#090B0C"
+      },
+      "warningSoft": {
+        "value": "#332400"
+      },
+      "warningText": {
+        "value": "#FFB900"
+      },
+      "info": {
+        "value": "#51A2FF"
+      },
+      "infoForeground": {
+        "value": "#090B0C"
+      },
+      "infoSoft": {
+        "value": "#14273E"
+      },
+      "infoText": {
+        "value": "#51A2FF"
+      },
+      "border": {
+        "value": "#FFFFFF1A",
+        "description": "Translucent white: in the dark, edges are made of light, so the border composites over any surface."
+      },
+      "input": {
+        "value": "#FFFFFF26"
+      },
+      "ring": {
+        "value": "#67787C"
+      },
+      "chart1": {
+        "value": "#D0D6D8"
+      },
+      "chart2": {
+        "value": "#67787C"
+      },
+      "chart3": {
+        "value": "#4B585B"
+      },
+      "chart4": {
+        "value": "#9CA8AB"
+      },
+      "chart5": {
+        "value": "#C7CFD1"
+      },
+      "sidebar": {
+        "value": "#161B1D"
+      },
+      "sidebarForeground": {
+        "value": "#F9FBFB"
+      },
+      "sidebarPrimary": {
+        "value": "#00BC7D"
+      },
+      "sidebarPrimaryForeground": {
+        "value": "#002C22"
+      },
+      "sidebarAccent": {
+        "value": "#22292B"
+      },
+      "sidebarAccentForeground": {
+        "value": "#F9FBFB"
+      },
+      "sidebarBorder": {
+        "value": "#FFFFFF1A"
+      },
+      "sidebarRing": {
+        "value": "#67787C"
+      },
+      "primaryText": {
+        "value": "#00BC7D",
+        "description": "Brand ink on primarySoft in dark. primary #006045 measures 1.76 there — near-invisible — because it is specified as a surface, not an ink."
+      },
+      "mutedText": {
+        "value": "#9CA8AB",
+        "description": "De-emphasis ink on the muted well in dark, where mutedForeground already measures 6.06 and needs no darker step."
+      }
+    },
+    "invariant": {
+      "live": {
+        "value": "#FB2C36",
+        "description": "Broadcast. Mode-invariant, badge scale only."
+      },
+      "liveForeground": {
+        "value": "#FFFFFF"
+      },
+      "mediaCanvas": {
+        "value": "#000000",
+        "description": "True black in both themes, so letterboxing disappears."
+      },
+      "onMedia": {
+        "value": "#FFFFFF"
+      },
+      "onMediaMuted": {
+        "value": "#FFFFFFB8"
+      },
+      "scrim": {
+        "value": "#00000066",
+        "description": "The one sanctioned gradient in the system. Never tinted to brand the media."
+      },
+      "scrimStrong": {
+        "value": "#00000099"
+      },
+      "overlayScrim": {
+        "value": "#090A0B99"
+      },
+      "glassFill": {
+        "value": "#FFFFFF1A",
+        "description": "Glass has exactly three parts: fill, border, 16px blur. Over media always the dark-context recipe, regardless of app theme."
+      },
+      "glassBorder": {
+        "value": "#FFFFFF26"
+      },
+      "glassFillLight": {
+        "value": "#0000000D"
+      },
+      "glassBorderLight": {
+        "value": "#00000014"
+      },
+      "glassBlur": {
+        "value": "16px"
+      }
+    }
+  }
+}

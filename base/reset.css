@@ -1,0 +1,24 @@
+/* Base reset. Sentence case, start-aligned, flat text — shadows on text are
+   forbidden anywhere except the on-media roles. */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--background);color:var(--foreground);
+  font-family:var(--font-sans);font-size:var(--text-body-medium);line-height:var(--text-body-medium-lh);
+  font-weight:var(--weight-regular);text-wrap:pretty;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,h6,p,figure{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+img,svg,video{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+code,kbd,samp,pre{font-family:var(--font-mono);font-size:var(--text-code)}
+::selection{background:var(--primary-soft);color:var(--foreground)}
+
+/* Links carry the brand at legible weight: emerald in light, the brighter sidebar
+   emerald in dark (deep emerald #006045 is a surface color, not an ink). */
+a{color:var(--primary);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:color-mix(in oklab,var(--primary) 80%,var(--foreground))}
+.dark a{color:var(--sidebar-primary)}
+.dark a:hover{color:color-mix(in oklab,var(--sidebar-primary) 82%,var(--foreground))}
+
+/* Focus binds to focus-visible only: pointer clicks focus without drawing a ring. */
+:focus{outline:none}
+:focus-visible{outline:var(--focus-ring-width) solid var(--ring);outline-offset:var(--focus-ring-offset)}

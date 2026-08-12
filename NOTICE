@@ -1,0 +1,29 @@
+monokit design specification
+Copyright 2026 Harnicode
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+This product bundles third-party material under its own terms. Full license texts are in
+licenses/, and each is named below with the files it covers.
+
+--------------------------------------------------------------------------------
+Iconoir — MIT License
+Copyright (c) 2021 Luca Burgio
+https://iconoir.com · licenses/LICENSE-Iconoir-MIT.txt
+
+  assets/icons/*.svg                      82 glyphs, unmodified Iconoir exports
+  public/assets/icons/icon-paths.js       their geometry, generated from those files
+
+Iconoir stands in for HugeIcons on identical geometry. Ten of the specification's icon roles have
+no glyph in this set and are absent rather than approximated with a look-alike; the Status page
+records that as a known deviation.
+
+--------------------------------------------------------------------------------
+IBM Plex — SIL Open Font License, Version 1.1
+Copyright © 2017 IBM Corp. with Reserved Font Name "Plex"
+https://github.com/IBM/plex · licenses/LICENSE-IBMPlex-OFL.txt
+
+  public/assets/fonts/*.woff2             8 cuts of IBM Plex Sans, Serif and Mono
+
+Each binary also carries the copyright and the license statement in its own `name` table, so the
+attribution travels with the file wherever the site serves it.

@@ -1,0 +1,250 @@
+{
+  "family": "space",
+  "spec": "10-tokens/04-space-and-layout.md",
+  "cssFile": "tokens/space.css",
+  "dartFile": "dart/monokit_space.dart",
+  "dartType": "double",
+  "description": "One rhythm: the 4pt grid, one spacing scale, one radius scale, one column grid. Space declares hierarchy — s4 to s8 is one unit, s12 to s16 siblings, s24 and up different sections.",
+  "axes": [
+    "density",
+    "widthClass"
+  ],
+  "notes": [
+    "Off-scale gaps and paddings are never used; 1px belongs to hairline borders, which are strokes, not space.",
+    "Radius is proportional to base 10, scales with surface SIZE rather than importance, and nests concentrically (child radius = parent radius - inset). radiusFull means circle or capsule, never 'very round rectangle'.",
+    "D9: density resolves from the primary input device. It is layout-affecting and therefore session-stable — it MUST NOT flip mid-session on hybrid devices."
+  ],
+  "groups": {
+    "spacing": {
+      "s4": {
+        "value": "4px"
+      },
+      "s8": {
+        "value": "8px"
+      },
+      "s12": {
+        "value": "12px"
+      },
+      "s16": {
+        "value": "16px"
+      },
+      "s20": {
+        "value": "20px"
+      },
+      "s24": {
+        "value": "24px"
+      },
+      "s32": {
+        "value": "32px"
+      },
+      "s40": {
+        "value": "40px"
+      },
+      "s48": {
+        "value": "48px"
+      }
+    },
+    "radius": {
+      "base": {
+        "value": "10px",
+        "description": "Every other radius is a proportional multiplier of this."
+      },
+      "xs": {
+        "value": "4px"
+      },
+      "sm": {
+        "value": "6px"
+      },
+      "md": {
+        "value": "8px"
+      },
+      "lg": {
+        "value": "10px"
+      },
+      "xl": {
+        "value": "14px"
+      },
+      "xxl": {
+        "value": "18px"
+      },
+      "xxxl": {
+        "value": "22px"
+      },
+      "huge": {
+        "value": "26px"
+      },
+      "full": {
+        "value": "999px",
+        "description": "Circle or capsule only."
+      }
+    },
+    "breakpoints": {
+      "compact": {
+        "value": "600px",
+        "description": "Semantic, not device names. A desktop window dragged narrow IS compact and gets the compact composition."
+      },
+      "medium": {
+        "value": "960px"
+      },
+      "expanded": {
+        "value": "1280px"
+      }
+    },
+    "containers": {
+      "feed": {
+        "value": "480px",
+        "description": "A phone-proportioned max: the feed never becomes a grid, at any width."
+      },
+      "content": {
+        "value": "640px"
+      },
+      "sheet": {
+        "value": "640px"
+      },
+      "page": {
+        "value": "1200px"
+      },
+      "dialogSm": {
+        "value": "400px"
+      },
+      "dialogMd": {
+        "value": "560px"
+      },
+      "dialogLg": {
+        "value": "720px"
+      },
+      "sidebar": {
+        "value": "280px"
+      },
+      "rail": {
+        "value": "72px"
+      }
+    },
+    "chrome": {
+      "headerHeight": {
+        "value": "56px",
+        "description": "Compact and medium. The title aligns to the content column, not the screen edge."
+      },
+      "borderWidth": {
+        "value": "1px"
+      },
+      "headerHeightExpanded": {
+        "value": "64px",
+        "description": "Expanded and up. Chrome gains height with the layout, not with the type scale."
+      }
+    },
+    "density": {
+      "touch": {
+        "minTarget": {
+          "value": "44px",
+          "description": "The visual glyph may be smaller; the hit area may not."
+        },
+        "controlHeight": {
+          "value": "44px"
+        },
+        "gap": {
+          "value": "8px"
+        },
+        "row1": {
+          "value": "48px"
+        },
+        "row2": {
+          "value": "64px"
+        },
+        "row3": {
+          "value": "88px"
+        }
+      },
+      "pointer": {
+        "minTarget": {
+          "value": "32px"
+        },
+        "controlHeight": {
+          "value": "36px"
+        },
+        "gap": {
+          "value": "4px"
+        },
+        "row1": {
+          "value": "40px"
+        },
+        "row2": {
+          "value": "56px"
+        },
+        "row3": {
+          "value": "76px"
+        }
+      }
+    },
+    "pageInset": {
+      "compact": {
+        "value": "16px",
+        "description": "Resolved per layout scope, never once per screen."
+      },
+      "medium": {
+        "value": "24px"
+      },
+      "expanded": {
+        "value": "32px"
+      },
+      "wide": {
+        "value": "32px"
+      }
+    },
+    "gutter": {
+      "base": {
+        "value": "16px"
+      },
+      "medium": {
+        "value": "24px"
+      },
+      "media": {
+        "value": "4px",
+        "description": "Media grids at every width — the grid reads as one surface."
+      }
+    },
+    "icons": {
+      "xs": {
+        "value": "16px"
+      },
+      "sm": {
+        "value": "20px"
+      },
+      "md": {
+        "value": "24px"
+      },
+      "lg": {
+        "value": "28px"
+      },
+      "xl": {
+        "value": "32px"
+      },
+      "stroke": {
+        "value": "1.5"
+      },
+      "strokeActive": {
+        "value": "2"
+      },
+      "strokeXs": {
+        "value": "1.75",
+        "description": "The system's one sanctioned stroke deviation: an optical floor at 16px. Never applied per-component."
+      }
+    },
+    "reach": {
+      "side": {
+        "value": "end",
+        "description": "D25. A first-class theme token that flips ALL thumb-arc placements together for left/right-handed reach and RTL. Values: start | end."
+      }
+    },
+    "list": {
+      "swipeActionCell": {
+        "value": "72px",
+        "description": "One swipe-action cell: a comfortable touch target with room for an icon and a label. Wider than the 44 minimum on purpose. At most two per side."
+      },
+      "leadingAvatar": {
+        "value": "40px",
+        "description": "The list leading slot when it holds an avatar, at radius full. The separator inset is measured from it."
+      }
+    }
+  }
+}

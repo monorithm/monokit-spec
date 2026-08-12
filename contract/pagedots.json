@@ -1,0 +1,28 @@
+{
+  "component": "PageDots",
+  "spec": "20-patterns/07-interaction.md",
+  "description": "Position, stated quietly. Dots report where the user is in a short sequence and nothing else.",
+  "clauses": {
+    "MUST": [
+      "Widen the active dot rather than only recolouring it, so position survives a colour-blind reading.",
+      "Move on the indicator role.",
+      "Expose the sequence as a single node reporting position and length, not as a row of anonymous dots.",
+      "Stay non-interactive unless each dot meets the density minimum."
+    ],
+    "SHOULD": [
+      "Cap at a handful of dots. Beyond that, position is a number, not a picture."
+    ],
+    "NEVER": [
+      "Carry a count of thirty.",
+      "Become the only way to see progress through a flow.",
+      "Animate on a spring."
+    ]
+  },
+  "tokens": [
+    "--space-8",
+    "--space-20",
+    "--primary",
+    "--muted",
+    "--motion-state"
+  ]
+}

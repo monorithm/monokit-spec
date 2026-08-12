@@ -1,0 +1,183 @@
+/* colors — GENERATED FILE, DO NOT EDIT.
+   Source: contract/colors.json · Specification: 10-tokens/02-color-and-surface.md
+   Regenerate with `node build/generate.mjs`; verify with `--check`.
+
+   Emerald on mist. A near-monochrome field of cool mist slate neutrals with one rationed
+   accent. Colour is information, never decoration: emerald appears only where the user acts
+   or the brand speaks; status hues only when the system reports state. If a screen is
+   colourful, something is wrong.
+
+   · D1: the design source is OKLCH; a realization may store sRGB hex. These are the
+   verified sRGB hex.
+   · The on-media set is MODE-INVARIANT: the media canvas is always dark, on both themes.
+   · Dark mode lowers chrome energy — primary becomes the dimmer #006045 — so media and
+   status own the brightness. #006045 is a SURFACE colour; brand as INK in dark uses
+   sidebarPrimary.
+   · The brand and neutral axes carry a fourth role, primaryText and mutedText, so each has
+   an ink verified against its own soft surface — the shape every status already had. Both
+   values are existing palette emeralds and mists given a role, not new colours.
+*/
+
+:root{
+  --background:#FFFFFF;
+  --foreground:#090B0C;
+
+  /* In light mode card and background are the same white, so the hairline IS the card.
+  Never assume a luminance difference. */
+  --card:#FFFFFF;
+  --card-foreground:#090B0C;
+  --popover:#FFFFFF;
+  --popover-foreground:#090B0C;
+
+  /* The de-emphasis well. Native fields are wells rather than bordered boxes. */
+  --muted:#F1F3F3;
+
+  /* De-emphasis is carried by colour, never by a smaller size or lighter weight. */
+  --muted-foreground:#67787C;
+
+  /* The transient fill for rows and menu items on hover and press. */
+  --accent:#F1F3F3;
+  --accent-foreground:#161B1D;
+  --secondary:#ECEFEF;
+  --secondary-foreground:#161B1D;
+  --primary:#007A55;
+  --primary-foreground:#ECFDF5;
+  --primary-soft:#CBF3E0;
+  --destructive:#E7000B;
+  --destructive-foreground:#FAFAFA;
+  --destructive-soft:#FFE1DB;
+  --destructive-text:#9F0712;
+
+  /* success is not primary. */
+  --success:#00A63E;
+  --success-foreground:#FAFAFA;
+  --success-soft:#D7F9DC;
+  --success-text:#016630;
+  --warning:#E17100;
+  --warning-foreground:#FAFAFA;
+  --warning-soft:#FFE6CB;
+  --warning-text:#973C00;
+  --info:#155DFC;
+  --info-foreground:#FAFAFA;
+  --info-soft:#DDEFFF;
+  --info-text:#193CB8;
+
+  /* 1px, everywhere structure is needed. Two stacked hairlines double their alpha and read
+  as a seam, so shared edges are collapsed. */
+  --border:#E3E7E8;
+  --input:#E3E7E8;
+
+  /* Neutral mid-mist by design: focus is not intent. */
+  --ring:#9CA8AB;
+  --chart-1:#D0D6D8;
+  --chart-2:#67787C;
+  --chart-3:#4B585B;
+  --chart-4:#394447;
+  --chart-5:#22292B;
+  --sidebar:#F9FBFB;
+  --sidebar-foreground:#090B0C;
+  --sidebar-primary:#009966;
+  --sidebar-primary-foreground:#ECFDF5;
+  --sidebar-accent:#F1F3F3;
+  --sidebar-accent-foreground:#161B1D;
+  --sidebar-border:#E3E7E8;
+  --sidebar-ring:#9CA8AB;
+
+  /* Brand ink on primarySoft. The dimmer emerald that dark mode uses as a brand surface; on
+  the light soft fill it is the ink. primary itself measures 4.45 there, under AA. */
+  --primary-text:#006045;
+
+  /* De-emphasis ink on the muted well. mutedForeground is verified on background, not on
+  muted, where it measures 4.14. */
+  --muted-text:#4B585B;
+
+  /* on-media and broadcast: MODE-INVARIANT, identical in both themes */
+
+  /* Broadcast. Mode-invariant, badge scale only. */
+  --live:#FB2C36;
+  --live-foreground:#FFFFFF;
+
+  /* True black in both themes, so letterboxing disappears. */
+  --media-canvas:#000000;
+  --on-media:#FFFFFF;
+  --on-media-muted:#FFFFFFB8;
+
+  /* The one sanctioned gradient in the system. Never tinted to brand the media. */
+  --scrim:#00000066;
+  --scrim-strong:#00000099;
+  --overlay-scrim:#090A0B99;
+
+  /* Glass has exactly three parts: fill, border, 16px blur. Over media always the
+  dark-context recipe, regardless of app theme. */
+  --glass-fill:#FFFFFF1A;
+  --glass-border:#FFFFFF26;
+  --glass-fill-light:#0000000D;
+  --glass-border-light:#00000014;
+  --glass-blur:16px;
+}
+
+.dark{
+  --background:#090B0C;
+  --foreground:#F9FBFB;
+  --card:#161B1D;
+  --card-foreground:#F9FBFB;
+  --popover:#161B1D;
+  --popover-foreground:#F9FBFB;
+  --muted:#22292B;
+  --muted-foreground:#9CA8AB;
+  --accent:#22292B;
+  --accent-foreground:#F9FBFB;
+  --secondary:#263033;
+  --secondary-foreground:#F9FBFB;
+
+  /* A dimmer brand SURFACE, not an ink. Brand ink in dark is sidebarPrimary. */
+  --primary:#006045;
+  --primary-foreground:#ECFDF5;
+  --primary-soft:#19342A;
+
+  /* Dark status fills are bright 400-level with DARK foregrounds. White on a dark-mode
+  status fill is a contrast bug. */
+  --destructive:#FF6467;
+  --destructive-foreground:#090B0C;
+  --destructive-soft:#3F1919;
+  --destructive-text:#FF6467;
+  --success:#05DF72;
+  --success-foreground:#090B0C;
+  --success-soft:#0A2E17;
+  --success-text:#05DF72;
+  --warning:#FFB900;
+  --warning-foreground:#090B0C;
+  --warning-soft:#332400;
+  --warning-text:#FFB900;
+  --info:#51A2FF;
+  --info-foreground:#090B0C;
+  --info-soft:#14273E;
+  --info-text:#51A2FF;
+
+  /* Translucent white: in the dark, edges are made of light, so the border composites over
+  any surface. */
+  --border:#FFFFFF1A;
+  --input:#FFFFFF26;
+  --ring:#67787C;
+  --chart-1:#D0D6D8;
+  --chart-2:#67787C;
+  --chart-3:#4B585B;
+  --chart-4:#9CA8AB;
+  --chart-5:#C7CFD1;
+  --sidebar:#161B1D;
+  --sidebar-foreground:#F9FBFB;
+  --sidebar-primary:#00BC7D;
+  --sidebar-primary-foreground:#002C22;
+  --sidebar-accent:#22292B;
+  --sidebar-accent-foreground:#F9FBFB;
+  --sidebar-border:#FFFFFF1A;
+  --sidebar-ring:#67787C;
+
+  /* Brand ink on primarySoft in dark. primary #006045 measures 1.76 there — near-invisible
+  — because it is specified as a surface, not an ink. */
+  --primary-text:#00BC7D;
+
+  /* De-emphasis ink on the muted well in dark, where mutedForeground already measures 6.06
+  and needs no darker step. */
+  --muted-text:#9CA8AB;
+}

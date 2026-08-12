@@ -1,0 +1,36 @@
+{
+  "component": "Input",
+  "spec": "30-components/10-components-core.md",
+  "description": "A well rather than a bordered box. The field recedes and the value the user typed is what reads.",
+  "clauses": {
+    "MUST": [
+      "Render at the raised tier: a hairline edge, no shadow.",
+      "Colour its border with destructive when the resolved state is invalid.",
+      "Route its focus treatment through the shared focus ring, painted outside its bounds.",
+      "Resolve its height from density, and grow rather than clip as text scales.",
+      "Take its placeholder ink from the colour verified against the well it sits on."
+    ],
+    "SHOULD": [
+      "Pair with a Field for its label and message rather than carrying either itself."
+    ],
+    "NEVER": [
+      "Use a placeholder as a label. A placeholder disappears the moment it is needed.",
+      "Signal invalid with colour alone.",
+      "Construct its own shadow."
+    ]
+  },
+  "states": [
+    "focusVisible",
+    "invalid",
+    "disabled",
+    "pending"
+  ],
+  "tokens": [
+    "--muted",
+    "--muted-text",
+    "--input",
+    "--destructive",
+    "--row-1",
+    "--focus-ring-width"
+  ]
+}

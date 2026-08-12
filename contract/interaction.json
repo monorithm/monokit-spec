@@ -1,0 +1,71 @@
+{
+  "family": "interaction",
+  "spec": "20-patterns/07-interaction.md",
+  "cssFile": "tokens/interaction.css",
+  "dartFile": "dart/monokit_interaction.dart",
+  "dartType": "Duration",
+  "description": "Recognition thresholds and behavioural timings. These gate behaviour; any animation they trigger uses the motion tokens.",
+  "axes": [],
+  "notes": [
+    "Touch slop and keyboard repeat stay framework-owned and are deliberately NOT tokens.",
+    "The gesture thresholds below are the specification's own numbers (07 section 4), not platform conventions.",
+    "monokit NEVER claims edge swipes — they belong to system and OS navigation."
+  ],
+  "groups": {
+    "timings": {
+      "longPress": {
+        "value": "500ms",
+        "description": "Adopts Flutter's kLongPressTimeout; identical on every platform."
+      },
+      "doubleTap": {
+        "value": "300ms"
+      },
+      "hoverIntent": {
+        "value": "400ms",
+        "description": "The pointer must dwell this long before tooltips and hover cards open."
+      },
+      "hoverGrace": {
+        "value": "200ms",
+        "description": "The pointer may leave the trigger for this long before a hover surface closes."
+      },
+      "holdToConfirm": {
+        "value": "800ms",
+        "description": "Medium-risk destructive controls."
+      },
+      "undoWindow": {
+        "value": "5000ms"
+      },
+      "hapticMinGap": {
+        "value": "100ms",
+        "description": "Rate limiter. Composed patterns count as one event."
+      }
+    },
+    "focusRing": {
+      "width": {
+        "value": "2px"
+      },
+      "offset": {
+        "value": "2px",
+        "description": "Painted OUTSIDE the control's bounds so it never shifts layout, and bound to focus-visible only."
+      }
+    },
+    "gestures": {
+      "dismissFraction": {
+        "value": "0.30",
+        "description": "Drag-dismiss commits when travel exceeds 30% of the surface's height along the dismiss axis."
+      },
+      "dismissVelocity": {
+        "value": "700px/s",
+        "description": "Or when release velocity exceeds this. Whichever comes first; otherwise the surface returns on the spatial spring."
+      },
+      "rubberBand": {
+        "value": "0.55",
+        "description": "Displacement damping past an end stop. Not specified upstream — a realization choice, recorded in AMENDMENTS.md."
+      }
+    },
+    "statePrecedence": {
+      "value": "disabled,pending,dragged,pressed,hovered,focusVisible,rest",
+      "description": "The interaction axis, first match wins. The mode axis (checked, selected, expanded, open, active, invalid) composes orthogonally."
+    }
+  }
+}

@@ -1,0 +1,50 @@
+---
+import { getCollection, render } from 'astro:content';
+import Spec from '../layouts/Spec.astro';
+import nav from '../nav.json';
+import { RUNTIME_DIRECTIVES } from '../plugins/runtime-directives.mjs';
+
+/* A page pulls React only if it has a specimen that needs one. The directive list is imported
+   rather than restated so the two cannot drift. */
+const RUNTIME_RE = new RegExp('```monokit-(' + RUNTIME_DIRECTIVES.join('|') + ')\\b');
+
+/* src/nav.json decides the sections; the page id is the route. `yarn check:nav` guarantees every
+   id here has an entry, so the lookup below cannot come back empty at build time. */
+const sectionOf = new Map<string, { section: string; title: string }>();
+for (const section of nav.sections) {
+  for (const page of section.pages) {
+    sectionOf.set(page.path, { section: section.title, title: page.title });
+  }
+}
+
+export async function getStaticPaths() {
+  const pages = await getCollection('spec');
+  return pages.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+
+const meta = sectionOf.get(entry.id);
+if (!meta) {
+  throw new Error(
+    `${entry.id} has no entry in src/nav.json, so it has no section and no title. ` +
+      `Run \`yarn check:nav\` — this should have failed there first.`,
+  );
+}
+
+const needsRuntime = RUNTIME_RE.test(entry.body ?? '');
+---
+
+<Spec
+  title={meta.title}
+  section={meta.section}
+  path={entry.id}
+  headings={headings}
+  needsRuntime={needsRuntime}
+>
+  <Content />
+</Spec>

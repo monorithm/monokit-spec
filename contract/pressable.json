@@ -1,0 +1,55 @@
+{
+  "component": "Pressable",
+  "spec": "20-patterns/07-interaction.md",
+  "description": "The activation primitive. Every pressable affordance in the system routes through it, so press, long-press, hover, focus, and haptics behave identically everywhere.",
+  "clauses": {
+    "MUST": [
+      "Render the pressed state within one frame of contact, using motion role press (50ms, linear down; fast, standard on release).",
+      "Resolve style from the state set only, never from raw pointer events.",
+      "Evaluate the interaction axis in this precedence, first match wins: disabled, pending, dragged, pressed, hovered, focusVisible, rest.",
+      "Treat pending as distinct from disabled: a pending control is non-interactive AND communicates progress; a disabled one communicates unavailability.",
+      "Recognise long-press at interaction.longPress (500ms) and fire haptics.impactLight at recognition.",
+      "Leave no trace when a gesture is cancelled: a long-press released or slid off before recognition does nothing, and the pressed state clears.",
+      "Activate on Enter and Space, and expose itself as a button to assistive technology.",
+      "Bind the focus ring to focus-visible only, painted outside the control's bounds at width 2 and offset 2, so it never shifts layout.",
+      "Meet the density minimum target: 44 at touch, 32 at pointer. The visual glyph may be smaller; the hit area may not.",
+      "Extend the hit area with padding or hit-test slop, never by scaling the visual up.",
+      "Activate anywhere on a full-width row, not only on the label.",
+      "Offer a pointer and keyboard equivalent for any gesture it hosts, in the same change that adds the gesture."
+    ],
+    "SHOULD": [
+      "Warn in development when a target renders below the density minimum, so undersized targets fail loudly rather than shipping.",
+      "Keep at least spacing.s4 between adjacent hit areas so misses do not become mis-hits."
+    ],
+    "NEVER": [
+      "Flash a colour or emit a ripple on press.",
+      "Probe the platform. Density, width class, and capability come from the resolved scope; no component issues its own platform check.",
+      "Gate hover on density. Hover renders whenever a mouse produces it, on any density, and is an enhancement rather than a home for capability.",
+      "Claim an edge swipe. Edge gestures belong to system and OS navigation.",
+      "Fire a haptic without an accompanying visible state change, or fire on request rather than on commit."
+    ]
+  },
+  "states": [
+    "hovered",
+    "focused",
+    "focusVisible",
+    "pressed",
+    "disabled",
+    "invalid",
+    "checked",
+    "selected",
+    "expanded",
+    "open",
+    "active",
+    "dragged",
+    "pending"
+  ],
+  "haptics": {
+    "longPressRecognition": "impactLight",
+    "dismissThresholdCrossed": "impactLight",
+    "valueChange": "selection",
+    "modeEntered": "impactMedium",
+    "commandRejected": "error",
+    "note": "Haptics no-op automatically where there is no actuator; call sites never branch on platform. Reduced motion does NOT disable haptics."
+  }
+}

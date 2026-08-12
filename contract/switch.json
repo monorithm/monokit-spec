@@ -1,0 +1,37 @@
+{
+  "component": "Switch",
+  "spec": "30-components/10-components-core.md",
+  "description": "A state that applies immediately. If it needs a Save button it is a checkbox in a form, not a switch.",
+  "clauses": {
+    "MUST": [
+      "Apply its change on release, with no confirmation step and no save action.",
+      "Meet the density minimum through hit slop, keeping the track at its own size.",
+      "Move its thumb on the indicator role — a curve, not a spring. It is chrome, and chrome is calm.",
+      "Fire the selection haptic on change.",
+      "Expose itself as a switch with its current state, and carry a label even when the row beside it has one.",
+      "Derive its thumb size and travel from the track and the inset, so the three cannot drift apart."
+    ],
+    "SHOULD": [
+      "Keep its label in the row that hosts it rather than inside the control.",
+      "Mirror its travel under right-to-left rather than restating the geometry."
+    ],
+    "NEVER": [
+      "Pair with a Save button. That is a checkbox.",
+      "Scale the visual up to meet the target.",
+      "Animate the thumb on a spring."
+    ]
+  },
+  "states": [
+    "checked",
+    "pressed",
+    "focusVisible",
+    "disabled"
+  ],
+  "tokens": [
+    "--min-target",
+    "--primary",
+    "--muted",
+    "--motion-state",
+    "--spring-effect-default"
+  ]
+}

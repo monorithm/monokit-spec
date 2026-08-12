@@ -1,0 +1,56 @@
+/* Grouped full-bleed lists — the native containment model. There are no card edges
+   anywhere in this system: a group is declared by a header sitting in the margin and by
+   hairlines inset to the text column, so the list reads as one continuous surface and
+   the eye follows the text, not a rectangle. */
+
+.mk-list{display:flex;flex-direction:column}
+.mk-list-header{padding:var(--space-24) var(--page-inset) var(--space-8);
+  font-size:var(--text-label-large);line-height:var(--text-label-large-lh);
+  font-weight:var(--weight-medium);color:var(--muted-foreground)}
+.mk-list-footer{padding:var(--space-8) var(--page-inset) var(--space-24);
+  font-size:var(--text-label-medium);line-height:var(--text-label-medium-lh);
+  color:var(--muted-foreground)}
+.mk-list-body{display:flex;flex-direction:column;background:var(--background)}
+
+.mk-row{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;gap:var(--space-12);width:100%;min-height:var(--row-1);
+  padding:var(--gap-density) var(--page-inset);background:var(--background);text-align:start;
+  transition:background-color var(--motion-state)}
+.mk-row[data-two-line="true"]{min-height:var(--row-2)}
+.mk-row[data-pressed="true"]{background:var(--accent)}
+/* The press target spans the row and sits under the content, so the value and chevron are
+   pressable too. Only an INTERACTIVE trailing control carves itself out of it — that control
+   keeps its own tap and tab stop, and nothing nests inside a button. */
+.mk-row-hit{position:absolute;inset:0;z-index:0;background:none;border-radius:0}
+.mk-row:has(.mk-row-hit[data-pressed="true"]){background:var(--accent)}
+.mk-row[data-pressable="true"] .mk-row-lead,.mk-row[data-pressable="true"] .mk-row-text,
+.mk-row[data-pressable="true"] .mk-row-trail{position:relative;z-index:1;pointer-events:none}
+.mk-row[data-pressable="true"] .mk-row-trail :is(button,input,select,textarea,a,[role="switch"]){pointer-events:auto}
+.mk-row:has(.mk-row-trail :is(button,input,select,textarea,a,[role="switch"])) .mk-row-hit{
+  inset-inline-end:auto;width:calc(100% - var(--page-inset) - 52px)}
+.mk-row[data-two-line="true"]{padding-top:var(--gap-density);padding-bottom:var(--gap-density)}
+/* The separator starts where the text starts and bleeds to the trailing edge. It cannot be a grid
+   item — that consumes a cell and pushes the row's own children into a second row — so it stays
+   absolutely positioned and branches on the leading KIND. The specification defines exactly two:
+   an icon at its role size, or an avatar at the list leading size. Both are contract-owned, so
+   neither is a magic number here. */
+.mk-row[data-separator="true"]::after{content:"";position:absolute;bottom:0;
+  inset-inline-start:var(--page-inset);inset-inline-end:0;
+  height:var(--border-width);background:var(--border)}
+.mk-row[data-separator="true"][data-lead="icon"]::after{
+  inset-inline-start:calc(var(--page-inset) + var(--icon-chrome) + var(--space-12))}
+.mk-row[data-separator="true"][data-lead="avatar"]::after{
+  inset-inline-start:calc(var(--page-inset) + var(--leading-avatar) + var(--space-12))}
+/* The slot sizes to whatever it holds — an icon at its role size, an avatar at its own. A fixed
+   icon width made an avatar overflow it in both directions, pushing past the page inset and
+   collapsing the gap to the text column. min-width keeps icon rows aligned with each other. */
+.mk-row-lead{display:flex;align-items:center;justify-content:center;flex:none;
+  min-width:var(--icon-chrome);color:var(--muted-foreground)}
+.mk-row-text{display:flex;flex-direction:column;gap:var(--space-4);min-width:0}
+.mk-row-title{font-size:var(--text-body-large);line-height:var(--text-body-large-lh);
+  font-weight:var(--weight-regular);color:var(--foreground)}
+.mk-row-sub{font-size:var(--text-body-medium);line-height:var(--text-body-medium-lh);
+  color:var(--muted-foreground)}
+.mk-row-trail{display:flex;align-items:center;gap:var(--space-8);color:var(--muted-foreground);
+  font-size:var(--text-body-medium)}
+.mk-row-value{font-variant-numeric:tabular-nums}

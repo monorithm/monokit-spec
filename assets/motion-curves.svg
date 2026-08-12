@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1224" viewBox="0 0 960 1224" font-family="IBM Plex Sans, system-ui, sans-serif">
+  
+  <rect class="gf-bg" x="0" y="0" width="960" height="1224" fill="#FFFFFF"></rect>
+
+  
+  <text class="gf-ink" x="40" y="44" font-size="20" font-weight="600" fill="#090B0C">monokit motion — easing curves &amp; durations</text>
+  <text class="gf-muted" x="40" y="68" font-size="13" fill="#67787C">Calm chrome, expressive moments — curves for chrome (color, opacity), physics for moments (position, scale)</text>
+
+  
+  <g>
+    <rect class="gf-surface gs-hairline" x="40" y="88" width="350" height="30" rx="6" fill="#FFFFFF" stroke="#E3E7E8"></rect>
+    <line class="gs-brand" x1="52" y1="103" x2="80" y2="103" stroke="#007A55" stroke-width="2.5"></line>
+    <text class="gf-ink" x="88" y="107" font-size="12" fill="#090B0C">Calm — durations + curves · chrome, color, opacity</text>
+
+    <rect class="gf-surface gs-hairline" x="402" y="88" width="430" height="30" rx="6" fill="#FFFFFF" stroke="#E3E7E8"></rect>
+    <line x1="414" y1="103" x2="442" y2="103" stroke="#E17100" stroke-width="2.5"></line>
+    <text class="gf-ink" x="450" y="107" font-size="12" fill="#090B0C">Expressive — springs · reactions, purchase success, go-live</text>
+  </g>
+
+  
+  <g>
+    <rect class="gf-surface gs-hairline" x="40" y="150" width="430" height="320" rx="10" fill="#FFFFFF" stroke="#E3E7E8"></rect>
+    <text class="gf-ink" x="64" y="184" font-size="14" font-weight="600" fill="#090B0C">standard</text>
+    <text class="gf-muted" x="64" y="206" font-size="12" fill="#67787C">cubic-bezier(0.2, 0, 0, 1) · Curves.easeOutCubic · default</text>
+
+    
+    <line class="gs-hairline" x1="110" y1="260" x2="410" y2="260" stroke="#F1F3F3" stroke-width="1"></line>
+    
+    <line class="gs-hairline-strong" x1="110" y1="254" x2="110" y2="412" stroke="#9CA8AB" stroke-width="1"></line>
+    <line class="gs-hairline-strong" x1="110" y1="412" x2="416" y2="412" stroke="#9CA8AB" stroke-width="1"></line>
+    <text class="gf-muted" x="100" y="264" font-size="12" fill="#67787C" text-anchor="end">1</text>
+    <text class="gf-muted" x="100" y="416" font-size="12" fill="#67787C" text-anchor="end">0</text>
+    <text class="gf-muted" x="410" y="434" font-size="12" fill="#67787C" text-anchor="end">time →</text>
+
+    
+    <line class="gs-hairline-strong" x1="110" y1="412" x2="170" y2="412" stroke="#9CA8AB" stroke-width="1" stroke-dasharray="3 3"></line>
+    <line class="gs-hairline-strong" x1="410" y1="260" x2="110" y2="260" stroke="#9CA8AB" stroke-width="1" stroke-dasharray="3 3"></line>
+    
+    <path class="gs-brand" d="M110,412 C170,412 110,260 410,260" fill="none" stroke="#007A55" stroke-width="2.5"></path>
+    
+    <circle class="gf-ink" cx="110" cy="412" r="3.5" fill="#090B0C"></circle>
+    <circle class="gf-ink" cx="410" cy="260" r="3.5" fill="#090B0C"></circle>
+    <circle class="gf-surface gs-brand" cx="170" cy="412" r="4" fill="#FFFFFF" stroke="#007A55" stroke-width="1.5"></circle>
+    <circle class="gf-surface gs-brand" cx="110" cy="260" r="4" fill="#FFFFFF" stroke="#007A55" stroke-width="1.5"></circle>
+    <text class="gf-ink" x="176" y="400" font-size="12" fill="#090B0C">(0.2, 0)</text>
+    <text class="gf-ink" x="120" y="278" font-size="12" fill="#090B0C">(0, 1)</text>
+  </g>
+
+  
+  <g>
+    <rect class="gf-surface gs-hairline" x="490" y="150" width="430" height="320" rx="10" fill="#FFFFFF" stroke="#E3E7E8"></rect>
+    <text class="gf-ink" x="514" y="184" font-size="14" font-weight="600" fill="#090B0C">monoOut — decelerate</text>
+    <text class="gf-muted" x="514" y="206" font-size="12" fill="#67787C">cubic-bezier(0.23, 1, 0.32, 1) · signature deceleration</text>
+    <line class="gs-hairline-strong" x1="514" y1="220" x2="544" y2="220" stroke="#9CA8AB" stroke-width="2" stroke-dasharray="4 3"></line>
+    <text class="gf-muted" x="552" y="224" font-size="12" fill="#67787C">decelerate cubic-bezier(0.05, 0.7, 0.1, 1)</text>
+
+    
+    <line class="gs-hairline" x1="560" y1="260" x2="860" y2="260" stroke="#F1F3F3" stroke-width="1"></line>
+    
+    <line class="gs-hairline-strong" x1="560" y1="254" x2="560" y2="412" stroke="#9CA8AB" stroke-width="1"></line>
+    <line class="gs-hairline-strong" x1="560" y1="412" x2="866" y2="412" stroke="#9CA8AB" stroke-width="1"></line>
+    <text class="gf-muted" x="550" y="264" font-size="12" fill="#67787C" text-anchor="end">1</text>
+    <text class="gf-muted" x="550" y="416" font-size="12" fill="#67787C" text-anchor="end">0</text>
+    <text class="gf-muted" x="860" y="434" font-size="12" fill="#67787C" text-anchor="end">time →</text>
+
+    
+    <path class="gs-hairline-strong" d="M560,412 C575,305.6 590,260 860,260" fill="none" stroke="#9CA8AB" stroke-width="2" stroke-dasharray="4 3"></path>
+    
+    <line class="gs-hairline-strong" x1="560" y1="412" x2="629" y2="260" stroke="#9CA8AB" stroke-width="1" stroke-dasharray="3 3"></line>
+    <line class="gs-hairline-strong" x1="860" y1="260" x2="656" y2="260" stroke="#9CA8AB" stroke-width="1" stroke-dasharray="3 3"></line>
+    
+    <path class="gs-brand" d="M560,412 C629,260 656,260 860,260" fill="none" stroke="#007A55" stroke-width="2.5"></path>
+    
+    <circle class="gf-ink" cx="560" cy="412" r="3.5" fill="#090B0C"></circle>
+    <circle class="gf-ink" cx="860" cy="260" r="3.5" fill="#090B0C"></circle>
+    <circle class="gf-surface gs-brand" cx="629" cy="260" r="4" fill="#FFFFFF" stroke="#007A55" stroke-width="1.5"></circle>
+    <circle class="gf-surface gs-brand" cx="656" cy="260" r="4" fill="#FFFFFF" stroke="#007A55" stroke-width="1.5"></circle>
+    <text class="gf-ink" x="621" y="248" font-size="12" fill="#090B0C" text-anchor="end">(0.23, 1)</text>
+    <text class="gf-ink" x="664" y="248" font-size="12" fill="#090B0C">(0.32, 1)</text>
+  </g>
+
+  
+  <g>
+    <rect class="gf-surface gs-hairline" x="40" y="494" width="430" height="320" rx="10" fill="#FFFFFF" stroke="#E3E7E8"></rect>
+    <text class="gf-ink" x="64" y="528" font-size="14" font-weight="600" fill="#090B0C">accelerate</text>
+    <text class="gf-muted" x="64" y="550" font-size="12" fill="#67787C">cubic-bezier(0.3, 0, 0.8, 0.15) · exits, dismissals</text>
+
+    
+    <line class="gs-hairline" x1="110" y1="604" x2="410" y2="604" stroke="#F1F3F3" stroke-width="1"></line>
+    
+    <line class="gs-hairline-strong" x1="110" y1="598" x2="110" y2="756" stroke="#9CA8AB" stroke-width="1"></line>
+    <line class="gs-hairline-strong" x1="110" y1="756" x2="416" y2="756" stroke="#9CA8AB" stroke-width="1"></line>
+    <text class="gf-muted" x="100" y="608" font-size="12" fill="#67787C" text-anchor="end">1</text>
+    <text class="gf-muted" x="100" y="760" font-size="12" fill="#67787C" text-anchor="end">0</text>
+    <text class="gf-muted" x="410" y="778" font-size="12" fill="#67787C" text-anchor="end">time →</text>
+
+    
+    <line class="gs-hairline-strong" x1="110" y1="756" x2="200" y2="756" stroke="#9CA8AB" stroke-width="1" stroke-dasharray="3 3"></line>
+    <line class="gs-hairline-strong" x1="410" y1="604" x2="350" y2="733.2" stroke="#9CA8AB" stroke-width="1" stroke-dasharray="3 3"></line>
+    
+    <path class="gs-brand" d="M110,756 C200,756 350,733.2 410,604" fill="none" stroke="#007A55" stroke-width="2.5"></path>
+    
+    <circle class="gf-ink" cx="110" cy="756" r="3.5" fill="#090B0C"></circle>
+    <circle class="gf-ink" cx="410" cy="604" r="3.5" fill="#090B0C"></circle>
+    <circle class="gf-surface gs-brand" cx="200" cy="756" r="4" fill="#FFFFFF" stroke="#007A55" stroke-width="1.5"></circle>
+    <circle class="gf-surface gs-brand" cx="350" cy="733.2" r="4" fill="#FFFFFF" stroke="#007A55" stroke-width="1.5"></circle>
+    <text class="gf-ink" x="206" y="744" font-size="12" fill="#090B0C">(0.3, 0)</text>
+    <text class="gf-ink" x="360" y="750" font-size="12" fill="#090B0C">(0.8, 0.15)</text>
+  </g>
+
+  
+  <g>
+    <rect class="gf-surface gs-hairline" x="490" y="494" width="430" height="320" rx="10" fill="#FFFFFF" stroke="#E3E7E8"></rect>
+    <text class="gf-ink" x="514" y="528" font-size="14" font-weight="600" fill="#090B0C">spring — overshoot (expressive)</text>
+    <text class="gf-muted" x="514" y="550" font-size="12" fill="#67787C">spatial springs may overshoot; effects springs never do</text>
+    <text class="gf-muted" x="514" y="568" font-size="12" fill="#67787C">celebration spring: damping 0.75 · stiffness 550</text>
+
+    
+    <line class="gs-hairline-strong" x1="560" y1="639" x2="860" y2="639" stroke="#9CA8AB" stroke-width="1" stroke-dasharray="4 3"></line>
+    <text class="gf-muted" x="858" y="631" font-size="12" fill="#67787C" text-anchor="end">target = 1</text>
+    
+    <line class="gs-hairline-strong" x1="560" y1="598" x2="560" y2="756" stroke="#9CA8AB" stroke-width="1"></line>
+    <line class="gs-hairline-strong" x1="560" y1="756" x2="866" y2="756" stroke="#9CA8AB" stroke-width="1"></line>
+    <text class="gf-muted" x="550" y="643" font-size="12" fill="#67787C" text-anchor="end">1</text>
+    <text class="gf-muted" x="550" y="760" font-size="12" fill="#67787C" text-anchor="end">0</text>
+    <text class="gf-muted" x="860" y="778" font-size="12" fill="#67787C" text-anchor="end">time →</text>
+
+    
+    <polyline points="560.0,756.0 566.0,742.8 572.0,727.2 578.0,710.5 584.0,693.6 590.0,677.3 596.0,662.3 602.0,648.9 608.0,637.5 614.0,628.2 620.0,621.1 626.0,616.1 632.0,613.0 638.0,611.7 644.0,611.8 650.0,613.2 656.0,615.4 662.0,618.3 668.0,621.7 674.0,625.2 680.0,628.7 686.0,632.0 692.0,635.0 698.0,637.7 704.0,639.9 710.0,641.7 716.0,643.1 722.0,644.0 728.0,644.5 734.0,644.7 740.0,644.6 746.0,644.3 752.0,643.7 758.0,643.1 764.0,642.4 770.0,641.7 776.0,640.9 782.0,640.3 788.0,639.7 794.0,639.1 800.0,638.7 806.0,638.3 812.0,638.1 818.0,637.9 824.0,637.8 830.0,637.8 836.0,637.9 842.0,637.9 848.0,638.1 854.0,638.2 860.0,638.3" fill="none" stroke="#E17100" stroke-width="2.5"></polyline>
+    
+    <circle class="gf-warning" cx="638" cy="611.7" r="3.5" fill="#E17100"></circle>
+    <text class="gf-warning" x="638" y="601" font-size="12" fill="#973C00" text-anchor="middle">overshoot</text>
+    <circle class="gf-ink" cx="560" cy="756" r="3.5" fill="#090B0C"></circle>
+  </g>
+
+  
+  <g>
+    <rect class="gf-surface gs-hairline" x="40" y="842" width="880" height="340" rx="10" fill="#FFFFFF" stroke="#E3E7E8"></rect>
+    <text class="gf-ink" x="64" y="876" font-size="14" font-weight="600" fill="#090B0C">Durations (ms)</text>
+    <text class="gf-muted" x="64" y="898" font-size="12" fill="#67787C">existing fast / duration / slow (100 / 150 / 220) map to fast / base / moderate</text>
+
+    
+    <line class="gs-hairline" x1="200" y1="914" x2="200" y2="1146" stroke="#F1F3F3"></line>
+    <line class="gs-hairline" x1="310" y1="914" x2="310" y2="1146" stroke="#F1F3F3"></line>
+    <line class="gs-hairline" x1="420" y1="914" x2="420" y2="1146" stroke="#F1F3F3"></line>
+    <line class="gs-hairline" x1="530" y1="914" x2="530" y2="1146" stroke="#F1F3F3"></line>
+    <line class="gs-hairline" x1="640" y1="914" x2="640" y2="1146" stroke="#F1F3F3"></line>
+    <line class="gs-hairline" x1="750" y1="914" x2="750" y2="1146" stroke="#F1F3F3"></line>
+    <line class="gs-hairline" x1="860" y1="914" x2="860" y2="1146" stroke="#F1F3F3"></line>
+    <text class="gf-muted" x="200" y="1164" font-size="12" fill="#67787C" text-anchor="middle">0</text>
+    <text class="gf-muted" x="310" y="1164" font-size="12" fill="#67787C" text-anchor="middle">100</text>
+    <text class="gf-muted" x="420" y="1164" font-size="12" fill="#67787C" text-anchor="middle">200</text>
+    <text class="gf-muted" x="530" y="1164" font-size="12" fill="#67787C" text-anchor="middle">300</text>
+    <text class="gf-muted" x="640" y="1164" font-size="12" fill="#67787C" text-anchor="middle">400</text>
+    <text class="gf-muted" x="750" y="1164" font-size="12" fill="#67787C" text-anchor="middle">500</text>
+    <text class="gf-muted" x="860" y="1164" font-size="12" fill="#67787C" text-anchor="middle">600 ms</text>
+
+    
+    <text class="gf-ink" x="188" y="934" font-size="13" fill="#090B0C" text-anchor="end">instant</text>
+    <rect class="gf-brand" x="200" y="922" width="55" height="16" rx="4" fill="#007A55"></rect>
+    <text class="gf-muted" x="265" y="934" font-size="12" fill="#67787C">50 ms</text>
+
+    <text class="gf-ink" x="188" y="968" font-size="13" fill="#090B0C" text-anchor="end">fast</text>
+    <rect class="gf-brand" x="200" y="956" width="110" height="16" rx="4" fill="#007A55"></rect>
+    <text class="gf-muted" x="320" y="968" font-size="12" fill="#67787C">100 ms</text>
+
+    <text class="gf-ink" x="188" y="1002" font-size="13" fill="#090B0C" text-anchor="end">base</text>
+    <rect class="gf-brand" x="200" y="990" width="165" height="16" rx="4" fill="#007A55"></rect>
+    <text class="gf-muted" x="375" y="1002" font-size="12" fill="#67787C">150 ms</text>
+
+    <text class="gf-ink" x="188" y="1036" font-size="13" fill="#090B0C" text-anchor="end">moderate</text>
+    <rect class="gf-brand" x="200" y="1024" width="242" height="16" rx="4" fill="#007A55"></rect>
+    <text class="gf-muted" x="452" y="1036" font-size="12" fill="#67787C">220 ms</text>
+
+    <text class="gf-ink" x="188" y="1070" font-size="13" fill="#090B0C" text-anchor="end">slow</text>
+    <rect class="gf-brand" x="200" y="1058" width="330" height="16" rx="4" fill="#007A55"></rect>
+    <text class="gf-muted" x="540" y="1070" font-size="12" fill="#67787C">300 ms</text>
+
+    <text class="gf-ink" x="188" y="1104" font-size="13" fill="#090B0C" text-anchor="end">slower</text>
+    <rect class="gf-brand" x="200" y="1092" width="440" height="16" rx="4" fill="#007A55"></rect>
+    <text class="gf-muted" x="650" y="1104" font-size="12" fill="#67787C">400 ms</text>
+
+    <text class="gf-ink" x="188" y="1138" font-size="13" fill="#090B0C" text-anchor="end">slowest</text>
+    <rect class="gf-brand" x="200" y="1126" width="660" height="16" rx="4" fill="#007A55"></rect>
+    <text class="gf-muted" x="870" y="1138" font-size="12" fill="#67787C">600 ms</text>
+  </g>
+</svg>

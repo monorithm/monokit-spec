@@ -1,0 +1,34 @@
+{
+  "component": "InputOtp",
+  "spec": "30-components/10-components-core.md",
+  "description": "The single-decision screen made literal, and the reference the rest of the forms family is measured against. One subject, one input, nothing else competing.",
+  "clauses": {
+    "MUST": [
+      "Accept a paste of the whole code, and accept platform autofill.",
+      "Advance and retreat between boxes as digits are entered and deleted, without the user managing focus.",
+      "Adopt destructive on error, and fire the error haptic at the same moment.",
+      "Take the content voice with tabular figures — a code the user types is content, not a machine string.",
+      "Announce its resend timer at start, halfway and zero rather than every second."
+    ],
+    "SHOULD": [
+      "Autofocus, because this is a screen whose single subject is an input — one of the few places autofocus is right.",
+      "Grow the boxes with text scale and wrap the row on compact widths."
+    ],
+    "NEVER": [
+      "Render the code in the monospace register. Mono is for strings the user reads, not ones they type.",
+      "Show a countdown that updates a live region every second.",
+      "Clear every box on a single wrong digit."
+    ]
+  },
+  "states": [
+    "focusVisible",
+    "invalid",
+    "pending"
+  ],
+  "tokens": [
+    "--text-display-medium",
+    "--destructive",
+    "--muted",
+    "--space-12"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "component": "ListRow",
+  "spec": "10-tokens/04-space-and-layout.md",
+  "description": "One anatomy serves chat, feeds, settings and search results: a leading slot, a content column, a trailing slot. A list is a menu of subjects, not the subject.",
+  "clauses": {
+    "MUST": [
+      "Resolve its minimum height from density, and grow rather than clip when text scales.",
+      "Take an avatar in the leading slot at the list leading size, or an icon at its role size — and inset the separator from whichever it carries.",
+      "Vertically centre the leading slot for one or two lines, and top-align it for three.",
+      "Cap the title and subtitle at two lines each, ellipsized, with de-emphasis carried by colour rather than by a smaller size.",
+      "Top-align trailing metadata with the title, and centre a trailing affordance.",
+      "Activate anywhere along the row when it is pressable, with the tint running edge to edge while the text column stays aligned.",
+      "Give an interactive trailing control its own tap and its own tab stop, with the press target stopping short of that column.",
+      "Inset its focus ring inside the row bounds — the system's one exception to painting the ring outside, because an edge-to-edge row has nowhere outside to paint."
+    ],
+    "SHOULD": [
+      "Take the chevron when it navigates, and never when it toggles.",
+      "Drop one row-height step under a dense flag for pointer-first tables and pickers."
+    ],
+    "NEVER": [
+      "Nest an interactive control inside the press target.",
+      "Carry both a press action and a trailing control bound to the same state — one tap runs both, and which wins depends on write order.",
+      "Ripple, flash a colour, or gain a border on press. The tint is the whole feedback."
+    ]
+  },
+  "states": [
+    "pressed",
+    "disabled",
+    "selected"
+  ],
+  "tokens": [
+    "--row-1",
+    "--row-2",
+    "--row-3",
+    "--page-inset",
+    "--icon-chrome",
+    "--leading-avatar",
+    "--gap-density"
+  ]
+}

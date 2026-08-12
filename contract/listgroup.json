@@ -1,0 +1,28 @@
+{
+  "component": "ListGroup",
+  "spec": "10-tokens/04-space-and-layout.md",
+  "description": "Containment without card edges. A group is declared by its header sitting in the page margin and by hairlines that start where the text starts, so the list reads as one continuous surface and the eye follows the words rather than a rectangle.",
+  "clauses": {
+    "MUST": [
+      "Bleed its rows to the edges of its layout scope, background and press highlight included.",
+      "Place its header in the page margin, aligned to the content column rather than the screen edge.",
+      "Inset separators to the text column, and omit the separator on the last row.",
+      "Collapse shared edges: two stacked hairlines double their alpha and read as a seam.",
+      "Carry no border, no radius and no shadow of its own. A group is declared by rhythm, not by a box."
+    ],
+    "SHOULD": [
+      "Use its footer for consequences — what changes, and where to undo it.",
+      "Separate from the next group by a section-scale gap rather than by a rule."
+    ],
+    "NEVER": [
+      "Wrap itself in a card to look contained. Card is for a bounded object with its own identity — a product, an order, a media item — and a settings list is not one.",
+      "Inset the whole row so the press target shrinks to a visible rectangle.",
+      "Offer a spacious tier. Added air comes from section spacing, not from taller rows."
+    ]
+  },
+  "tokens": [
+    "--page-inset",
+    "--space-24",
+    "--space-8"
+  ]
+}

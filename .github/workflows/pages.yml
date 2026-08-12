@@ -1,0 +1,64 @@
+name: Pages
+
+# Publishes https://monokit.monorithm.dev
+#
+# The custom domain comes from public/CNAME, which lands in dist/ on every build. GitHub Pages
+# reads it on deploy, so the domain is set by the repo rather than by a settings page nobody
+# can review in a diff.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install
+        run: yarn install --immutable
+
+      # Before the build, not after. Every one of these guards a failure that ships looking
+      # correct: a hand-edited token file that no longer matches the contract, a canonical number
+      # typed into a sentence, a page unreachable from the navigation, a specimen whose builder
+      # was renamed. None of them break `astro build`, which is exactly why they run first.
+      - name: Check
+        run: yarn check
+
+      - name: Build
+        run: yarn build
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    # A pull request gets the checks and the build; only main gets published.
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

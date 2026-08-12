@@ -1,0 +1,20 @@
+/* Display — Avatar, Icon box, hairline. An empty avatar is a declared placeholder on
+   the media canvas with the media role glyph: this system ships no photography, and a
+   grey circle with initials would be pretending otherwise. */
+
+.mk-avatar{position:relative;display:flex;align-items:center;justify-content:center;flex:none;
+  border-radius:var(--radius-full);background:var(--muted);
+  color:var(--muted-foreground);font-weight:var(--weight-semibold)}
+/* The circular clip belongs to the image, not to the avatar: the edit affordance is a child
+   and has to sit proud of the circle. */
+.mk-avatar>img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-full)}
+.mk-avatar[data-empty="true"]{background:var(--media-canvas);color:var(--on-media-muted)}
+.mk-avatar-edit{position:absolute;inset-inline-end:0;bottom:0;display:flex;align-items:center;
+  justify-content:center;width:32px;height:32px;border-radius:var(--radius-full);
+  background:var(--primary);color:var(--primary-foreground)}
+.mk-hairline-top{border-top:var(--border-width) solid var(--border)}
+
+/* Brand as INK. Dark mode's --primary is a dimmer surface colour, so ink switches to the
+   brighter sidebar emerald — the same rule the bar action already follows. */
+.mk-brand-ink{color:var(--primary)}
+.dark .mk-brand-ink{color:var(--sidebar-primary)}

@@ -1,0 +1,304 @@
+/* Spec-site chrome. Not part of the design system: this is the furniture the specification is
+   read in, and it deliberately uses the system's own tokens so the site cannot drift from it. */
+
+/* The document scrolls.
+ *
+ * base/native.css makes the body a non-scrolling viewport — `html,body{height:100%}` and
+ * `body{overflow:hidden;overscroll-behavior:none}` — because in a monokit APP the app is the
+ * viewport and regions scroll individually with contained overscroll. That is right there and
+ * wrong here: this is a document, read top to bottom, and with it in force the specification was
+ * unreadable below the fold.
+ *
+ * Undone for the page host only. Every .mk-* rule is untouched, including .mk-scroll and the
+ * .mk-app / .mk-screen containment the specimens depend on — those still behave exactly as the
+ * pages document, because a specimen is an app surface embedded in this document. */
+html,body{height:auto;overflow:visible;overscroll-behavior:auto}
+
+body{margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-sans);
+  font-size:var(--text-body-large);line-height:var(--text-body-large-lh)}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:100;padding:var(--space-12) var(--space-16);
+  background:var(--primary);color:var(--primary-foreground);border-radius:0 0 var(--radius-md) 0}
+.skip:focus{left:0}
+
+/* ---- top bar ---- */
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:var(--space-16);
+  padding:var(--space-12) var(--space-24);background:var(--background);
+  border-bottom:var(--border-width) solid var(--border)}
+.brand{font-size:var(--text-title-large);font-weight:var(--weight-semibold);color:var(--primary);
+  text-decoration:none;letter-spacing:-0.01em}
+.dark .brand{color:var(--sidebar-primary)}
+.brand-sub{font-size:var(--text-label-medium);color:var(--muted-foreground)}
+.theme-toggle{margin-inline-start:auto;min-height:var(--min-target);padding:0 var(--space-16);
+  border-radius:var(--radius-full);border:var(--border-width) solid var(--border);
+  background:transparent;color:var(--foreground);font:inherit;font-size:var(--text-label-large);cursor:pointer}
+.theme-toggle:hover{background:var(--accent)}
+
+.search{position:relative;flex:1;max-width:420px;margin-inline-start:var(--space-24)}
+.search input{width:100%;min-height:40px;padding:0 var(--space-16);border-radius:var(--radius-full);
+  border:var(--border-width) solid var(--input);background:var(--muted);color:var(--foreground);
+  font:inherit;font-size:var(--text-body-medium)}
+.search input::placeholder{color:var(--muted-foreground)}
+.results{position:absolute;top:calc(100% + var(--space-8));left:0;right:0;z-index:25;
+  background:var(--popover);border:var(--border-width) solid var(--border);
+  border-radius:var(--radius-lg);box-shadow:var(--elevation-e2);overflow:hidden}
+.results a{display:grid;gap:2px;padding:var(--space-12) var(--space-16);text-decoration:none;
+  color:var(--foreground);border-bottom:var(--border-width) solid var(--border)}
+.results a:last-child{border-bottom:0}
+.results a:hover{background:var(--accent)}
+.r-title{font-weight:var(--weight-medium);font-size:var(--text-body-medium)}
+.r-section,.r-snip{font-size:var(--text-label-medium);color:var(--muted-foreground)}
+
+/* ---- shell ---- */
+.shell{display:grid;grid-template-columns:var(--container-sidebar) minmax(0,1fr) 200px;
+  gap:var(--space-40);max-width:var(--container-page);margin:0 auto;padding:var(--space-32) var(--space-24)}
+@media (max-width:1100px){.shell{grid-template-columns:220px minmax(0,1fr)} .toc{display:none}}
+
+/* The compact composition is at the END of this file, not here. It overrides `.nav` and
+   `.menu-toggle` at equal specificity, so it only wins if it comes after them — and both of
+   those are declared below. Sitting here, it lost every rule it declared. */
+
+.nav{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 120px);overflow:auto;
+  scrollbar-width:thin}
+.nav-group{margin-bottom:var(--space-32)}
+.nav-group h2{margin:0 0 var(--space-4);font-size:var(--text-label-large);
+  font-weight:var(--weight-semibold)}
+.nav-note{margin:0 0 var(--space-12);font-size:var(--text-label-medium);color:var(--muted-foreground);
+  line-height:1.4}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.nav a{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-12);
+  border-radius:var(--radius-md);color:var(--muted-foreground);text-decoration:none;
+  font-size:var(--text-body-medium)}
+.nav a:hover{background:var(--accent);color:var(--foreground)}
+.nav a[aria-current="page"]{background:var(--primary-soft);color:var(--primary);
+  font-weight:var(--weight-medium)}
+.dark .nav a[aria-current="page"]{color:var(--sidebar-primary)}
+.stub{margin-inline-start:auto;font-size:var(--text-label-medium);color:var(--muted-foreground);
+  opacity:.7}
+
+.toc{position:sticky;top:96px;align-self:start}
+.toc h2{margin:0 0 var(--space-8);font-size:var(--text-label-medium);color:var(--muted-foreground);
+  font-weight:var(--weight-medium)}
+.toc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-4)}
+.toc a{color:var(--muted-foreground);text-decoration:none;font-size:var(--text-label-large);
+  line-height:1.35;display:block;padding:2px 0}
+.toc a:hover{color:var(--foreground)}
+
+/* ---- document ---- */
+.doc{min-width:0;max-width:var(--container-content);outline:none}
+.crumb{margin:0 0 var(--space-8);font-size:var(--text-label-medium);color:var(--muted-foreground)}
+/* Prose typography. Every rule is contained so it cannot reach into a specimen: the components
+   shown there must look like themselves, not like the document around them. */
+.doc h1:not(.specimen *){margin:0 0 var(--space-16);font-size:var(--text-display-medium);
+  line-height:var(--text-display-medium-lh);letter-spacing:var(--text-display-medium-tracking);
+  font-weight:var(--weight-semibold)}
+.doc h2:not(.specimen *){margin:var(--space-48) 0 var(--space-12);font-size:var(--text-headline-large);
+  line-height:var(--text-headline-large-lh);letter-spacing:var(--text-headline-large-tracking);
+  font-weight:var(--weight-semibold);scroll-margin-top:88px}
+.doc h3:not(.specimen *){margin:var(--space-32) 0 var(--space-8);font-size:var(--text-headline-medium);
+  line-height:var(--text-headline-medium-lh);font-weight:var(--weight-semibold);scroll-margin-top:88px}
+.doc h4:not(.specimen *){margin:var(--space-20) 0 var(--space-8);font-size:var(--text-title-medium);
+  font-weight:var(--weight-semibold)}
+.doc p:not(.specimen *){margin:0 0 var(--space-16);text-wrap:pretty}
+/* The design-system reset zeroes list-style, so prose has to restore it explicitly — restoring
+   margin and padding alone leaves an indented list with no marker, and an ordered list with no
+   numerals is not a ranking. Scoped to prose: the nav, the on-page contents, the anatomy keys and
+   the cycle lists all suppress markers deliberately and carry their own badges. */
+.doc :is(ul,ol):not(.specimen *){margin:0 0 var(--space-16);padding-inline-start:var(--space-20)}
+.doc ul:not(.specimen *){list-style:disc outside}
+.doc ol:not(.specimen *){list-style:decimal outside}
+.doc :is(ul,ol):not(.specimen *) li::marker{color:var(--muted-foreground)}
+.doc li:not(.specimen *){margin-bottom:var(--space-8)}
+.doc code:not(.specimen *){font-family:var(--font-mono);font-size:var(--text-code);
+  background:var(--muted);padding:1px 5px;border-radius:var(--radius-xs)}
+.doc blockquote:not(.specimen *){margin:0 0 var(--space-16);padding:var(--space-12) var(--space-16);
+  background:var(--muted);border-radius:var(--radius-md);color:var(--muted-foreground)}
+.page-foot{margin-top:var(--space-48);padding-top:var(--space-16);
+  border-top:var(--border-width) solid var(--border)}
+.page-foot p{margin:0;font-size:var(--text-label-medium);color:var(--muted-foreground)}
+.loading{color:var(--muted-foreground)}
+
+.prose-table table,.specimen table{width:100%;border-collapse:collapse;margin-bottom:var(--space-16);
+  font-size:var(--text-body-medium)}
+.prose-table th,.prose-table td,.specimen th,.specimen td{text-align:start;padding:var(--space-8) var(--space-12);
+  border-bottom:var(--border-width) solid var(--border);vertical-align:top}
+.prose-table thead th,.specimen thead th{font-size:var(--text-label-medium);color:var(--muted-foreground);
+  font-weight:var(--weight-medium)}
+.specimen .num{font-family:var(--font-mono);font-size:var(--text-code);font-variant-numeric:tabular-nums;
+  white-space:nowrap}
+.specimen .note{color:var(--muted-foreground);font-size:var(--text-label-large)}
+
+/* ---- specimens ---- */
+.specimen{margin:0 0 var(--space-24)}
+.specimen-error{padding:var(--space-12) var(--space-16);background:var(--destructive-soft);
+  color:var(--destructive-text);border-radius:var(--radius-md);font-size:var(--text-body-medium)}
+pre.code{margin:0 0 var(--space-16);padding:var(--space-16);background:var(--muted);
+  border-radius:var(--radius-lg);overflow:auto}
+pre.code code{background:none;padding:0;font-size:var(--text-code);line-height:var(--text-code-lh)}
+
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--space-12)}
+.sw{margin:0;display:grid;gap:var(--space-8)}
+.sw-chip{height:64px;border-radius:var(--radius-md);border:var(--border-width) solid var(--border)}
+.sw figcaption{display:grid;gap:2px}
+.sw-name{font-size:var(--text-label-large);font-weight:var(--weight-medium)}
+.sw-val{font-family:var(--font-mono);font-size:var(--text-label-medium);color:var(--muted-foreground)}
+.sw-desc{font-size:var(--text-label-medium);color:var(--muted-foreground);line-height:1.4}
+
+.scale-bar{display:block;height:12px;border-radius:var(--radius-xs);background:var(--primary-soft)}
+.dark .scale-bar{background:var(--primary)}
+
+.type-row{margin:0 0 var(--space-16);padding-bottom:var(--space-16);
+  border-bottom:var(--border-width) solid var(--border)}
+.type-sample{margin:0 0 var(--space-4)}
+.type-row figcaption{display:flex;gap:var(--space-12);flex-wrap:wrap}
+
+.clause-set{display:grid;gap:var(--space-16)}
+.clauses{padding:var(--space-16);border-radius:var(--radius-lg);
+  border:var(--border-width) solid var(--border)}
+.clauses h4{margin:0 0 var(--space-8);font-size:var(--text-label-large);
+  font-family:var(--font-mono);letter-spacing:0}
+.clauses[data-kind="MUST"] h4{color:var(--primary)}
+.dark .clauses[data-kind="MUST"] h4{color:var(--sidebar-primary)}
+.clauses[data-kind="SHOULD"] h4{color:var(--muted-foreground)}
+.clauses[data-kind="NEVER"] h4{color:var(--destructive-text)}
+.clauses ul{margin:0;padding-inline-start:var(--space-20)}
+.clauses li{margin-bottom:var(--space-8);font-size:var(--text-body-medium)}
+
+.guide{padding:var(--space-16);border-radius:var(--radius-lg);margin-bottom:var(--space-16)}
+.guide[data-kind="do"]{background:var(--success-soft);color:var(--success-text)}
+.guide[data-kind="dont"]{background:var(--destructive-soft);color:var(--destructive-text)}
+.guide h4{margin:0 0 var(--space-4);font-size:var(--text-label-large)}
+.guide p{margin:0;font-size:var(--text-body-medium)}
+
+/* ---- live examples ---- */
+.demo{padding:var(--space-24);border-radius:var(--radius-lg);background:var(--muted);
+  display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-16)}
+.demo-target{padding:var(--space-16) var(--space-20);border-radius:var(--radius-xl);
+  background:var(--background);font-size:var(--text-body-medium);cursor:pointer}
+.demo-log{margin:0;font-family:var(--font-mono);font-size:var(--text-code);color:var(--muted-foreground)}
+.demo-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-16);align-items:start}
+.demo-scope{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-12);
+  padding:var(--space-16);background:var(--background);border-radius:var(--radius-md)}
+.demo-scope-label{width:100%;margin:0;font-family:var(--font-mono);font-size:var(--text-label-medium);
+  color:var(--muted-foreground)}
+.state-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-16)}
+.state-cell{display:grid;gap:var(--space-8);justify-items:start}
+.example-fallback{margin:0;padding:var(--space-16);background:var(--muted);
+  border-radius:var(--radius-lg);color:var(--muted-foreground);font-size:var(--text-body-medium)}
+
+/* ---- anatomy: numbered pins over the live component ---- */
+.anatomy-wrap{display:grid;gap:var(--space-16)}
+.anatomy-stage{position:relative;padding:var(--space-40);background:var(--muted);
+  border-radius:var(--radius-lg);display:flex;justify-content:center}
+.pin{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;
+  justify-content:center;width:22px;height:22px;border-radius:var(--radius-full);
+  background:var(--primary);color:var(--primary-foreground);
+  font-size:var(--text-label-medium);font-weight:var(--weight-semibold);
+  font-variant-numeric:tabular-nums}
+.pin.static{position:static;transform:none;flex:none}
+.anatomy-key{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-8)}
+.anatomy-key li{display:flex;align-items:center;gap:var(--space-12);
+  font-size:var(--text-body-medium)}
+
+/* An inline value quoted from the contract. Underlined so a reader can tell a resolved number
+   from a typed one, and titled with the path it came from. */
+.tok{font-family:var(--font-mono);font-size:var(--text-code);font-variant-numeric:tabular-nums;
+  border-bottom:1px dotted var(--muted-foreground);cursor:help}
+.tok-missing{background:var(--destructive-soft);color:var(--destructive-text)}
+
+/* Announced, not shown: the result count for readers who cannot see the panel open. */
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+
+/* Compact navigation disclosure. Hidden above the compact breakpoint, where the rail is pinned. */
+.menu-toggle{display:none;align-items:center;gap:var(--space-8);min-height:var(--min-target);
+  padding:0 var(--space-12);margin-inline-end:var(--space-4);border-radius:var(--radius-full);
+  border:var(--border-width) solid var(--border);background:transparent;color:var(--foreground);
+  font:inherit;font-size:var(--text-label-large);cursor:pointer}
+.menu-toggle:hover{background:var(--accent)}
+.menu-bars{position:relative;width:16px;height:2px;border-radius:var(--radius-full);
+  background:currentColor;box-shadow:0 -5px 0 currentColor,0 5px 0 currentColor}
+
+/* A value resolved through a reference — a motion role's duration and curve. Titled with the
+   path it came from, like an inline token. */
+.ref{border-bottom:1px dotted var(--muted-foreground);cursor:help}
+
+/* Modal specimens. The surface is deliberately plain — Sheet's chrome would hide the primitive. */
+.spec-modal{position:relative;z-index:1;margin:auto;max-width:var(--container-dialog-md);
+  background:var(--popover);color:var(--popover-foreground);border-radius:var(--radius-xl);
+  box-shadow:var(--elevation-e3);padding:var(--space-24);display:grid;gap:var(--space-16)}
+.spec-modal-wide{max-width:var(--container-dialog-lg)}
+.spec-modal-title{margin:0;font-size:var(--text-title-large);font-weight:var(--weight-semibold)}
+.spec-modal-body{margin:0;font-size:var(--text-body-medium);color:var(--muted-foreground)}
+.spec-modal-actions{display:flex;gap:var(--space-12);justify-content:flex-end}
+.spec-watch{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24)}
+.spec-watch h4{margin:0 0 var(--space-8);font-size:var(--text-label-medium);
+  color:var(--muted-foreground);font-weight:var(--weight-medium)}
+.spec-cycle{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-4)}
+.spec-cycle li{display:flex;align-items:center;gap:var(--space-8);
+  font-size:var(--text-body-medium);padding:2px var(--space-8);border-radius:var(--radius-sm)}
+.spec-cycle li[data-current="true"]{background:var(--primary-soft);color:var(--primary-text)}
+.spec-focus{margin:0 0 var(--space-16);font-family:var(--font-mono);
+  font-size:var(--text-code);color:var(--foreground)}
+.spec-focus[data-ok="true"]{color:var(--success-text)}
+.spec-focus[data-ok="false"]{color:var(--destructive-text)}
+
+/* Icon specimens. */
+.icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:var(--space-12)}
+.icon-cell{display:grid;justify-items:center;gap:var(--space-4);padding:var(--space-16) var(--space-8);
+  border-radius:var(--radius-lg);border:var(--border-width) solid var(--border);
+  background:var(--background);color:var(--foreground);font:inherit;cursor:pointer;
+  min-height:var(--min-target)}
+.icon-cell:hover{background:var(--accent)}
+.icon-cell[data-on="true"]{border-color:var(--primary);color:var(--primary-text);
+  background:var(--primary-soft)}
+.icon-cell[data-absent="true"]{cursor:default;border-style:dashed;color:var(--muted-foreground)}
+.icon-cell[data-absent="true"]:hover{background:var(--background)}
+.icon-row{display:inline-flex;align-items:center;gap:var(--space-8)}
+.sw-total{margin:0 0 var(--space-16);font-size:var(--text-label-large);
+  color:var(--muted-foreground)}
+
+/* Page inventory. Column widths are declared rather than negotiated: left to the auto algorithm,
+   the longest cell in the table wins on every row, however little it has to say. */
+.specimen table.pages-table{table-layout:fixed}
+.pages-table th:nth-child(1),.pages-table td:nth-child(1){width:16%}
+.pages-table th:nth-child(2),.pages-table td:nth-child(2){width:12%}
+.pages-table th:nth-child(3),.pages-table td:nth-child(3){width:44%}
+.pages-table th:nth-child(4),.pages-table td:nth-child(4){width:28%}
+.pages-table td:nth-child(3),.pages-table td:nth-child(4){overflow-wrap:break-word}
+
+/* Surface-sensitive specimens. The default stage is a muted well with a radius, which is fine for a
+   button and wrong for anything whose subject IS the surface: a ListGroup shown on a muted panel with
+   a 10px radius is the card edge its own page forbids, and its transparent header reads as a grey
+   strip. These render on the real background with no radius. */
+.demo.demo-surface{background:var(--background);border-radius:0;padding:0;display:block}
+.anatomy-stage[data-surface="true"]{background:var(--background);border-radius:0;
+  padding:var(--space-40) var(--space-24);
+  border:var(--border-width) dashed var(--border)}
+
+/* ---- compact ----
+ *
+ * Last in the file on purpose. Every rule here overrides one declared above it at the same
+ * specificity — `.nav` is `position:sticky` in the pinned-rail composition, `.menu-toggle` is
+ * `display:none` where the rail is always visible — so cascade order is what makes the compact
+ * composition apply at all. Moved from beside the other breakpoints, where it had no effect:
+ * the disclosure button never appeared, and the rail stacked above the page instead of becoming
+ * the panel the button opens.
+ */
+@media (max-width:760px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .menu-toggle{display:inline-flex}
+  /* The navigation recomposes into a dismissible panel — it is never removed. A width class is
+     semantic, so a window dragged narrow gets the compact composition, not a missing one. */
+  .nav{position:fixed;inset:0 auto 0 0;z-index:60;width:min(300px,86vw);max-height:none;
+    padding:var(--space-24);background:var(--sidebar);color:var(--sidebar-foreground);
+    border-inline-end:var(--border-width) solid var(--border);
+    transform:translateX(-100%);transition:transform var(--motion-emphasis);overflow:auto}
+  body[data-nav-open="true"] .nav{transform:none}
+  .nav-barrier{position:fixed;inset:0;z-index:55;background:var(--overlay-scrim)}
+}
+
+/* remark wraps blockquote content in a paragraph; the workbench's hand-rolled renderer put the
+   text directly inside the element. The prose paragraph rule adds a bottom margin, which lands
+   INSIDE the quote's padding as 16px of dead space under the last line. */
+.doc blockquote:not(.specimen *) > :last-child{margin-bottom:0}

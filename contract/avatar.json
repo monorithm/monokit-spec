@@ -1,0 +1,28 @@
+{
+  "component": "Avatar",
+  "spec": "30-components/10-components-core.md",
+  "description": "A person or a place, at one of a few sizes. It is the anchor other things attach to — a presence dot, an edit affordance — rather than a decoration.",
+  "clauses": {
+    "MUST": [
+      "Render at radius full, and clip its content to that shape.",
+      "Take the list leading size inside a list row, so the separator inset stays derivable.",
+      "Place an attached affordance on the trailing-bottom corner, which mirrors under right-to-left.",
+      "Announce as a person rather than as an image, or be excluded from semantics when a name sits beside it."
+    ],
+    "SHOULD": [
+      "Render a declared placeholder when there is no image, rather than initials in a grey circle.",
+      "Keep an attached affordance proportional — a badge that rivals the avatar is a button with an avatar behind it."
+    ],
+    "NEVER": [
+      "Fake a photograph. This system ships no photography.",
+      "Carry a shadow.",
+      "Use a square avatar for a person."
+    ]
+  },
+  "tokens": [
+    "--leading-avatar",
+    "--radius-full",
+    "--muted",
+    "--muted-foreground"
+  ]
+}

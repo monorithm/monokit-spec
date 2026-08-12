@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 656" width="960" height="656" font-family="IBM Plex Sans, system-ui, sans-serif">
+  <defs>
+    <clipPath id="screenL">
+      <rect x="208" y="128" width="179" height="406" rx="20"></rect>
+    </clipPath>
+  </defs>
+
+  
+  <rect class="gf-bg" x="0" y="0" width="960" height="656" fill="#FFFFFF"></rect>
+
+  
+  <text class="gf-ink" x="48" y="46" font-size="18" font-weight="600" fill="#090B0C">Thumb zones</text>
+  <text class="gf-muted" x="48" y="68" font-size="13" fill="#67787C">Reach heat map for one-handed use, and where monokit places its controls (390 × 844 reference frame)</text>
+
+  
+  <text class="gf-ink" x="297.5" y="106" font-size="14" font-weight="600" fill="#090B0C" text-anchor="middle">Reach heat zones</text>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="200" y="120" width="195" height="422" rx="26" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1.5"></rect>
+  
+  <rect class="gf-surface gs-hairline" x="208" y="128" width="179" height="406" rx="20" fill="#FFFFFF" stroke="#E3E7E8"></rect>
+
+  
+  <g clip-path="url(#screenL)">
+    
+    <rect class="gf-danger" x="208" y="128" width="72" height="92" fill="#E7000B33"></rect>
+    <rect class="gf-danger" x="315" y="128" width="72" height="92" fill="#E7000B33"></rect>
+    
+    <rect class="gf-warning" x="280" y="128" width="35" height="92" fill="#FFB90033"></rect>
+    <rect class="gf-warning" x="208" y="220" width="179" height="118" fill="#FFB90033"></rect>
+    <rect class="gf-warning" x="208" y="448" width="52" height="86" fill="#FFB90033"></rect>
+    
+    <rect class="gf-success" x="208" y="338" width="179" height="110" fill="#00A63E33"></rect>
+    <rect class="gf-success" x="260" y="448" width="127" height="86" fill="#00A63E33"></rect>
+  </g>
+
+  
+  <rect class="gf-ink" x="272.5" y="133" width="50" height="12" rx="6" fill="#090B0C"></rect>
+  <rect class="gf-muted" x="267.5" y="524" width="60" height="4" rx="2" fill="#67787C"></rect>
+
+  
+  <text class="gf-ink" x="186" y="150" font-size="13" font-weight="600" fill="#090B0C" text-anchor="end">Hard reach</text>
+  <text class="gf-muted" x="186" y="167" font-size="12" fill="#67787C" text-anchor="end">top corners</text>
+  <line class="gs-hairline-strong" x1="191" y1="154" x2="208" y2="154" stroke="#9CA8AB" stroke-width="1"></line>
+
+  <text class="gf-ink" x="186" y="274" font-size="13" font-weight="600" fill="#090B0C" text-anchor="end">Stretch</text>
+  <text class="gf-muted" x="186" y="291" font-size="12" fill="#67787C" text-anchor="end">mid screen</text>
+  <line class="gs-hairline-strong" x1="191" y1="278" x2="208" y2="278" stroke="#9CA8AB" stroke-width="1"></line>
+
+  <text class="gf-ink" x="186" y="430" font-size="13" font-weight="600" fill="#090B0C" text-anchor="end">Natural thumb arc</text>
+  <text class="gf-muted" x="186" y="447" font-size="12" fill="#67787C" text-anchor="end">bottom ⅔, biased right</text>
+  <line class="gs-hairline-strong" x1="191" y1="434" x2="208" y2="434" stroke="#9CA8AB" stroke-width="1"></line>
+
+  
+  <text class="gf-muted" x="297.5" y="570" font-size="12" fill="#67787C" text-anchor="middle">Right-thumb reach, one-handed use</text>
+
+  
+  <text class="gf-ink" x="657.5" y="106" font-size="14" font-weight="600" fill="#090B0C" text-anchor="middle">monokit placement map</text>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="560" y="120" width="195" height="422" rx="26" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1.5"></rect>
+  
+  <rect class="gf-surface gs-hairline" x="568" y="128" width="179" height="406" rx="20" fill="#FFFFFF" stroke="#E3E7E8"></rect>
+
+  
+  <rect class="gf-ink" x="632.5" y="133" width="50" height="12" rx="6" fill="#090B0C"></rect>
+  <rect class="gf-muted" x="627.5" y="524" width="60" height="4" rx="2" fill="#67787C"></rect>
+
+  
+  <circle class="gf-surface2 gs-hairline" cx="590" cy="158" r="11" fill="#F1F3F3" stroke="#E3E7E8"></circle>
+  <path class="gs-ink" d="M 593 152.5 L 587.5 158 L 593 163.5" fill="none" stroke="#090B0C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  
+  <g>
+    <circle class="gf-surface2 gs-hairline" cx="725" cy="300" r="12" fill="#F1F3F3" stroke="#E3E7E8"></circle>
+    <circle class="gf-muted" cx="725" cy="300" r="3.5" fill="#67787C"></circle>
+    <circle class="gf-surface2 gs-hairline" cx="725" cy="344" r="12" fill="#F1F3F3" stroke="#E3E7E8"></circle>
+    <circle class="gf-muted" cx="725" cy="344" r="3.5" fill="#67787C"></circle>
+    <circle class="gf-surface2 gs-hairline" cx="725" cy="388" r="12" fill="#F1F3F3" stroke="#E3E7E8"></circle>
+    <circle class="gf-muted" cx="725" cy="388" r="3.5" fill="#67787C"></circle>
+    <circle class="gf-surface2 gs-hairline" cx="725" cy="432" r="12" fill="#F1F3F3" stroke="#E3E7E8"></circle>
+    <circle class="gf-muted" cx="725" cy="432" r="3.5" fill="#67787C"></circle>
+  </g>
+
+  
+  <circle class="gs-ink" cx="657.5" cy="452" r="17" fill="none" stroke="#090B0C" stroke-width="2"></circle>
+  <circle class="gf-ink" cx="657.5" cy="452" r="11" fill="#090B0C"></circle>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="576" y="490" width="163" height="34" rx="17" fill="#F1F3F3" stroke="#E3E7E8"></rect>
+  <circle class="gs-muted" cx="594" cy="507" r="6" fill="none" stroke="#67787C" stroke-width="1.5"></circle>
+  <rect x="608" y="504" width="82" height="6" rx="3" fill="#E3E7E8"></rect>
+  <circle class="gs-muted" cx="721" cy="507" r="6" fill="none" stroke="#67787C" stroke-width="1.5"></circle>
+
+  
+  
+  <text class="gf-ink" x="548" y="152" font-size="13" font-weight="600" fill="#090B0C" text-anchor="end">Back button</text>
+  <text class="gf-muted" x="548" y="169" font-size="12" fill="#67787C" text-anchor="end">top-left · low-frequency</text>
+  <line class="gs-hairline-strong" x1="552" y1="158" x2="579" y2="158" stroke="#9CA8AB" stroke-width="1"></line>
+
+  
+  <text class="gf-ink" x="765" y="362" font-size="13" font-weight="600" fill="#090B0C">Action rail</text>
+  <text class="gf-muted" x="765" y="379" font-size="12" fill="#67787C">right edge, in the thumb arc</text>
+  <line class="gs-hairline-strong" x1="739" y1="366" x2="760" y2="366" stroke="#9CA8AB" stroke-width="1"></line>
+
+  
+  <text class="gf-ink" x="765" y="448" font-size="13" font-weight="600" fill="#090B0C">Capture button</text>
+  <text class="gf-muted" x="765" y="465" font-size="12" fill="#67787C">bottom-center, strongest reach</text>
+  <line class="gs-hairline-strong" x1="676" y1="452" x2="760" y2="452" stroke="#9CA8AB" stroke-width="1"></line>
+
+  
+  <text class="gf-ink" x="765" y="504" font-size="13" font-weight="600" fill="#090B0C">Composer</text>
+  <text class="gf-muted" x="765" y="521" font-size="12" fill="#67787C">docked to the bottom edge</text>
+  <line class="gs-hairline-strong" x1="741" y1="507" x2="760" y2="507" stroke="#9CA8AB" stroke-width="1"></line>
+
+  
+  <text class="gf-muted" x="657.5" y="570" font-size="12" fill="#67787C" text-anchor="middle">Primary actions live in the thumb arc</text>
+
+  
+  <g>
+    <rect class="gf-success gs-hairline" x="200" y="602" width="14" height="14" rx="4" fill="#00A63E33" stroke="#E3E7E8"></rect>
+    <text class="gf-ink" x="222" y="613" font-size="12" fill="#090B0C">Natural — primary actions</text>
+
+    <rect class="gf-warning gs-hairline" x="412" y="602" width="14" height="14" rx="4" fill="#FFB90033" stroke="#E3E7E8"></rect>
+    <text class="gf-ink" x="434" y="613" font-size="12" fill="#090B0C">Stretch — secondary actions</text>
+
+    <rect class="gf-danger gs-hairline" x="640" y="602" width="14" height="14" rx="4" fill="#E7000B33" stroke="#E3E7E8"></rect>
+    <text class="gf-ink" x="662" y="613" font-size="12" fill="#090B0C">Hard — low-frequency only</text>
+  </g>
+</svg>

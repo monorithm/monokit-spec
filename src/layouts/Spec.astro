@@ -1,0 +1,136 @@
+---
+/* The shell.
+ *
+ * Every rule in site.css resolves from the same tokens the specification documents, so the site
+ * is built out of the language it describes. That is deliberate and load-bearing: chrome borrowed
+ * from a docs framework would demonstrate that framework's design language on a page claiming to
+ * define this one.
+ */
+import Nav from '../components/Nav.astro';
+import nav from '../nav.json';
+
+import '../../styles.css';
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  section: string;
+  path: string;
+  headings: { depth: number; slug: string; text: string }[];
+  needsRuntime?: boolean;
+}
+
+const { title, section, path, headings, needsRuntime = false } = Astro.props;
+
+/* On this page: H2s only. H3s would turn the longer component pages into a second navigation. */
+const toc = headings.filter((h) => h.depth === 2);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — monokit specification</title>
+    <meta name="description" content={`${title} — ${section}. The monokit design specification.`} />
+    <link rel="canonical" href={new URL(`/${path}/`, Astro.site)} />
+
+    {/* Before first paint, so a reader who chose dark does not get a white flash on every
+        navigation. Inline and blocking on purpose — deferring it is the bug. */}
+    <script is:inline>
+      try {
+        if (localStorage.getItem('monokit-theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    </script>
+
+    {/* The workbench routed on #/hash. Those URLs are published, so they keep working. */}
+    <script is:inline>
+      if (location.hash.startsWith('#/')) {
+        var to = '/' + location.hash.slice(2).replace(/\/$/, '') + '/';
+        if (to !== location.pathname) location.replace(to);
+      }
+    </script>
+
+    {/* Icon resolves a semantic role to a glyph through these two generated maps. Classic
+        scripts, as the components expect to find them on window. */}
+    <script is:inline src="/assets/icons/icon-paths.js"></script>
+    <script is:inline src="/assets/icons/icon-roles.js"></script>
+  </head>
+
+  <body>
+    <a class="skip" href="#doc">Skip to content</a>
+
+    <header class="topbar">
+      <button id="menu" class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav">
+        <span class="menu-bars" aria-hidden="true"></span>Menu
+      </button>
+      <a class="brand" href={`/${nav.home}/`}>monokit</a>
+      <span class="brand-sub">design specification</span>
+      <div class="search">
+        <input
+          id="q"
+          type="search"
+          placeholder="Search the specification"
+          aria-label="Search the specification"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <nav id="results" class="results" aria-label="Search results" hidden></nav>
+        <p id="search-status" class="sr-only" role="status" aria-live="polite"></p>
+      </div>
+      <button id="theme" class="theme-toggle" type="button" aria-pressed="false">Dark</button>
+    </header>
+
+    <div class="shell">
+      <div id="nav-barrier" class="nav-barrier" hidden></div>
+      <Nav current={path} />
+
+      <main id="doc" class="doc" tabindex="-1">
+        <p class="crumb">{section}</p>
+        <slot />
+        <footer class="page-foot">
+          <p>
+            This page is normative. Where it disagrees with any realization — including the
+            Flutter package — this page wins.
+          </p>
+        </footer>
+      </main>
+
+      <aside id="toc" class="toc" aria-label="On this page">
+        {toc.length > 0 && (
+          <>
+            <h2>On this page</h2>
+            <ul>
+              {toc.map((h) => (
+                <li><a href={`#${h.slug}`}>{h.text}</a></li>
+              ))}
+            </ul>
+          </>
+        )}
+      </aside>
+    </div>
+
+    <script>
+      import { wireChrome } from '../scripts/chrome';
+      import { wireSearch } from '../scripts/search';
+      import { resolveLiveTokens } from '../scripts/live-tokens';
+
+      wireChrome();
+      wireSearch();
+      resolveLiveTokens();
+    </script>
+
+    {/* Annotations read computed styles off whatever is rendered, so they need the document, not
+        React. Pages with no live specimen still have token tables to fill. */}
+    <script is:inline src="/spec.js"></script>
+
+    {needsRuntime && (
+      <script>
+        import { mountSpecimens } from '../islands/mount.jsx';
+        mountSpecimens();
+      </script>
+    )}
+  </body>
+</html>

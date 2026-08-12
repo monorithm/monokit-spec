@@ -1,0 +1,46 @@
+/* App chrome — Appbar (ScreenHeader), Pager, PageDots. Chrome is the app's, not the
+   page's: no hairline under the bar, no shadow, nothing that reads as a document header.
+   The title aligns to the content column, never to the screen edge. */
+
+.mk-appbar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;
+  min-height:var(--appbar-height);/* The header's horizontal padding IS the page inset, per spec 04 section 6: chrome content starts
+     on the content column, not at a chrome-specific gutter. With no leading affordance the title
+     therefore begins exactly where body text begins; a back affordance occupies that column and the
+     title follows it. */
+  padding-inline:var(--page-inset);
+  background:var(--background);color:var(--foreground)}
+.mk-appbar[data-on-media="true"]{background:transparent;color:var(--on-media)}
+.mk-appbar[data-transparent="true"]{background:transparent}
+.mk-appbar-title{font-size:var(--text-title-medium);line-height:var(--text-title-medium-lh);
+  font-weight:var(--weight-semibold);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mk-appbar-slot{display:flex;align-items:center;justify-content:center;min-width:var(--min-target)}
+/* An empty slot reserves nothing. The slot exists to guarantee a target for whatever it holds; with
+   no content it was still claiming a target's width, which pushed a leading title off the content
+   column and left a visible void at the trailing edge. */
+.mk-appbar-slot:empty{min-width:0}
+/* The separation between a leading affordance and the title belongs to the pair, not to the grid: a
+   grid gap applies beside a collapsed track too, which pushed a leading title off the content
+   column by exactly one gap. */
+/* Whatever occupies the middle column carries .mk-appbar-mid, so separation is a property of the
+   POSITION rather than of one variant's class. Naming variants here is what let the step indicator
+   lose its gap on both sides when the grid gap was removed. */
+.mk-appbar-slot:not(:empty) + .mk-appbar-mid{margin-inline-start:var(--space-4)}
+.mk-appbar-mid + .mk-appbar-slot:not(:empty){margin-inline-start:var(--space-4)}
+
+/* Progress through a flow, in the bar: hairline segments, no percentage. */
+.mk-steps{display:flex;gap:var(--space-4);align-items:center}
+.mk-step{width:20px;height:3px;border-radius:var(--radius-full);background:var(--border)}
+.mk-step[data-done="true"]{background:var(--primary)}
+.dark .mk-step[data-done="true"]{background:var(--sidebar-primary)}
+
+.mk-pager{position:relative;height:100%;overflow:hidden;touch-action:pan-y}
+.mk-pager-track{display:flex;height:100%;will-change:transform}
+.mk-pager-pane{flex:0 0 100%;height:100%;overflow:hidden;position:relative}
+
+.mk-dots{display:flex;align-items:center;justify-content:center;gap:var(--space-8)}
+.mk-dot{width:8px;height:8px;border-radius:var(--radius-full);background:var(--muted-foreground);
+  opacity:.35;transition:opacity var(--motion-state),width var(--motion-state),background-color var(--motion-state)}
+.mk-dot[data-active="true"]{opacity:1;width:20px;background:var(--primary)}
+.dark .mk-dot[data-active="true"]{background:var(--sidebar-primary)}
+.mk-dots[data-on-media="true"] .mk-dot{background:var(--on-media)}
+.mk-dots[data-on-media="true"] .mk-dot[data-active="true"]{background:var(--on-media)}

@@ -1,0 +1,29 @@
+/* elevation — GENERATED FILE, DO NOT EDIT.
+   Source: contract/elevation.json · Specification: 10-tokens/02-color-and-surface.md
+   Regenerate with `node build/generate.mjs`; verify with `--check`.
+
+   Borders and light, not shadows. Resting surfaces are flat and hairline-separated; shadows
+   exist at overlay tiers only.
+
+   · D6: five tiers, e0 flat, e1 raised, e2 overlay, e3 modal with barrier, e4 system.
+   · Shadow colours are mist-black at low alpha — atmosphere, not drop-shadow graphics.
+   · Dark mode keeps the same tokens and expects them to read as near-invisible: a dark
+   overlay is distinguishable because it is a lighter surface with a lit edge. Never
+   compensate.
+   · Inner shadows are not part of the system.
+*/
+
+:root{
+  --shadow-sm:0 1px 2px #090B0C0F;
+  --shadow-md:0 4px 12px #090B0C1A;
+  --shadow-lg:0 12px 32px #090B0C29;
+
+  /* tiers: e0 flat · e1 raised · e2 overlay · e3 modal (+ barrier) · e4 system */
+  --elevation-e0:none;
+
+  /* Raised, but by hairline and surface step — not by shadow. */
+  --elevation-e1:none;
+  --elevation-e2:var(--shadow-md);
+  --elevation-e3:var(--shadow-lg);
+  --elevation-e4:var(--shadow-lg);
+}

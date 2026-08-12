@@ -1,0 +1,92 @@
+/* motion — GENERATED FILE, DO NOT EDIT.
+   Source: contract/motion.json · Specification: 10-tokens/05-motion.md
+   Regenerate with `node build/generate.mjs`; verify with `--check`.
+
+   Two schemes and only two. Calm for all utility motion — the user should notice only its
+   absence. Expressive springs are a budget, not a style, spent on exactly three moments: a
+   reaction landing, a purchase succeeding, and going live.
+
+   · D10: monoOut is the signature deceleration — near-instant launch, long soft settle.
+   · Enters decelerate; exits accelerate and run one step shorter than their enter.
+   Durations are never composed by arithmetic.
+   · D26: motion is roles-only. Per-component raw duration and curve overrides are
+   deprecated; every animation binds to a named role.
+   · One moving subject at a time. Chrome never staggers.
+   · Springs animate position and scale; durations and curves animate colour and opacity.
+   The one sanctioned crossover is the gesture bridge, where a drag release settles on a
+   critically damped effect spring seeded with the release velocity.
+   · D11: reduced motion collapses everything to an opacity fade of at most 100ms, stops
+   loops, and KEEPS haptics — when motion cannot carry the confirmation, haptics do.
+*/
+
+:root{
+  --duration-instant:50ms;
+  --duration-fast:100ms;
+  --duration-base:150ms;
+  --duration-moderate:220ms;
+  --duration-slow:300ms;
+  --duration-slower:400ms;
+
+  /* A ceiling, not a target. */
+  --duration-slowest:600ms;
+
+  --ease-standard:cubic-bezier(0.2,0,0,1);
+
+  /* The signature deceleration. */
+  --ease-mono-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-decelerate:cubic-bezier(0.05,0.7,0.1,1);
+  --ease-accelerate:cubic-bezier(0.3,0,0.8,0.15);
+
+  /* Continuous processes only. */
+  --ease-linear:linear;
+
+  /* semantic roles — components consume these, never raw tokens (D26) */
+  --motion-state:var(--duration-fast) var(--ease-standard);
+  --motion-enter:var(--duration-base) var(--ease-mono-out);
+  --motion-exit:var(--duration-fast) var(--ease-accelerate);
+  --motion-emphasis:var(--duration-moderate) var(--ease-decelerate);
+  --motion-screen:var(--duration-slow) var(--ease-decelerate);
+  --motion-press:var(--duration-instant) var(--ease-linear);
+
+  /* springs, compiled to web approximations. Canonical physics live in 05-motion.md. */
+  --spring-effect-fast:65ms var(--ease-standard);
+  --spring-effect-default:100ms var(--ease-standard);
+  --spring-effect-slow:140ms var(--ease-standard);
+  --spring-spatial-fast:120ms linear(0,0.42,0.83,1.02,1.05,1.02,1);
+  --spring-spatial-default:170ms linear(0,0.38,0.8,1.03,1.06,1.02,1);
+
+  /* The dedicated celebration spring. Three moments only. */
+  --spring-celebrate:230ms linear(0,0.3,0.72,1.06,1.13,1.06,0.99,1);
+
+  --loop-spinner:800ms;
+  --loop-shimmer:1200ms;
+  --loop-progress:1200ms;
+  --loop-pulse:2000ms;
+
+  --delay-tooltip:400ms;
+  --delay-tooltip-warm:300ms;
+  --delay-chrome-rest:3000ms;
+  --hold-toast:4000ms;
+  --stagger-step:25ms;
+}
+
+@keyframes mk-spin{to{transform:rotate(360deg)}}
+@keyframes mk-shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+@keyframes mk-pulse{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes mk-shake{0%,100%{transform:translateX(0)}17%{transform:translateX(-4px)}
+  33%{transform:translateX(4px)}50%{transform:translateX(-4px)}67%{transform:translateX(4px)}83%{transform:translateX(-4px)}}
+
+/* D11: reduced motion collapses everything to a fade of at most `fast`, stops loops,
+   and keeps haptics. This bar does not lower. */
+@media (prefers-reduced-motion:reduce){
+  :root{
+    --duration-instant:0ms;
+    --duration-base:100ms;
+    --duration-moderate:100ms;
+    --duration-slow:100ms;
+    --duration-slower:100ms;
+    --duration-slowest:100ms;
+  }
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:100ms!important;transition-property:opacity!important}
+}

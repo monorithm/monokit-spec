@@ -1,0 +1,46 @@
+{
+  "family": "elevation",
+  "spec": "10-tokens/02-color-and-surface.md",
+  "cssFile": "tokens/elevation.css",
+  "dartFile": "dart/monokit_elevation.dart",
+  "dartType": "List<MonokitShadow>",
+  "description": "Borders and light, not shadows. Resting surfaces are flat and hairline-separated; shadows exist at overlay tiers only.",
+  "axes": [],
+  "notes": [
+    "D6: five tiers, e0 flat, e1 raised, e2 overlay, e3 modal with barrier, e4 system.",
+    "Shadow colours are mist-black at low alpha — atmosphere, not drop-shadow graphics.",
+    "Dark mode keeps the same tokens and expects them to read as near-invisible: a dark overlay is distinguishable because it is a lighter surface with a lit edge. Never compensate.",
+    "Inner shadows are not part of the system."
+  ],
+  "groups": {
+    "shadows": {
+      "sm": {
+        "value": "0 1px 2px #090B0C0F"
+      },
+      "md": {
+        "value": "0 4px 12px #090B0C1A"
+      },
+      "lg": {
+        "value": "0 12px 32px #090B0C29"
+      }
+    },
+    "tiers": {
+      "e0": {
+        "value": "none"
+      },
+      "e1": {
+        "value": "none",
+        "description": "Raised, but by hairline and surface step — not by shadow."
+      },
+      "e2": {
+        "value": "var(--shadow-md)"
+      },
+      "e3": {
+        "value": "var(--shadow-lg)"
+      },
+      "e4": {
+        "value": "var(--shadow-lg)"
+      }
+    }
+  }
+}

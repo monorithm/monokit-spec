@@ -1,0 +1,36 @@
+{
+  "component": "Modal",
+  "spec": "40-systems/13-accessibility.md",
+  "description": "The overlay primitive. Any surface that covers content and takes the user's whole attention routes through it, so the four things a modal owes are implemented once: a focus trap, a background excluded from every modality, focus restored to the trigger, and a dismiss control that assistive technology can find.",
+  "clauses": {
+    "MUST": [
+      "Trap focus for its lifetime: Tab and Shift+Tab cycle within the layer and never reach the background.",
+      "Exclude the background from focus, pointer AND semantics together while open. Excluding one and not the others leaves the overlay reachable by the modality that was missed.",
+      "Move focus into the surface when it opens, and expose the surface as a dialog with an accessible name.",
+      "Restore focus to the element that opened it on dismiss, when that element is still in the document.",
+      "Capture the trigger before excluding the background — exclusion blurs whatever had focus, so reading it afterwards reads nothing.",
+      "Provide a dismiss barrier that is a labelled control exposed to assistive technology.",
+      "Dismiss on Escape.",
+      "Leave the background exactly as it was found on dismiss: no residual exclusion, no residual pointer or semantic overrides.",
+      "Let the composing surface own its own position and motion, so entry, gesture and exit have a single driver."
+    ],
+    "SHOULD": [
+      "Restore focus without scrolling the page to it.",
+      "Place the barrier so the surface's own content is traversed before the dismiss control — the exit is the last stop, not the first thing between the user and the surface."
+    ],
+    "NEVER": [
+      "Use a bare element with a pointer handler as the barrier. A barrier that is only a gesture target is invisible to assistive technology, which turns every modal into a trap with no announced exit.",
+      "Rely on hiding from semantics alone where the platform can exclude focus and pointer as well.",
+      "Trap focus without a way out that is both visible and announced.",
+      "Claim an edge swipe for dismissal — edge gestures belong to the system.",
+      "Restore focus to an element that has left the document.",
+      "Nest a modal inside a modal. One primary subject at a time is the rule the whole language rests on."
+    ]
+  },
+  "states": ["open", "dismissing"],
+  "tokens": ["--overlay-scrim", "--elevation-e3", "--focus-ring-width", "--focus-ring-offset"],
+  "notes": [
+    "Verify a trap by behaviour, not by attribute. An inert ancestor leaves its descendants reporting that they are not inert while they are genuinely unreachable, so an attribute check reads as a false negative.",
+    "Modal does not manage its own presence. A surface that animates out must outlive its own open state, so the consumer decides when Modal is mounted; Modal arms on mount and restores on unmount."
+  ]
+}

@@ -1,0 +1,51 @@
+/* Surface treatments: elevation tiers, glass, scrims, the media canvas, skeletons,
+   and the icon box. Nothing here constructs a shadow locally — tiers only. */
+
+.mk-e0{background:var(--background);border:0;box-shadow:none}
+.mk-e1{background:var(--card);border:var(--border-width) solid var(--border);box-shadow:none}
+.mk-e2{background:var(--popover);border:var(--border-width) solid var(--border);box-shadow:var(--shadow-md)}
+.mk-e3{background:var(--popover);border:var(--border-width) solid var(--border);box-shadow:var(--shadow-lg)}
+.mk-e4{background:var(--popover);border:var(--border-width) solid var(--border);box-shadow:var(--shadow-lg)}
+.mk-hairline{border:var(--border-width) solid var(--border)}
+
+/* Glass = fill + border + backdrop blur, exactly three parts. Over media ALWAYS the
+   dark-context recipe, regardless of app theme. Glass never stacks on glass. */
+.mk-glass{background:var(--glass-fill);border:var(--border-width) solid var(--glass-border);
+  backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));color:var(--on-media)}
+.mk-glass-light{background:var(--glass-fill-light);border:var(--border-width) solid var(--glass-border-light);
+  backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));color:var(--foreground)}
+/* Deterministic degradation where blur is unavailable or too expensive. */
+.mk-glass-flat{background:var(--scrim-strong);border:var(--border-width) solid var(--glass-border);color:var(--on-media)}
+
+/* Media canvas is true black in both themes. Letterboxed media blends into it. */
+.mk-media-canvas{background:var(--media-canvas);color:var(--on-media)}
+
+/* Scrims are paint, not surfaces: pointer-transparent, semantics-excluded, never stacked. */
+.mk-scrim-floor,.mk-scrim-ceiling,.mk-scrim-focus{position:absolute;left:0;right:0;pointer-events:none}
+.mk-scrim-floor{bottom:0;height:33%;background:linear-gradient(to top,var(--scrim),transparent)}
+.mk-scrim-ceiling{top:0;height:15%;background:linear-gradient(to bottom,var(--scrim),transparent)}
+.mk-scrim-focus{inset:0;height:auto;background:var(--scrim-strong)}
+.mk-overlay-scrim{position:absolute;inset:0;background:var(--overlay-scrim)}
+
+/* Skeleton before spinner: a shape that predicts the content beats a spinner. */
+.mk-skeleton{background:var(--muted);border-radius:var(--radius-sm);
+  background-image:linear-gradient(90deg,transparent,color-mix(in oklab,var(--foreground) 6%,transparent),transparent);
+  background-size:200% 100%;animation:mk-shimmer var(--loop-shimmer) var(--ease-linear) infinite}
+@media (prefers-reduced-motion:reduce){.mk-skeleton{background-image:none}}
+
+/* Icon box: stroke-only, currentColor, 24 grid. Stroke width comes from the token. */
+.mk-icon{display:inline-flex;flex:none;width:var(--icon-md);height:var(--icon-md);
+  align-items:center;justify-content:center}
+.mk-icon>svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;
+  stroke-width:var(--icon-stroke);stroke-linecap:round;stroke-linejoin:round}
+.mk-icon[data-active="true"]>svg{stroke-width:var(--icon-stroke-active)}
+/* The one sanctioned stroke deviation: an optical floor at 16px so a 1x display keeps the
+   line legible. Applied here, never per component. */
+.mk-icon[data-size="xs"]>svg{stroke-width:var(--icon-stroke-xs)}
+.mk-icon[data-size="xs"][data-active="true"]>svg{stroke-width:var(--icon-stroke-active)}
+/* Chrome icons declare no size and resolve from density in CSS — 20 at touch, 16 at
+   pointer, with the optical floor following. Doing this in the cascade rather than in JS
+   is what lets a [data-density] scope change size live. */
+.mk-icon[data-size="chrome"]{width:var(--icon-chrome);height:var(--icon-chrome)}
+.mk-icon[data-size="chrome"]>svg{stroke-width:var(--icon-stroke-chrome)}
+.mk-icon[data-size="chrome"][data-active="true"]>svg{stroke-width:var(--icon-stroke-active)}

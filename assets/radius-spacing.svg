@@ -1,0 +1,138 @@
+<svg width="960" height="1112" viewBox="0 0 960 1112" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, system-ui, sans-serif">
+  
+  <rect class="gf-bg" x="0" y="0" width="960" height="1112" fill="#FFFFFF"></rect>
+
+  
+  <text class="gf-ink" x="48" y="72" font-size="20" font-weight="600" fill="#090B0C">Radius &amp; spacing</text>
+  <text class="gf-muted" x="48" y="96" font-size="13" fill="#67787C">monokit tokens — radii: base 10 with proportional multipliers · spacing: 4 pt grid</text>
+
+  
+  <text class="gf-ink" x="48" y="148" font-size="14" font-weight="600" fill="#090B0C">Radius scale<tspan class="gf-muted" font-weight="400" fill="#67787C">   ·   base = 10 · chips drawn at 2× actual size · emerald arc traces the top-left radius</tspan></text>
+
+  
+  
+  <rect class="gf-surface2 gs-hairline" x="112" y="172" width="112" height="112" rx="8" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1"></rect>
+  <path class="gs-brand" d="M 112 180 A 8 8 0 0 1 120 172" fill="none" stroke="#007A55" stroke-width="2"></path>
+  <text class="gf-ink" x="168" y="308" font-size="13" font-weight="600" fill="#090B0C" text-anchor="middle">xs</text>
+  <text class="gf-muted" x="168" y="326" font-size="12" fill="#67787C" text-anchor="middle">4 px · 0.4×</text>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="320" y="172" width="112" height="112" rx="12" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1"></rect>
+  <path class="gs-brand" d="M 320 184 A 12 12 0 0 1 332 172" fill="none" stroke="#007A55" stroke-width="2"></path>
+  <text class="gf-ink" x="376" y="308" font-size="13" font-weight="600" fill="#090B0C" text-anchor="middle">sm</text>
+  <text class="gf-muted" x="376" y="326" font-size="12" fill="#67787C" text-anchor="middle">6 px · 0.6×</text>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="528" y="172" width="112" height="112" rx="16" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1"></rect>
+  <path class="gs-brand" d="M 528 188 A 16 16 0 0 1 544 172" fill="none" stroke="#007A55" stroke-width="2"></path>
+  <text class="gf-ink" x="584" y="308" font-size="13" font-weight="600" fill="#090B0C" text-anchor="middle">md</text>
+  <text class="gf-muted" x="584" y="326" font-size="12" fill="#67787C" text-anchor="middle">8 px · 0.8×</text>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="736" y="172" width="112" height="112" rx="20" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1"></rect>
+  <path class="gs-brand" d="M 736 192 A 20 20 0 0 1 756 172" fill="none" stroke="#007A55" stroke-width="2"></path>
+  <text class="gf-ink" x="792" y="308" font-size="13" font-weight="600" fill="#090B0C" text-anchor="middle">lg</text>
+  <text class="gf-muted" x="792" y="326" font-size="12" fill="#67787C" text-anchor="middle">10 px · 1.0× (base)</text>
+
+  
+  
+  <rect class="gf-surface2 gs-hairline" x="112" y="356" width="112" height="112" rx="28" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1"></rect>
+  <path class="gs-brand" d="M 112 384 A 28 28 0 0 1 140 356" fill="none" stroke="#007A55" stroke-width="2"></path>
+  <text class="gf-ink" x="168" y="492" font-size="13" font-weight="600" fill="#090B0C" text-anchor="middle">xl</text>
+  <text class="gf-muted" x="168" y="510" font-size="12" fill="#67787C" text-anchor="middle">14 px · 1.4×</text>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="320" y="356" width="112" height="112" rx="36" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1"></rect>
+  <path class="gs-brand" d="M 320 392 A 36 36 0 0 1 356 356" fill="none" stroke="#007A55" stroke-width="2"></path>
+  <text class="gf-ink" x="376" y="492" font-size="13" font-weight="600" fill="#090B0C" text-anchor="middle">2xl</text>
+  <text class="gf-muted" x="376" y="510" font-size="12" fill="#67787C" text-anchor="middle">18 px · 1.8×</text>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="528" y="356" width="112" height="112" rx="44" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1"></rect>
+  <path class="gs-brand" d="M 528 400 A 44 44 0 0 1 572 356" fill="none" stroke="#007A55" stroke-width="2"></path>
+  <text class="gf-ink" x="584" y="492" font-size="13" font-weight="600" fill="#090B0C" text-anchor="middle">3xl</text>
+  <text class="gf-muted" x="584" y="510" font-size="12" fill="#67787C" text-anchor="middle">22 px · 2.2×</text>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="736" y="356" width="112" height="112" rx="52" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1"></rect>
+  <path class="gs-brand" d="M 736 408 A 52 52 0 0 1 788 356" fill="none" stroke="#007A55" stroke-width="2"></path>
+  <text class="gf-ink" x="792" y="492" font-size="13" font-weight="600" fill="#090B0C" text-anchor="middle">4xl</text>
+  <text class="gf-muted" x="792" y="510" font-size="12" fill="#67787C" text-anchor="middle">26 px · 2.6×</text>
+
+  
+  <rect class="gf-surface2 gs-hairline" x="400" y="538" width="160" height="32" rx="16" fill="#F9FBFB" stroke="#E3E7E8" stroke-width="1"></rect>
+  <text class="gf-ink" x="480" y="558" font-size="12" fill="#090B0C" text-anchor="middle">full · 999 (pill)</text>
+
+  
+  <text class="gf-ink" x="48" y="628" font-size="14" font-weight="600" fill="#090B0C">Spacing scale<tspan class="gf-muted" font-weight="400" fill="#67787C">   ·   4 pt grid · bars drawn at 8× (one grid column = 4 pt)</tspan></text>
+
+  
+  <rect class="gf-surface gs-hairline" x="48" y="652" width="864" height="404" rx="10" fill="#FFFFFF" stroke="#E3E7E8" stroke-width="1"></rect>
+
+  
+  <g class="gs-hairline" stroke="#E3E7E8" stroke-width="1">
+    <line x1="232" y1="672" x2="232" y2="1036"></line>
+    <line x1="264" y1="672" x2="264" y2="1036"></line>
+    <line x1="296" y1="672" x2="296" y2="1036"></line>
+    <line x1="328" y1="672" x2="328" y2="1036"></line>
+    <line x1="360" y1="672" x2="360" y2="1036"></line>
+    <line x1="392" y1="672" x2="392" y2="1036"></line>
+    <line x1="424" y1="672" x2="424" y2="1036"></line>
+    <line x1="456" y1="672" x2="456" y2="1036"></line>
+    <line x1="488" y1="672" x2="488" y2="1036"></line>
+    <line x1="520" y1="672" x2="520" y2="1036"></line>
+    <line x1="552" y1="672" x2="552" y2="1036"></line>
+    <line x1="584" y1="672" x2="584" y2="1036"></line>
+  </g>
+  
+  <line class="gs-hairline-strong" x1="200" y1="672" x2="200" y2="1036" stroke="#9CA8AB" stroke-width="1"></line>
+
+  
+  
+  <text class="gf-ink" x="76" y="698" font-size="13" font-weight="500" fill="#090B0C">s4 · xs</text>
+  <rect class="gf-brand" x="200" y="687" width="32" height="14" rx="3" fill="#007A55"></rect>
+  <text class="gf-muted" x="244" y="698" font-size="12" fill="#67787C">4</text>
+
+  
+  <text class="gf-ink" x="76" y="738" font-size="13" font-weight="500" fill="#090B0C">s8</text>
+  <rect class="gf-brand" x="200" y="727" width="64" height="14" rx="3" fill="#007A55"></rect>
+  <text class="gf-muted" x="276" y="738" font-size="12" fill="#67787C">8</text>
+
+  
+  <text class="gf-ink" x="76" y="778" font-size="13" font-weight="500" fill="#090B0C">s12</text>
+  <rect class="gf-brand" x="200" y="767" width="96" height="14" rx="3" fill="#007A55"></rect>
+  <text class="gf-muted" x="308" y="778" font-size="12" fill="#67787C">12</text>
+
+  
+  <text class="gf-ink" x="76" y="818" font-size="13" font-weight="500" fill="#090B0C">s16</text>
+  <rect class="gf-brand" x="200" y="807" width="128" height="14" rx="3" fill="#007A55"></rect>
+  <text class="gf-muted" x="340" y="818" font-size="12" fill="#67787C">16</text>
+
+  
+  <text class="gf-ink" x="76" y="858" font-size="13" font-weight="500" fill="#090B0C">s20</text>
+  <rect class="gf-brand" x="200" y="847" width="160" height="14" rx="3" fill="#007A55"></rect>
+  <text class="gf-muted" x="372" y="858" font-size="12" fill="#67787C">20</text>
+
+  
+  <text class="gf-ink" x="76" y="898" font-size="13" font-weight="500" fill="#090B0C">s24</text>
+  <rect class="gf-brand" x="200" y="887" width="192" height="14" rx="3" fill="#007A55"></rect>
+  <text class="gf-muted" x="404" y="898" font-size="12" fill="#67787C">24</text>
+
+  
+  <text class="gf-ink" x="76" y="938" font-size="13" font-weight="500" fill="#090B0C">s32</text>
+  <rect class="gf-brand" x="200" y="927" width="256" height="14" rx="3" fill="#007A55"></rect>
+  <text class="gf-muted" x="468" y="938" font-size="12" fill="#67787C">32</text>
+
+  
+  <text class="gf-ink" x="76" y="978" font-size="13" font-weight="500" fill="#090B0C">s40</text>
+  <rect class="gf-brand" x="200" y="967" width="320" height="14" rx="3" fill="#007A55"></rect>
+  <text class="gf-muted" x="532" y="978" font-size="12" fill="#67787C">40</text>
+
+  
+  <text class="gf-ink" x="76" y="1018" font-size="13" font-weight="500" fill="#090B0C">s48 · giant</text>
+  <rect class="gf-brand" x="200" y="1007" width="384" height="14" rx="3" fill="#007A55"></rect>
+  <text class="gf-muted" x="596" y="1018" font-size="12" fill="#67787C">48</text>
+
+  
+  <text class="gf-muted" x="48" y="1086" font-size="12" fill="#67787C">Bars drawn at 8× — each hairline column marks 4 pt on the grid. Values in pt (logical px); aliases s4…s48 map to xs…giant.</text>
+</svg>

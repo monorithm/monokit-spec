@@ -1,0 +1,58 @@
+/* typography — GENERATED FILE, DO NOT EDIT.
+   Source: contract/typography.json · Specification: 10-tokens/03-typography.md
+   Regenerate with `node build/generate.mjs`; verify with `--check`.
+
+   IBM Plex, one superfamily, three registers: Sans for chrome and content, Serif strictly
+   for reading surfaces, Mono for machine-shaped strings. Quiet chrome, loud content.
+
+   · D7: the IBM Plex superfamily. px is canonical; the rem values are the web pipeline's
+   derived parity.
+   · The four display and headline roles are FLUID: they interpolate between the top of
+   compact (600px) and the bottom of wide (1280px). Everything else is fixed at every width,
+   because if a design wants bigger chrome on desktop the answer is density and spacing, not
+   font size.
+   · Hierarchy spans one step: adjacent slots differ by at most one ramp step and/or one
+   weight step.
+   · Weights 400/500/600/700 only, never below 400. 12px is the floor and nothing renders
+   below it.
+*/
+
+:root{
+  --font-sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* The reading register. The document reader and long-form body, nowhere else. */
+  --font-serif:"IBM Plex Serif",ui-serif,Georgia,Cambria,serif;
+  /* Machine-shaped strings the user reads rather than types. */
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+
+  /* content voice — FLUID between the top of compact and the bottom of wide */
+  --text-display-large:clamp(2.25rem,calc(2.25rem + 0.5*(100vw - 600px)/680),2.75rem);
+  --text-display-large-lh:1.10; --text-display-large-tracking:-0.025em;
+  --text-display-medium:clamp(1.875rem,calc(1.875rem + 0.375*(100vw - 600px)/680),2.25rem);
+  --text-display-medium-lh:1.15; --text-display-medium-tracking:-0.02em;
+  --text-headline-large:clamp(1.5rem,calc(1.5rem + 0.25*(100vw - 600px)/680),1.75rem);
+  --text-headline-large-lh:1.20; --text-headline-large-tracking:-0.015em;
+  --text-headline-medium:clamp(1.25rem,calc(1.25rem + 0.125*(100vw - 600px)/680),1.375rem);
+  --text-headline-medium-lh:1.25; --text-headline-medium-tracking:-0.01em;
+
+  /* fixed at every width */
+  --text-title-large:1.125rem; --text-title-large-lh:1.30;
+  --text-title-medium:1rem; --text-title-medium-lh:1.35;
+  --text-body-large:1rem; --text-body-large-lh:1.50;
+  --text-body-medium:0.875rem; --text-body-medium-lh:1.45;
+  --text-label-large:0.875rem; --text-label-large-lh:1.20;
+  --text-label-medium:0.75rem; --text-label-medium-lh:1.20;
+  --text-button:0.875rem; --text-button-lh:1.20;
+  --text-code:0.8125rem; --text-code-lh:1.50;
+  --text-prose:1.0625rem; --text-prose-lh:1.65;
+  --text-prose-heading:1.375rem; --text-prose-heading-lh:1.30; --text-prose-heading-tracking:-0.01em;
+  --text-media-title:1rem; --text-media-title-lh:1.30; --text-media-title-tracking:-0.0125em;
+  --text-media-caption:0.875rem; --text-media-caption-lh:1.40;
+
+  /* 12px. Nothing renders below it. */
+  --text-floor:0.75rem;
+}

@@ -1,0 +1,40 @@
+{
+  "component": "Sheet",
+  "spec": "30-components/10-components-core.md",
+  "description": "The native answer to one decision. It enters from the edge it belongs to, it is draggable, and on a phone it replaces the centred dialog outright.",
+  "clauses": {
+    "MUST": [
+      "Compose the overlay primitive for its trap, its exclusion, its restore and its labelled barrier.",
+      "Render at the modal tier, over the overlay scrim.",
+      "Show a visible grabber whenever it is draggable.",
+      "Dismiss on travel past the specified fraction of its height, or on a release above the specified velocity.",
+      "Return to rest on the spatial spring when a drag is released under both thresholds, leaving no trace.",
+      "Drive position from a single source, so entry, drag, return and exit cannot fight.",
+      "Enter on the modal-enter role and exit one step shorter.",
+      "Keep a close affordance that does not require the gesture."
+    ],
+    "SHOULD": [
+      "Centre and detach from the edges once the layout is medium or wider, at the sheet container width.",
+      "Take the largest radius steps — a sheet is a large surface, and radius scales with size."
+    ],
+    "NEVER": [
+      "Drive entry from a keyframe animation while a gesture drives position. Re-adding the animation restarts it from its first frame.",
+      "Stack a sheet on a sheet.",
+      "Claim an edge swipe for dismissal."
+    ]
+  },
+  "states": [
+    "open",
+    "dragged",
+    "dismissing"
+  ],
+  "tokens": [
+    "--sheet-radius",
+    "--sheet-grabber",
+    "--overlay-scrim",
+    "--elevation-e3",
+    "--gesture-dismiss-fraction",
+    "--gesture-dismiss-velocity",
+    "--gesture-rubber-band"
+  ]
+}

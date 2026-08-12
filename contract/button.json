@@ -1,0 +1,54 @@
+{
+  "component": "Button",
+  "spec": "30-components/10-components-core.md",
+  "description": "The one obvious next step. Under monofocus a view has at most one primary action, so a button's emphasis is a claim about the screen rather than a decoration on the control.",
+  "clauses": {
+    "MUST": [
+      "Resolve every visual through its variant resolver from tokens, and expose that resolver so a custom control can speak the same language.",
+      "Keep the three axes separate: variant is tone and emphasis, size is geometry, state is the resolved state set.",
+      "Take its minimum height from density, and decouple visual size from hit target.",
+      "Use destructiveForeground on the destructive variant — never the brand ink as a stand-in.",
+      "Take the soft variant's ink from the brand ink verified against primarySoft, not from the brand surface.",
+      "Pair every enter with a faster exit, and animate press on the press-feedback role.",
+      "Fire a light impact haptic on activate, after commit rather than on request.",
+      "Carry a label when icon-only, and route its focus treatment through the shared focus ring."
+    ],
+    "SHOULD": [
+      "Keep hover and press shifts derived — a lerp of the resting fill toward background or foreground — so they survive a palette change.",
+      "Use the soft variant as the mid-emphasis step when a screen needs brand colour without a second primary."
+    ],
+    "NEVER": [
+      "Show two primary actions in one view. The second one is the answer to a question the screen has not asked.",
+      "Mint a state variant. There is no primaryDisabled and no smallGhost — states resolve inside the resolver.",
+      "Express danger with a status colour on primary. Danger is the destructive variant.",
+      "Hardcode a padding, a radius or a max width.",
+      "Ripple or flash a colour on press."
+    ]
+  },
+  "states": [
+    "hovered",
+    "pressed",
+    "focusVisible",
+    "disabled",
+    "pending"
+  ],
+  "variants": [
+    "primary",
+    "soft",
+    "secondary",
+    "outline",
+    "ghost",
+    "destructive",
+    "link"
+  ],
+  "tokens": [
+    "--row-1",
+    "--min-target",
+    "--motion-press",
+    "--primary",
+    "--primary-soft",
+    "--primary-text",
+    "--destructive",
+    "--destructive-foreground"
+  ]
+}

@@ -1,0 +1,84 @@
+/* Forms — Field, Input, InputOtp, Switch. A native field is a well, not a box: the
+   muted surface carries de-emphasis, and there is no border to draw a rectangle with.
+   Focus is still the neutral ring, painted outside, bound to focus-visible. */
+
+.mk-field{display:flex;flex-direction:column;gap:var(--space-8)}
+.mk-field-label{font-size:var(--text-label-large);line-height:var(--text-label-large-lh);
+  font-weight:var(--weight-medium);color:var(--foreground)}
+.mk-field-hint{font-size:var(--text-label-medium);line-height:var(--text-label-medium-lh);
+  color:var(--muted-foreground)}
+.mk-field-error{font-size:var(--text-label-medium);line-height:var(--text-label-medium-lh);
+  color:var(--destructive-text)}
+.mk-field-row{display:flex;align-items:center;gap:var(--space-8)}
+
+.mk-input{width:100%;min-width:0;background:var(--muted);color:var(--foreground);border:0;
+  border-radius:var(--radius-xl);min-height:var(--row-1);padding:0 var(--space-16);
+  font-family:var(--font-sans);font-size:var(--text-body-large);line-height:var(--text-body-large-lh);
+  transition:background-color var(--motion-state)}
+/* mutedForeground is verified on background, where it is 4.61; on the muted well it is 4.14.
+   A field is a well, so its placeholder takes the ink verified against that surface. */
+.mk-input::placeholder{color:var(--muted-text)}
+.mk-input:disabled{opacity:.5}
+.mk-input[aria-invalid="true"]{background:var(--destructive-soft);color:var(--destructive-text)}
+/* The subject field on a single-decision screen: phone number, amount, code. */
+.mk-input-lg{min-height:var(--field-height-lg);font-size:var(--text-headline-medium);
+  line-height:var(--text-headline-medium-lh);font-weight:var(--weight-medium);
+  font-variant-numeric:tabular-nums}
+.mk-input-plain{background:transparent;padding:0}
+
+/* Country button: a well that opens a sheet, matched to the field beside it. */
+.mk-picker{display:inline-flex;align-items:center;gap:var(--space-8);flex:none;
+  background:var(--muted);color:var(--foreground);border:0;border-radius:var(--radius-xl);
+  min-height:var(--field-height-lg);padding:0 var(--space-16);
+  font-size:var(--text-headline-medium);font-weight:var(--weight-medium);
+  font-variant-numeric:tabular-nums;transition:background-color var(--motion-state)}
+.mk-picker[data-pressed="true"]{background:var(--accent)}
+
+/* OTP. The code is the screen's subject, so the digits take the content voice with
+   tabular figures — not the mono register, which is for machine-shaped strings the
+   user reads rather than types. The active cell carries a brand caret: here focus
+   IS intent, which is why it is not the neutral ring. */
+.mk-otp{display:flex;gap:var(--space-8)}
+.mk-otp-cell{position:relative;flex:1;min-width:0;height:var(--field-height-lg);
+  display:flex;align-items:center;justify-content:center;background:var(--muted);
+  border-radius:var(--radius-xl);font-size:var(--text-headline-medium);line-height:1;
+  font-weight:var(--weight-semibold);font-variant-numeric:tabular-nums;
+  transition:background-color var(--motion-state),outline-color var(--motion-state)}
+.mk-otp-cell[data-active="true"]{outline:2px solid var(--primary);outline-offset:-2px}
+.dark .mk-otp-cell[data-active="true"]{outline-color:var(--sidebar-primary)}
+.mk-otp[data-invalid="true"] .mk-otp-cell{background:var(--destructive-soft);color:var(--destructive-text)}
+.mk-otp[data-invalid="true"]{animation:mk-shake var(--duration-slower) var(--ease-standard)}
+.mk-otp-caret{width:2px;height:24px;background:var(--primary);border-radius:var(--radius-full);
+  animation:mk-pulse var(--loop-pulse) var(--ease-linear) infinite}
+.mk-otp-input{position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;background:none;
+  font-size:16px;letter-spacing:1em;caret-color:transparent}
+
+/* Switch — flat track, flat knob. Borders and light, not shadows.
+   The track is a fixed size at every density, but the TARGET is the density minimum: the hit
+   area extends with slop rather than by scaling the visual, per spec 07 section 10. Slop is an
+   absolutely-positioned ::before, not padding — padding would move the knob's absolute origin
+   and break its travel.
+
+   The knob size and its travel are DERIVED from the track and the inset, so the three cannot
+   drift apart. A transform has no logical equivalent, so RTL mirrors by flipping the sign of one
+   variable rather than by restating the rule. */
+.mk-switch{--switch-w:52px;--switch-h:32px;--switch-inset:2px;
+  --switch-knob:calc(var(--switch-h) - 2 * var(--switch-inset));
+  --switch-travel:calc(var(--switch-w) - var(--switch-knob) - 2 * var(--switch-inset));
+  --switch-dir:1;
+  position:relative;flex:none;width:var(--switch-w);height:var(--switch-h);
+  border-radius:var(--radius-full);background:var(--muted);border:0;
+  transition:background-color var(--motion-state)}
+[dir="rtl"] .mk-switch{--switch-dir:-1}
+.mk-switch::before{content:"";position:absolute;inset-inline:0;
+  top:calc((var(--min-target) - var(--switch-h)) / -2);
+  bottom:calc((var(--min-target) - var(--switch-h)) / -2)}
+.mk-switch[data-on="true"]{background:var(--primary)}
+.mk-switch:disabled{opacity:.5}
+.mk-switch-knob{position:absolute;top:var(--switch-inset);inset-inline-start:var(--switch-inset);
+  width:var(--switch-knob);height:var(--switch-knob);
+  border-radius:var(--radius-full);background:var(--background);
+  transition:transform var(--spring-effect-default)}
+.mk-switch[data-on="true"] .mk-switch-knob{
+  transform:translateX(calc(var(--switch-travel) * var(--switch-dir)))}
+.dark .mk-otp-caret{background:var(--sidebar-primary)}

@@ -1,0 +1,38 @@
+---
+/* The information architecture, straight from src/nav.json.
+ *
+ * The per-section note is the reason this is not a generic docs sidebar: each group says what it
+ * is for before listing what is in it. Three-way Foundations / Styles / Patterns, then Primitives
+ * ahead of Components because everything else composes from those three.
+ */
+import nav from '../nav.json';
+
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+---
+
+<nav id="nav" class="nav" aria-label="Specification">
+  {nav.sections.map((section) => (
+    <section class="nav-group">
+      <h2>{section.title}</h2>
+      {section.note && <p class="nav-note">{section.note}</p>}
+      <ul>
+        {section.pages.map((page) => (
+          <li>
+            <a
+              href={`/${page.path}/`}
+              data-path={page.path}
+              aria-current={page.path === current ? 'page' : 'false'}
+            >
+              {page.title}
+              {'stub' in page && page.stub ? <span class="stub">stub</span> : null}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</nav>

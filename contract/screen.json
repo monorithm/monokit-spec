@@ -1,0 +1,31 @@
+{
+  "component": "Screen",
+  "spec": "30-components/10-components-core.md",
+  "description": "The delivery vehicle for monofocus: one subject, three regions, and the layer discipline everything above content depends on.",
+  "clauses": {
+    "MUST": [
+      "Declare exactly one primary subject.",
+      "Scroll its content region and only its content region.",
+      "Own the layer order, so chrome, overlays and system surfaces cannot be stacked ad hoc by call sites.",
+      "Apply safe-area padding to interactive controls while letting media bleed past them.",
+      "Resolve its page inset per layout scope rather than once per screen.",
+      "Keep one footer region carrying one subject."
+    ],
+    "SHOULD": [
+      "End its scroll with enough padding that the last element is never pinned against chrome.",
+      "Host its overlays through one layer so toasts, sheets and menus share a single z-discipline."
+    ],
+    "NEVER": [
+      "Stack two footers.",
+      "Gain a second subject of equal weight at a wider width. More pixels means more context, not more subjects.",
+      "Let a bleeding surface place controls outside the safe area."
+    ]
+  },
+  "tokens": [
+    "--page-inset",
+    "--header-height",
+    "--safe-top",
+    "--safe-bottom",
+    "--space-48"
+  ]
+}

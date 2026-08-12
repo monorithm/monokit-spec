@@ -1,0 +1,30 @@
+/* Type roles. Components consume roles, never ad-hoc sizes. Register is the role's
+   identity along with weight: a component may re-size a role, never re-family or
+   re-weight it. Hierarchy spans one step — adjacent slots differ by at most one
+   ramp step and/or one weight step. */
+
+.mk-display-large{font-family:var(--font-sans);font-size:var(--text-display-large);line-height:var(--text-display-large-lh);letter-spacing:var(--text-display-large-tracking);font-weight:var(--weight-bold)}
+.mk-display-medium{font-family:var(--font-sans);font-size:var(--text-display-medium);line-height:var(--text-display-medium-lh);letter-spacing:var(--text-display-medium-tracking);font-weight:var(--weight-bold)}
+.mk-headline-large{font-family:var(--font-sans);font-size:var(--text-headline-large);line-height:var(--text-headline-large-lh);letter-spacing:var(--text-headline-large-tracking);font-weight:var(--weight-bold)}
+.mk-headline-medium{font-family:var(--font-sans);font-size:var(--text-headline-medium);line-height:var(--text-headline-medium-lh);letter-spacing:var(--text-headline-medium-tracking);font-weight:var(--weight-semibold)}
+.mk-title-large{font-family:var(--font-sans);font-size:var(--text-title-large);line-height:var(--text-title-large-lh);font-weight:var(--weight-semibold)}
+.mk-title-medium{font-family:var(--font-sans);font-size:var(--text-title-medium);line-height:var(--text-title-medium-lh);font-weight:var(--weight-semibold)}
+.mk-body-large{font-family:var(--font-sans);font-size:var(--text-body-large);line-height:var(--text-body-large-lh);font-weight:var(--weight-regular)}
+.mk-body-medium{font-family:var(--font-sans);font-size:var(--text-body-medium);line-height:var(--text-body-medium-lh);font-weight:var(--weight-regular)}
+.mk-label-large{font-family:var(--font-sans);font-size:var(--text-label-large);line-height:var(--text-label-large-lh);font-weight:var(--weight-medium)}
+.mk-label-medium{font-family:var(--font-sans);font-size:var(--text-label-medium);line-height:var(--text-label-medium-lh);font-weight:var(--weight-medium)}
+.mk-button-text{font-family:var(--font-sans);font-size:var(--text-button);line-height:var(--text-button-lh);font-weight:var(--weight-semibold)}
+.mk-code{font-family:var(--font-mono);font-size:var(--text-code);line-height:var(--text-code-lh);font-weight:var(--weight-regular)}
+.mk-prose{font-family:var(--font-serif);font-size:var(--text-prose);line-height:var(--text-prose-lh);font-weight:var(--weight-regular)}
+.mk-prose-heading{font-family:var(--font-serif);font-size:var(--text-prose-heading);line-height:var(--text-prose-heading-lh);letter-spacing:var(--text-prose-heading-tracking);font-weight:var(--weight-semibold)}
+.mk-media-title{font-family:var(--font-sans);font-size:var(--text-media-title);line-height:var(--text-media-title-lh);letter-spacing:var(--text-media-title-tracking);font-weight:var(--weight-semibold);color:var(--on-media)}
+.mk-media-caption{font-family:var(--font-sans);font-size:var(--text-media-caption);line-height:var(--text-media-caption-lh);font-weight:var(--weight-regular);color:var(--on-media)}
+
+/* Tabular figures for anything that changes or aligns: prices, counters, timers,
+   timestamps. Proportional stays the default inside prose. */
+.mk-tabular{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.mk-muted{color:var(--muted-foreground)}
+.mk-on-media-muted{color:var(--on-media-muted)}
+/* Truncation: chrome titles at 1 line, list-item titles at 2, body wraps. */
+.mk-truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mk-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}

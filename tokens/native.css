@@ -1,0 +1,40 @@
+/* Native resolution layer (v2). Every VALUE here comes from the v1 token files or from
+   the device; this file only resolves the choices that differ on a native surface and
+   names the geometry the platform hands us. No new colour, type size, or spacing step.
+   Entries marked [v2] have no counterpart in the specification yet. */
+
+:root{
+  /* Density is NOT forced here. It resolves from the primary input device in
+     space.css — coarse pointer to touch, fine to pointer — per spec 12 section 2.2,
+     and [data-density] scopes it explicitly for an embedded context. A native surface
+     is usually touch because the device is coarse, not because the stylesheet said so.
+     44 is the target at touch and does not move; tightness is padding and row height. */
+
+  /* Safe areas — supplied by the device; 0 in a bezel-less viewport. */
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --safe-left:env(safe-area-inset-left,0px);
+  --safe-right:env(safe-area-inset-right,0px);
+  /* Keyboard inset — the host writes this at runtime. The app never draws keys;
+     content lifts by the inset. */
+  --keyboard-inset:0px;
+
+  /* App chrome, not page furniture. [v2] */
+  --appbar-height:var(--header-height);        /* 56 at compact */
+  --tabbar-height:56px;
+  --field-height-lg:56px;                      /* the screen's one subject: phone, OTP */
+  --sheet-radius:var(--radius-huge);           /* 26 — a sheet is a large surface */
+  --sheet-grabber:36px;
+
+  /* Control and row heights are NOT aliased here. A var() alias resolves at the element
+     that declares it, so aliasing a density-varying token on :root freezes it to whatever
+     :root resolved — and no [data-density] scope below can change it. The density-resolved
+     tokens (--row-1, --row-2, --control-height, --gap-density, --icon-chrome) are therefore
+     referenced at the point of use, in parts/*.css. Same reason --list-text-inset is a calc
+     in parts/lists.css rather than a number here. */
+
+  /* Gesture thresholds are NOT here. --gesture-dismiss-fraction (0.30),
+     --gesture-dismiss-velocity (700px/s) and --gesture-rubber-band come from
+     tokens/interaction.css, generated from contract/interaction.json. monokit never
+     claims an edge swipe (spec 07 section 4), so there is no edge-width token. */
+}

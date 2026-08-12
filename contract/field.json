@@ -1,0 +1,34 @@
+{
+  "component": "Field",
+  "spec": "30-components/10-components-core.md",
+  "description": "One control, one label, one message. Forms advance one decision at a time, and a field is that decision made addressable.",
+  "clauses": {
+    "MUST": [
+      "Compose exactly one control, one label and one message.",
+      "Associate the label with its control programmatically, so tapping the label reaches the control.",
+      "Announce its error through a live region, so a validation failure reaches assistive technology without a focus move.",
+      "Take error ink from destructive on the page surface, and from destructiveText when the message sits on a soft surface.",
+      "Carry a pending affordance for asynchronous validation, distinct from disabled."
+    ],
+    "SHOULD": [
+      "Say what would fix the error rather than what is wrong: \"Enter the six digits we sent\" over \"Invalid input\".",
+      "Keep the message slot occupied by hint text when there is no error, so the layout does not jump."
+    ],
+    "NEVER": [
+      "Compose two controls. Two decisions are two fields.",
+      "Replace the label with a placeholder.",
+      "Colour the message without also wording it."
+    ]
+  },
+  "states": [
+    "invalid",
+    "disabled",
+    "pending"
+  ],
+  "tokens": [
+    "--destructive",
+    "--destructive-text",
+    "--muted-foreground",
+    "--space-8"
+  ]
+}

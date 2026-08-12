@@ -1,0 +1,46 @@
+{
+  "name": "monokit-spec",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "description": "The monokit design specification. The normative source for the design language; every realization is downstream.",
+  "packageManager": "yarn@4.14.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "yarn check:tokens && yarn check:prose && yarn check:nav && yarn check:specimens",
+    "check:tokens": "node build/generate.mjs --check",
+    "check:prose": "node build/check-prose.mjs",
+    "check:nav": "node build/check-nav.mjs",
+    "check:specimens": "node build/check-specimens.mjs",
+    "generate": "node build/generate.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.2.2",
+    "@astrojs/react": "^5.0.1",
+    "astro": "^7.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.34.5",
+    "unist-util-visit": "^5.1.0",
+    "unist-util-visit-parents": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "esbuild": "^0.28.2"
+  },
+  "dependenciesMeta": {
+    "esbuild": {
+      "built": true
+    },
+    "sharp": {
+      "built": true
+    }
+  }
+}

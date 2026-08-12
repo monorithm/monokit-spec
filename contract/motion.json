@@ -1,0 +1,142 @@
+{
+  "family": "motion",
+  "spec": "10-tokens/05-motion.md",
+  "cssFile": "tokens/motion.css",
+  "dartFile": "dart/monokit_motion.dart",
+  "dartType": "MonokitMotionRole",
+  "description": "Two schemes and only two. Calm for all utility motion — the user should notice only its absence. Expressive springs are a budget, not a style, spent on exactly three moments: a reaction landing, a purchase succeeding, and going live.",
+  "axes": [
+    "reducedMotion"
+  ],
+  "notes": [
+    "D10: monoOut is the signature deceleration — near-instant launch, long soft settle.",
+    "Enters decelerate; exits accelerate and run one step shorter than their enter. Durations are never composed by arithmetic.",
+    "D26: motion is roles-only. Per-component raw duration and curve overrides are deprecated; every animation binds to a named role.",
+    "One moving subject at a time. Chrome never staggers.",
+    "Springs animate position and scale; durations and curves animate colour and opacity. The one sanctioned crossover is the gesture bridge, where a drag release settles on a critically damped effect spring seeded with the release velocity.",
+    "D11: reduced motion collapses everything to an opacity fade of at most 100ms, stops loops, and KEEPS haptics — when motion cannot carry the confirmation, haptics do."
+  ],
+  "groups": {
+    "durations": {
+      "instant": {
+        "value": "50ms"
+      },
+      "fast": {
+        "value": "100ms"
+      },
+      "base": {
+        "value": "150ms"
+      },
+      "moderate": {
+        "value": "220ms"
+      },
+      "slow": {
+        "value": "300ms"
+      },
+      "slower": {
+        "value": "400ms"
+      },
+      "slowest": {
+        "value": "600ms",
+        "description": "A ceiling, not a target."
+      }
+    },
+    "easings": {
+      "standard": {
+        "value": "cubic-bezier(0.2,0,0,1)"
+      },
+      "monoOut": {
+        "value": "cubic-bezier(0.23,1,0.32,1)",
+        "description": "The signature deceleration."
+      },
+      "decelerate": {
+        "value": "cubic-bezier(0.05,0.7,0.1,1)"
+      },
+      "accelerate": {
+        "value": "cubic-bezier(0.3,0,0.8,0.15)"
+      },
+      "linear": {
+        "value": "linear",
+        "description": "Continuous processes only."
+      }
+    },
+    "roles": {
+      "state": {
+        "duration": "fast",
+        "easing": "standard"
+      },
+      "enter": {
+        "duration": "base",
+        "easing": "monoOut"
+      },
+      "exit": {
+        "duration": "fast",
+        "easing": "accelerate"
+      },
+      "emphasis": {
+        "duration": "moderate",
+        "easing": "decelerate"
+      },
+      "screen": {
+        "duration": "slow",
+        "easing": "decelerate"
+      },
+      "press": {
+        "duration": "instant",
+        "easing": "linear"
+      }
+    },
+    "springs": {
+      "effectFast": {
+        "value": "65ms var(--ease-standard)"
+      },
+      "effectDefault": {
+        "value": "100ms var(--ease-standard)"
+      },
+      "effectSlow": {
+        "value": "140ms var(--ease-standard)"
+      },
+      "spatialFast": {
+        "value": "120ms linear(0,0.42,0.83,1.02,1.05,1.02,1)"
+      },
+      "spatialDefault": {
+        "value": "170ms linear(0,0.38,0.8,1.03,1.06,1.02,1)"
+      },
+      "celebrate": {
+        "value": "230ms linear(0,0.3,0.72,1.06,1.13,1.06,0.99,1)",
+        "description": "The dedicated celebration spring. Three moments only."
+      }
+    },
+    "loops": {
+      "spinner": {
+        "value": "800ms"
+      },
+      "shimmer": {
+        "value": "1200ms"
+      },
+      "progress": {
+        "value": "1200ms"
+      },
+      "pulse": {
+        "value": "2000ms"
+      }
+    },
+    "delays": {
+      "tooltip": {
+        "value": "400ms"
+      },
+      "tooltipWarm": {
+        "value": "300ms"
+      },
+      "chromeRest": {
+        "value": "3000ms"
+      },
+      "toastHold": {
+        "value": "4000ms"
+      },
+      "staggerStep": {
+        "value": "25ms"
+      }
+    }
+  }
+}

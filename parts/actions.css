@@ -1,0 +1,63 @@
+/* Actions — Button, Pressable. Native press is a scale, not a translate: the target
+   acknowledges the finger by shrinking under it, within one frame, with no colour flash
+   and no ripple. Fills darken by derivation (a lerp toward foreground), never from a
+   minted hover token, so the relationship survives a palette change. */
+
+.mk-pressable{appearance:none;background:none;border:0;padding:0;margin:0;cursor:pointer;
+  color:inherit;font:inherit;text-align:inherit;-webkit-tap-highlight-color:transparent;
+  touch-action:manipulation}
+.mk-pressable:disabled,.mk-pressable[aria-disabled="true"]{cursor:not-allowed}
+.mk-pressable[data-pending="true"]{cursor:progress}
+.mk-press-scale{transition:transform var(--motion-press)}
+.mk-press-scale[data-pressed="true"]:not(:disabled){transform:scale(.97)}
+
+.mk-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-8);
+  border-radius:var(--radius-xl);border:var(--border-width) solid transparent;
+  font-family:var(--font-sans);font-size:var(--text-button);line-height:var(--text-button-lh);
+  font-weight:var(--weight-semibold);white-space:nowrap;box-shadow:none;
+  transition:background-color var(--motion-state),color var(--motion-state),transform var(--motion-press)}
+.mk-btn[data-pressed="true"]:not(:disabled){transform:scale(.97)}
+.mk-btn:disabled,.mk-btn[aria-disabled="true"]{opacity:.5}
+.mk-btn-block{width:100%}
+
+/* Geometry only — min-heights, so scaled text grows the control instead of clipping it. */
+.mk-btn-md{min-height:var(--control-height);padding:0 var(--space-20)}
+.mk-btn-cta{min-height:var(--row-1);padding:0 var(--space-24);border-radius:var(--radius-xxl);
+  font-size:var(--text-body-large);line-height:var(--text-body-large-lh)}
+
+.mk-btn-primary{background:var(--primary);color:var(--primary-foreground)}
+.mk-btn-primary[data-pressed="true"]:not(:disabled){background:color-mix(in oklab,var(--primary) 88%,var(--foreground))}
+/* Brand ink, not the brand surface: primary on primarySoft measures 4.45 in light and 1.76 in
+   dark, because #006045 is specified as a surface. primaryText is the verified ink. */
+.mk-btn-soft{background:var(--primary-soft);color:var(--primary-text)}
+.mk-btn-soft[data-pressed="true"]:not(:disabled){background:color-mix(in oklab,var(--primary-soft) 88%,var(--foreground))}
+.mk-btn-secondary{background:var(--secondary);color:var(--secondary-foreground)}
+.mk-btn-secondary[data-pressed="true"]:not(:disabled){background:color-mix(in oklab,var(--secondary) 92%,var(--foreground))}
+.mk-btn-ghost{background:transparent;color:var(--foreground)}
+.mk-btn-ghost[data-pressed="true"]:not(:disabled){background:var(--accent);color:var(--accent-foreground)}
+.mk-btn-destructive{background:var(--destructive);color:var(--destructive-foreground)}
+.mk-btn-destructive[data-pressed="true"]:not(:disabled){background:color-mix(in oklab,var(--destructive) 90%,var(--foreground))}
+/* Bar action: an app-chrome verb, brand ink, no fill. */
+.mk-btn-plain{background:transparent;color:var(--primary);min-height:var(--min-target);
+  padding:0 var(--space-12);font-size:var(--text-body-large)}
+.dark .mk-btn-plain{color:var(--sidebar-primary)}
+.mk-btn-plain[data-pressed="true"]:not(:disabled){opacity:.6}
+/* Over media the on-media set is mode-invariant, so the bar action takes on-media ink —
+   emerald on true black does not clear the contrast bar. */
+.mk-screen[data-on-media="true"] .mk-btn-plain,.mk-appbar[data-on-media="true"] .mk-btn-plain{color:var(--on-media)}
+
+/* Icon-only actions pad out to the density minimum; the glyph keeps its size token. */
+.mk-btn-icon{padding:0;min-width:var(--min-target);min-height:var(--min-target);
+  border-radius:var(--radius-full);color:inherit;background:transparent}
+.mk-btn-icon[data-pressed="true"]:not(:disabled){background:var(--accent)}
+.mk-screen[data-on-media="true"] .mk-btn-icon[data-pressed="true"]{background:var(--glass-fill)}
+
+/* pending is not disabled: non-interactive AND communicating progress. */
+.mk-btn-spinner{width:16px;height:16px;flex:none;border-radius:var(--radius-full);
+  border:2px solid color-mix(in oklab,currentColor 30%,transparent);border-top-color:currentColor;
+  animation:mk-spin var(--loop-spinner) var(--ease-linear) infinite}
+
+@media (hover:hover) and (pointer:fine){
+  .mk-btn-primary:hover:not(:disabled){background:color-mix(in oklab,var(--primary) 92%,var(--foreground))}
+  .mk-btn-ghost:hover:not(:disabled){background:var(--accent)}
+}

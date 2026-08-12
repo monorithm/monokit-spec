@@ -1,0 +1,50 @@
+/* Native base. The app is a viewport, not a document: it does not scroll as a page,
+   its regions scroll individually, and chrome belongs to the app rather than the page. */
+
+html,body{height:100%}
+body{overflow:hidden;overscroll-behavior:none}
+
+.mk-app{position:relative;height:100%;width:100%;overflow:hidden;isolation:isolate;
+  background:var(--background);color:var(--foreground);font-family:var(--font-sans)}
+
+/* Screen — one primary subject, three regions. Content scrolls; chrome does not. The screen
+   re-asserts the typeface: a native app surface can be hosted inside chrome that sets its own
+   font (a device frame, a webview shell), and monokit's type is not up for inheritance. */
+.mk-screen{position:absolute;inset:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;
+  background:var(--background);color:var(--foreground);font-family:var(--font-sans);overflow:hidden}
+.mk-screen[data-on-media="true"]{background:var(--media-canvas);color:var(--on-media)}
+
+/* Momentum and rubber band. A native scroller owns its edges: no scrollbar furniture,
+   and overscroll never leaks to whatever is behind it. */
+.mk-scroll{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;scrollbar-width:none}
+.mk-scroll::-webkit-scrollbar{display:none}
+.mk-scroll-x{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;scrollbar-width:none}
+.mk-scroll-x::-webkit-scrollbar{display:none}
+
+/* Safe areas and the keyboard inset. */
+.mk-safe-top{padding-top:var(--safe-top)}
+.mk-safe-bottom{padding-bottom:var(--safe-bottom)}
+.mk-lift{padding-bottom:calc(var(--keyboard-inset) + var(--safe-bottom));
+  transition:padding-bottom var(--motion-emphasis)}
+
+/* Screen transitions: shared-element expansion where a source exists, fade-through
+   otherwise. Enters decelerate on the signature curve; exits accelerate and run one
+   step shorter. A drag-driven back gesture is animated by the gesture, not by these. */
+.mk-t{position:absolute;inset:0}
+.mk-t-in{animation:mk-fade-through-in var(--duration-base) var(--ease-mono-out) both}
+.mk-t-out{animation:mk-fade-through-out var(--duration-fast) var(--ease-accelerate) both}
+@keyframes mk-fade-through-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes mk-fade-through-out{from{opacity:1}to{opacity:0}}
+
+/* Declared placeholder. This system ships no photography and no illustration: a media
+   slot says so, on the canvas, with the media role glyph. It never fakes a photo. */
+.mk-media-ph{position:relative;display:flex;align-items:center;justify-content:center;
+  background:var(--media-canvas);color:var(--on-media-muted);overflow:hidden}
+.mk-media-ph>.mk-icon{opacity:.45}
+
+/* Hover is not a native input. Anything hover-borne is opt-in behind a pointer query. */
+@media (hover:hover) and (pointer:fine){
+  .mk-hoverable:hover{background:var(--accent);color:var(--accent-foreground)}
+}

@@ -1,0 +1,4 @@
+{
+  "//": "The repo root is \"type\": \"module\", which would make emit.js ESM and break the createRequire() in generate.mjs. STANDARD.md and record/AMENDMENTS.md both name this file 'build/emit.js', so the scope is narrowed here rather than renaming a file the governing document points at.",
+  "type": "commonjs"
+}

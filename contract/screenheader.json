@@ -1,0 +1,36 @@
+{
+  "component": "ScreenHeader",
+  "spec": "30-components/10-components-core.md",
+  "description": "Chrome that recedes during consumption and returns on intent. A header states where the user is and offers the way back; it is never louder than the content beneath it.",
+  "clauses": {
+    "MUST": [
+      "Take the page inset as its horizontal padding, so its content starts on the content column rather than at a chrome gutter — a leading title lines up with the body text beneath it.",
+      "Resolve its height from the width class.",
+      "Render on glass over media, and on a solid surface everywhere else.",
+      "Keep its back affordance reachable by pointer and keyboard, not by edge gesture alone.",
+      "Pause auto-hide while assistive navigation is active, so controls never vanish under a screen-reader cursor.",
+      "Restore itself on intent — a tap, a scroll up, or a focus move into it."
+    ],
+    "SHOULD": [
+      "Carry at most one trailing action. A header with three actions is a toolbar wearing a header's clothes.",
+      "Truncate its title rather than wrapping, and never truncate data the user must act on."
+    ],
+    "NEVER": [
+      "Draw a hairline beneath itself. Separation is the surface step, not a rule.",
+      "Duplicate the screen's primary action.",
+      "Place a destructive action in a top corner."
+    ]
+  },
+  "states": [
+    "immersive",
+    "hidden",
+    "elevated"
+  ],
+  "tokens": [
+    "--header-height",
+    "--page-inset",
+    "--glass-fill",
+    "--glass-border",
+    "--sidebar"
+  ]
+}

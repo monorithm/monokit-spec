@@ -1,0 +1,33 @@
+{
+  "component": "Pager",
+  "spec": "20-patterns/07-interaction.md",
+  "description": "A real swipe, not a carousel. The track follows the finger, resists past the end stops, and settles on the spatial spring.",
+  "clauses": {
+    "MUST": [
+      "Follow the pointer continuously while dragging, with no transition on the tracked property.",
+      "Commit on travel past the specified fraction of the width, or on a release above the specified velocity.",
+      "Rubber-band at the specified damping past the first and last panes rather than stopping dead.",
+      "Claim one gesture axis only, so vertical scrolling still works inside it.",
+      "Decide commit from the travel it measured, not from a value captured in an earlier render.",
+      "Ship its pointer and keyboard equivalents in the same change as the gesture: chevrons at pointer density, and arrow keys."
+    ],
+    "SHOULD": [
+      "Pair with page dots so position is legible without a gesture.",
+      "Settle on the spatial spring, seeded by the release velocity."
+    ],
+    "NEVER": [
+      "Advance on a timer. Advancing is always a user action.",
+      "Claim both axes.",
+      "Ship the gesture without its alternatives."
+    ]
+  },
+  "states": [
+    "dragged"
+  ],
+  "tokens": [
+    "--gesture-dismiss-fraction",
+    "--gesture-dismiss-velocity",
+    "--gesture-rubber-band",
+    "--spring-spatial-default"
+  ]
+}

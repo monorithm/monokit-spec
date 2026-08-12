@@ -1,0 +1,35 @@
+/* Overlays — Sheet. A sheet is the native answer to a single decision: it enters from
+   the edge it belongs to, it is draggable, and it dismisses by gesture. Radius scales
+   with surface size, so a sheet takes the largest step on the scale. */
+
+/* Modal's layer and barrier. The barrier is a real button, so it is reset to look like the
+   scrim it replaces — a bare div with a pointer handler is invisible to assistive technology,
+   which is what made every modal here a trap with no announced exit. */
+/* Fixed, not absolute: a modal covers the VIEWPORT. Absolute made it depend on finding a
+   positioned ancestor, which a phone-shaped specimen frame happens to provide and an ordinary
+   page does not — so the surface painted at document origin, off screen, with its trap armed.
+   A contained variant exists for specimens that deliberately bound the overlay to a frame. */
+.mk-modal-layer{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column}
+.mk-contain .mk-modal-layer,.frame .mk-modal-layer{position:absolute}
+.mk-modal-layer[data-placement="end"]{justify-content:flex-end}
+.mk-modal-layer[data-placement="center"]{justify-content:center;align-items:center}
+.mk-modal-barrier{position:absolute;inset:0;appearance:none;border:0;padding:0;margin:0;
+  display:block;width:100%;background:var(--overlay-scrim);cursor:default;
+  transition:opacity var(--motion-state)}
+.mk-modal-barrier:focus-visible{outline:var(--focus-ring-width) solid var(--ring);
+  outline-offset:calc(-1 * var(--focus-ring-width) - var(--focus-ring-offset))}
+.mk-sheet{position:relative;display:flex;flex-direction:column;max-height:88%;
+  background:var(--popover);color:var(--popover-foreground);font-family:var(--font-sans);
+  border-top-left-radius:var(--sheet-radius);border-top-right-radius:var(--sheet-radius);
+  box-shadow:var(--elevation-e3);padding-bottom:var(--safe-bottom);will-change:transform;
+  touch-action:none}
+.mk-sheet-grab{flex:none;width:var(--sheet-grabber);height:4px;border-radius:var(--radius-full);
+  background:var(--border);margin:var(--space-8) auto var(--space-4)}
+.mk-sheet-title{padding:var(--space-8) var(--page-inset) var(--space-12);
+  font-size:var(--text-title-large);line-height:var(--text-title-large-lh);
+  font-weight:var(--weight-semibold)}
+.mk-sheet-body{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
+.mk-sheet-body::-webkit-scrollbar{display:none}
+
+/* No entry keyframes: Sheet drives position with a single inline transform so entry, drag,
+   return and exit cannot fight each other. See components/overlays/Sheet.jsx. */

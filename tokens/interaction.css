@@ -1,0 +1,54 @@
+/* interaction — GENERATED FILE, DO NOT EDIT.
+   Source: contract/interaction.json · Specification: 20-patterns/07-interaction.md
+   Regenerate with `node build/generate.mjs`; verify with `--check`.
+
+   Recognition thresholds and behavioural timings. These gate behaviour; any animation they
+   trigger uses the motion tokens.
+
+   · Touch slop and keyboard repeat stay framework-owned and are deliberately NOT tokens.
+   · The gesture thresholds below are the specification's own numbers (07 section 4), not
+   platform conventions.
+   · monokit NEVER claims edge swipes — they belong to system and OS navigation.
+*/
+
+:root{
+
+  /* Adopts Flutter's kLongPressTimeout; identical on every platform. */
+  --interaction-long-press:500ms;
+  --interaction-double-tap:300ms;
+
+  /* The pointer must dwell this long before tooltips and hover cards open. */
+  --interaction-hover-intent:400ms;
+
+  /* The pointer may leave the trigger for this long before a hover surface closes. */
+  --interaction-hover-grace:200ms;
+
+  /* Medium-risk destructive controls. */
+  --interaction-hold-to-confirm:800ms;
+  --interaction-undo-window:5000ms;
+
+  /* Rate limiter. Composed patterns count as one event. */
+  --interaction-haptic-min-gap:100ms;
+
+  /* Painted OUTSIDE the control's bounds so it never shifts layout, and bound to
+  focus-visible only. */
+  --focus-ring-width:2px;
+  --focus-ring-offset:2px;
+
+  /* gesture recognition — spec 07 section 4 owns the dismiss numbers */
+
+  /* Drag-dismiss commits when travel exceeds 30% of the surface's height along the dismiss
+  axis. */
+  --gesture-dismiss-fraction:0.30;
+
+  /* Or when release velocity exceeds this. Whichever comes first; otherwise the surface
+  returns on the spatial spring. */
+  --gesture-dismiss-velocity:700px/s;
+
+  /* Displacement damping past an end stop. Not specified upstream — a realization choice,
+  recorded in AMENDMENTS.md. */
+  --gesture-rubber-band:0.55;
+
+  /* interaction axis, first match wins:
+  disabled,pending,dragged,pressed,hovered,focusVisible,rest */
+}
