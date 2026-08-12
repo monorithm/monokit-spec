@@ -170,6 +170,15 @@ Chrome that plays hide-and-seek while browsing is a monofocus violation, not an 
 
 A tap that dismisses something consumes that tap. **One tap, one effect.**
 
+Every commitment above, on one surface. The media holds the canvas edge to edge, the chrome sits
+over it as translucent layers rather than framing it, and it recedes on idle and returns on intent.
+There is no photography in this project, so the canvas is a declared placeholder — the layering is
+the subject, not the picture.
+
+```monokit-example immersive-capture
+```
+
+
 ## What this realization ships
 
 The native realization has no immersive surface yet: no feed, no player, no gallery, no capture. The

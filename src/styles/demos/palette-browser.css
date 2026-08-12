@@ -1,0 +1,148 @@
+/* palette-browser: the live palette board. Layout only.
+ *
+ * Every colour here is a token reference, so the specimen follows the theme by resolving the same
+ * variables the rest of the site resolves rather than by carrying a second palette and a `.dark`
+ * rule to switch between them. There is no literal in this file and there must never be one: the
+ * board's whole claim is that it reads the cascade, and a typed value is a value that cannot be
+ * caught being wrong.
+ *
+ * Namespaced under .demo-palette throughout. The compound selectors are not decoration: a swatch
+ * is a Pressable, and `.mk-pressable` strips background, border and padding at one class of
+ * specificity, so the rules that give a swatch its card have to out-specify it rather than rely on
+ * this file loading last.
+ */
+
+.demo.demo-palette { display: block; }
+
+.demo-palette .demo-palette__mode {
+  margin: 0 0 var(--space-24);
+  font-size: var(--text-body-medium);
+  line-height: var(--text-body-medium-lh);
+  color: var(--muted-foreground);
+}
+.demo-palette .demo-palette__mode b {
+  color: var(--foreground);
+  font-weight: var(--weight-semibold);
+}
+
+.demo-palette .demo-palette__set + .demo-palette__set { margin-top: var(--space-24); }
+
+.demo-palette .demo-palette__title {
+  margin: 0;
+  font-size: var(--text-label-large);
+  line-height: var(--text-label-large-lh);
+  font-weight: var(--weight-semibold);
+  color: var(--foreground);
+}
+.demo-palette .demo-palette__note {
+  margin: var(--space-4) 0 var(--space-12);
+  font-size: var(--text-label-medium);
+  line-height: var(--text-label-medium-lh);
+  color: var(--muted-foreground);
+}
+
+/* The track floor is composed from the spacing scale rather than typed, so the board sits on the
+   grid the system owns: three columns on the content column, one on a phone. */
+.demo-palette .demo-palette__grid {
+  display: grid;
+  gap: var(--space-12);
+  grid-template-columns: repeat(auto-fill, minmax(calc(var(--space-40) * 4), 1fr));
+}
+
+.demo-palette .demo-palette__swatch {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--space-8);
+  min-height: var(--min-target);
+  padding: var(--space-12);
+  text-align: start;
+  background: var(--card);
+  color: var(--card-foreground);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--motion-state), border-color var(--motion-state);
+}
+.demo-palette .demo-palette__swatch:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+/* Press feedback without motion: Pressable reports the press within a frame, and a tint that
+   lands immediately says the same thing a transform would. */
+.demo-palette .demo-palette__swatch[data-pressed="true"] { background: var(--accent); }
+.demo-palette .demo-palette__swatch[data-copied="true"] { border-color: var(--success); }
+.demo-palette .demo-palette__swatch[data-copied="false"] { border-color: var(--warning); }
+
+/* The chip carries no colour of its own: the swatch paints it with the token it names. The
+   hairline is what keeps a white chip on a white card visible, which is the page's own point. */
+.demo-palette .demo-palette__chip {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: var(--space-40);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+/* The confirmation paints its own surface, so it reads on any swatch in the board rather than on
+   the ones that happen to contrast with it. */
+.demo-palette .demo-palette__mark {
+  display: grid;
+  place-items: center;
+  width: var(--space-24);
+  height: var(--space-24);
+  background: var(--card);
+  color: var(--success-text);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-full);
+}
+
+.demo-palette .sw-name { font-family: var(--font-mono); overflow-wrap: anywhere; }
+.demo-palette .sw-val { overflow-wrap: anywhere; }
+
+/* The on-media set is shown over the canvas it is used over: dark in both themes, with its ink
+   drawn from the same invariant set. A white-on-white chip on a light card would be reporting the
+   token in a context the system never puts it in. */
+.demo-palette .demo-palette__set[data-context="media"] .demo-palette__swatch {
+  background: var(--media-canvas);
+  color: var(--on-media);
+  border-color: var(--glass-border);
+}
+.demo-palette .demo-palette__set[data-context="media"] .demo-palette__swatch:hover,
+.demo-palette .demo-palette__set[data-context="media"] .demo-palette__swatch[data-pressed="true"] {
+  background: var(--media-canvas);
+  border-color: var(--on-media);
+}
+.demo-palette .demo-palette__set[data-context="media"] :is(.sw-desc, .sw-val) {
+  color: var(--on-media-muted);
+}
+.demo-palette .demo-palette__set[data-context="media"] .demo-palette__chip {
+  border-color: var(--glass-border);
+}
+.demo-palette .demo-palette__set[data-context="media"] .demo-palette__mark {
+  background: var(--media-canvas);
+  color: var(--on-media);
+  border-color: var(--glass-border);
+}
+
+/* Reserved height, because the region is empty until a press: an announcement that also shoves
+   the page down is two events where the reader asked for one. */
+.demo-palette .demo-palette__status {
+  margin: var(--space-24) 0 0;
+  min-height: var(--space-20);
+}
+.demo-palette .demo-palette__status[data-ok="true"] { color: var(--success-text); }
+.demo-palette .demo-palette__status[data-ok="false"] { color: var(--warning-text); }
+
+.demo-palette .demo-palette__foot {
+  margin: var(--space-8) 0 0;
+  font-size: var(--text-label-medium);
+  line-height: var(--text-label-medium-lh);
+  color: var(--muted-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-palette .demo-palette__swatch { transition: none; }
+}

@@ -61,6 +61,16 @@ meanings costs you both. Under reduced motion the entity cross-fades instead, an
 entirely when server truth is identical to the optimistic render — reconciliation without change is
 invisible.
 
+A table cannot show time, and every phase above is a duration. Run a command here and watch one go
+the whole way: the press lands at once, the badge holds while the intent is in flight, a single
+sweep marks the moment server truth arrives, and the check appears only once the server reports
+completion. Force a failure to send the same run to `stalled` instead, where the retry is the
+affordance.
+
+```monokit-example honest-state-timeline
+```
+
+
 ## Rejected and stalled are different
 
 They look different because they are different, and the difference tells the user what to do.

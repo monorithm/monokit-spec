@@ -65,3 +65,15 @@ More pixels never means more simultaneous subjects. Expanded layouts gain *conte
 around the one subject. They never gain a second subject of equal weight.
 
 The feed never becomes a grid on desktop. A grid of nine autoplaying videos is nine subjects.
+
+Drag the width and watch one item recompose across all four classes: full-bleed with a bottom bar,
+letterboxed with a side rail, a centred column with the rail pinned and the actions moved out, then
+a trailing context pane. The same destinations in the same order throughout — one design, recomposed.
+
+The recomposition here is drawn by the specimen. No component in this realization reads a width-class
+scope yet, which the [Status](#/about/status) page records as the largest gap between this
+specification and what implements it.
+
+```monokit-example feed-recomposition
+```
+

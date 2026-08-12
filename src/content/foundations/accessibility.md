@@ -68,6 +68,14 @@ tokens — never from spacing constants alone. Containers reflow rather than tru
 pairs wrap, button labels wrap to two lines before ellipsizing, list items grow vertically.
 Truncation is allowed only when the full content is reachable elsewhere.
 
+The policy above is stated; this specimen tests it. Drag the scale and a small surface built from
+real components takes the OS text scale through its range. Watch what reflows and what does not —
+this is the page's own claim under load, and where something fails it is left visibly failing.
+
+```monokit-example textscale-reflow
+```
+
+
 Chrome that cannot grow — the action rail, tab bars — keeps its geometry but must not contain
 scale-dependent text: icons and counts only, with full labels via long-press or tooltip.
 

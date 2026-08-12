@@ -1,0 +1,75 @@
+/* Text-scale reflow specimen.
+ *
+ * Chrome for the measurement, and nothing the measurement depends on: the scale itself is applied
+ * as custom properties on the column by the module, so the specimen still tests what it claims to
+ * test if this file never loads. Every value here resolves from a token, and both themes come out
+ * of that rather than out of a .dark rule.
+ */
+
+/* .demo is a wrapping flex row, which is right for a shelf of buttons and wrong for a stacked
+   instrument. Two classes, so the override wins on specificity wherever this file lands in the
+   cascade. */
+.demo.demo-textscale{display:block}
+
+.demo-textscale-controls{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-12);
+  margin-bottom:var(--space-16)}
+.demo-textscale-name{font-size:var(--text-label-large);line-height:var(--text-label-large-lh);
+  font-weight:var(--weight-medium);color:var(--foreground)}
+
+/* The slider is a real range input: it arrives keyboard-operable, announces its own value, and
+   takes the focus ring from the base reset. Only its target height and its accent are set here -
+   a control below the density minimum on the page about touch targets would be its own defect. */
+.demo-textscale-slider{flex:1;min-width:var(--space-48);
+  min-height:var(--min-target);accent-color:var(--primary);cursor:pointer}
+/* The one place a mode is named, and for the reason this page states: primary in dark is
+   specified as a brand SURFACE rather than an ink, so the site's own chrome reaches for
+   sidebarPrimary there. This is that same swap, not a second palette. */
+.dark .demo-textscale-slider{accent-color:var(--sidebar-primary)}
+
+.demo-textscale-value{font-family:var(--font-mono);font-size:var(--text-code);
+  font-variant-numeric:tabular-nums;color:var(--foreground);min-width:var(--space-48);
+  text-align:end}
+.demo-textscale-snaps{display:flex;flex-wrap:wrap;gap:var(--space-8)}
+
+/* The screen may be wider than the document column once its content stops fitting. It scrolls
+   here rather than pushing a horizontal scrollbar onto the page - the overflow stays visible and
+   stays reported, it just does not take the specification down with it. */
+.demo-textscale-stage{overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:var(--space-8)}
+
+/* A compact-width app surface, drawn with a dashed edge so it reads as a measuring frame rather
+   than as a card - this system has no card edges. Its width is fixed against the text scale on
+   purpose: a phone does not get wider when its owner turns the text up. */
+.demo-textscale-column{width:min(100%,var(--container-dialog-sm));
+  background:var(--background);color:var(--foreground);
+  border:var(--border-width) dashed var(--border);
+  padding-bottom:var(--space-8)}
+/* minmax(0,1fr), not the implicit auto track: an auto track takes its width from the widest
+   min-content contribution in it, so the CTA's unwrappable label would widen the column itself and
+   push the code row off the screen with it. The screen is a fixed width. Sizing the track to it
+   keeps each part's reading its own, rather than one part's overflow becoming everything's. */
+.demo-textscale-pad{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-20);
+  padding:var(--space-16) var(--page-inset) var(--space-16)}
+
+/* The containing block InputOtp's overlaid input needs. Absolute with no positioned ancestor
+   resolves against the page, and a transparent input the size of the document eats every press in
+   the specimen. */
+.demo-textscale-otp{display:block;position:relative}
+
+.demo-textscale-readings{margin-top:var(--space-16)}
+.demo-textscale-readings th[scope="row"]{font-weight:var(--weight-medium)}
+.demo-textscale-readings .note{display:block;margin-top:var(--space-4);
+  font-size:var(--text-label-medium);line-height:var(--text-label-medium-lh);
+  font-weight:var(--weight-regular)}
+
+/* The verdict is a status chip: ink on its own soft surface, which is the only pairing this page
+   verifies for status text. The words carry the reading on their own, so the colour is a second
+   channel rather than the only one. */
+.demo-textscale-verdict{display:inline-block;border-radius:var(--radius-sm);
+  padding:var(--space-4) var(--space-8);font-family:var(--font-mono);font-size:var(--text-code);
+  font-variant-numeric:tabular-nums}
+.demo-textscale-verdict[data-ok="true"]{background:var(--success-soft);color:var(--success-text)}
+.demo-textscale-verdict[data-ok="false"]{background:var(--destructive-soft);
+  color:var(--destructive-text)}
+
+.demo-textscale [role="status"]{margin-top:var(--space-12)}
+.demo-textscale p.note{margin:var(--space-12) 0 0;max-width:var(--container-content)}

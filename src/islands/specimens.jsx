@@ -922,4 +922,27 @@ const ANATOMY = {
   },
 };
 
+/* ---------------------------------------------------------------- ported demos
+ *
+ * Six interactive specimens carried over from the demo partials in monokit-design. They live in
+ * their own modules because each is 200-400 lines with its own stylesheet, and folding them in
+ * here would double the size of this file for no gain. They register as ordinary EXAMPLES entries,
+ * so a page reaches them through the same `monokit-example` directive as anything else.
+ */
+import { PaletteBrowser } from "./demos/palette-browser.jsx";
+import { MotionPlayground } from "./demos/motion-playground.jsx";
+import { HonestStateTimeline } from "./demos/honest-state-timeline.jsx";
+import { TextScaleReflow } from "./demos/textscale-reflow.jsx";
+import { FeedRecomposition } from "./demos/feed-recomposition.jsx";
+import { ImmersiveCapture } from "./demos/immersive-capture.jsx";
+
+Object.assign(EXAMPLES, {
+  "palette-browser": PaletteBrowser,
+  "motion-playground": MotionPlayground,
+  "honest-state-timeline": HonestStateTimeline,
+  "textscale-reflow": TextScaleReflow,
+  "feed-recomposition": FeedRecomposition,
+  "immersive-capture": ImmersiveCapture,
+});
+
 export { EXAMPLES, STATES, ANATOMY };

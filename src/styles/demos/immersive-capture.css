@@ -1,0 +1,288 @@
+/* immersive-capture — the immersion specimen's own stylesheet.
+ *
+ * Namespaced under .demo-capture and built from tokens only. Two rules deserve stating up front:
+ *
+ *   · There is no z-index in this file. The layers stack by paint order alone, because ordering
+ *     needs across layers are solved by moving layers, never by a hand-tuned number.
+ *   · Only z0 paints a fill. Everything above it is transparent, which is both what the layer
+ *     model says and what makes an outlined lower layer visible through the ones above it.
+ *
+ * Every selector carries the root class, so a component rule this file overrides — the glass
+ * recipe on an icon button, the bare geometry of a Pressable — is overridden by specificity
+ * rather than by hoping this file is linked last.
+ */
+
+.demo.demo-capture{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(var(--container-sidebar),1fr));
+  gap:var(--space-24);
+  align-items:start;
+}
+
+.demo-capture .demo-capture__stage{display:grid;justify-items:center;gap:var(--space-12);min-width:0}
+
+/* The surface. True black in both brightness modes: the media context does not flip, so there is
+   nothing here for a theme change to repaint. */
+.demo-capture .demo-capture__frame{
+  position:relative;
+  width:100%;
+  max-width:var(--container-sidebar);
+  aspect-ratio:9 / 16;
+  border-radius:var(--radius-huge);
+  overflow:hidden;
+  isolation:isolate;
+  user-select:none;
+  /* The page ring is a chrome grey, and the page palette is never used over media. On the
+     canvas the focus ring takes the on-media set like every other mark here. */
+  --ring:var(--on-media);
+}
+
+/* ---- the layers ---- */
+
+.demo-capture .demo-capture__layer{position:absolute;inset:0}
+.demo-capture .demo-capture__z0{background:var(--media-canvas)}
+/* Scrims, the empty overlay layer and the system layer are paint and announcement only.
+ *
+ * z3 belongs in this group too, and leaving it out was the specimen contradicting the clause it
+ * exists to demonstrate. The rule below makes z3's DESCENDANTS transparent, but the z3 root is
+ * itself `position:absolute; inset:0`, so it covered the whole media rect and took every tap.
+ * Tap-to-toggle could not fire, and with the chrome hidden the panel invited a tap that could
+ * never land. `pointer-events:auto` on the controls still re-enables them: a descendant may take
+ * the pointer back from a transparent ancestor, which is exactly the shape wanted here. */
+.demo-capture .demo-capture__z2,
+.demo-capture .demo-capture__z3,
+.demo-capture .demo-capture__z4,
+.demo-capture .demo-capture__z5{pointer-events:none}
+
+/* The lit state the legend toggles. Dashed, so it cannot be mistaken for the focus ring, and
+   drawn inside the layer's own box because the surface clips. */
+.demo-capture .demo-capture__lit{
+  outline:var(--focus-ring-width) dashed var(--on-media);
+  outline-offset:calc(var(--focus-ring-offset) * -1);
+}
+.demo-capture .demo-capture__lit::after{
+  content:attr(data-layer);
+  position:absolute;top:0;inset-inline-start:0;
+  padding:var(--space-4) var(--space-8);
+  background:var(--on-media);color:var(--media-canvas);
+  font-family:var(--font-mono);font-size:var(--text-label-medium);
+  border-end-end-radius:var(--radius-md);
+  pointer-events:none;
+}
+
+/* ---- z1: the subject ---- */
+
+/* The placeholder holds the whole rect and paints no fill of its own: z0 is the canvas, and a
+   second black plate here would hide it. */
+.demo-capture .demo-capture__ph{
+  position:absolute;inset:0;
+  flex-direction:column;gap:var(--space-8);
+  padding:var(--page-inset);
+  background:transparent;
+  text-align:center;
+}
+.demo-capture .demo-capture__ph-label{margin:0;max-width:var(--container-feed)}
+
+/* Tap to toggle: the target is the whole media rect, with no invisible dead zone in it. */
+.demo-capture .demo-capture__tap{
+  position:absolute;inset:0;display:block;width:100%;height:100%;
+  background:transparent;border:0;cursor:pointer;
+}
+.demo-capture .demo-capture__tap:focus-visible{outline-offset:calc(var(--focus-ring-offset) * -1)}
+
+/* ---- z3: controls ---- */
+
+/* Three tracks, two children, and the bottom bar has to be told which one it takes. Left to
+   auto-placement it landed in the flexible middle track, which put the capture rail just under
+   the mode rail and left the bottom third of the surface empty — the thumb arc the layout is
+   supposed to be demonstrating. */
+.demo-capture .demo-capture__z3{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.demo-capture .demo-capture__bar-top{grid-row:1}
+.demo-capture .demo-capture__bar-bottom{grid-row:3}
+/* Chrome takes the pointer only where a control actually is. The bars span the surface, and a bar
+   that swallowed the taps crossing it would put a dead zone in the media rect. */
+.demo-capture .demo-capture__z3 *{pointer-events:none}
+.demo-capture .demo-capture__z3 .mk-pressable{pointer-events:auto}
+.demo-capture .demo-capture__frame[data-chrome="hidden"] .demo-capture__z3 .mk-pressable{
+  pointer-events:none;
+}
+
+/* Recede and return. Recede accelerates with a small translation toward the owning edge; return
+   decelerates on the signature curve. Both bind to a motion ROLE — no raw duration or curve. */
+.demo-capture .demo-capture__z2,
+.demo-capture .demo-capture__bar{
+  transition:opacity var(--motion-enter),transform var(--motion-enter);
+}
+.demo-capture .demo-capture__frame[data-chrome="hidden"] .demo-capture__z2,
+.demo-capture .demo-capture__frame[data-chrome="hidden"] .demo-capture__bar{
+  opacity:0;
+  transition:opacity var(--motion-exit),transform var(--motion-exit);
+}
+.demo-capture .demo-capture__frame[data-chrome="hidden"] .demo-capture__bar-top{
+  transform:translateY(calc(var(--space-8) * -1));
+}
+.demo-capture .demo-capture__frame[data-chrome="hidden"] .demo-capture__bar-bottom{
+  transform:translateY(var(--space-8));
+}
+
+.demo-capture .demo-capture__bar{display:flex;align-items:center;padding:var(--space-12)}
+.demo-capture .demo-capture__bar-top{justify-content:space-between;gap:var(--space-8)}
+.demo-capture .demo-capture__bar-bottom{
+  flex-direction:column;gap:var(--space-12);padding-bottom:var(--space-16);
+}
+
+.demo-capture .demo-capture__shutter-row{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;justify-items:center;width:100%;
+}
+.demo-capture .demo-capture__side{display:flex;justify-content:center;min-width:var(--min-target)}
+
+/* Glass, exactly three parts: fill, border, blur. Over media always the dark-context recipe,
+   whatever the app theme is doing. */
+.demo-capture .demo-capture__chip{
+  background:var(--glass-fill);
+  border:var(--border-width) solid var(--glass-border);
+  backdrop-filter:blur(var(--glass-blur));
+  -webkit-backdrop-filter:blur(var(--glass-blur));
+  color:var(--on-media);
+}
+.demo-capture .demo-capture__chip[aria-pressed="true"]{
+  background:var(--on-media);color:var(--media-canvas);
+}
+/* Press wins over the on state: feedback within a frame matters more than the toggle's colour. */
+.demo-capture .demo-capture__chip[data-pressed="true"]{
+  background:var(--scrim-strong);color:var(--on-media);
+}
+
+/* The one oversized target on the surface, in the thumb arc. It takes the two-line row height —
+   the only 64 the contract owns — rather than a number invented here. */
+.demo-capture .demo-capture__shutter{
+  width:var(--row-2);height:var(--row-2);
+  padding:var(--space-4);
+  border:var(--border-width) solid var(--on-media);
+  border-radius:var(--radius-full);
+  background:transparent;
+  display:grid;place-items:center;
+  transition:transform var(--motion-press);
+}
+.demo-capture .demo-capture__shutter[data-pressed="true"]{transform:scale(.97)}
+.demo-capture .demo-capture__shutter-core{
+  width:100%;height:100%;border-radius:var(--radius-full);
+  background:var(--on-media);
+  transition:background-color var(--motion-state),border-radius var(--motion-state),
+    transform var(--motion-state);
+}
+/* Broadcast red is mode-invariant and badge scale only — here it is the record affordance. */
+.demo-capture .demo-capture__frame[data-mode="video"] .demo-capture__shutter-core,
+.demo-capture .demo-capture__frame[data-mode="voice"] .demo-capture__shutter-core{
+  background:var(--live);
+}
+.demo-capture .demo-capture__shutter[aria-pressed="true"] .demo-capture__shutter-core{
+  border-radius:var(--radius-sm);transform:scale(.55);
+}
+
+.demo-capture .demo-capture__rail{display:flex;justify-content:center;gap:var(--space-4)}
+.demo-capture .demo-capture__mode{
+  min-width:var(--min-target);min-height:var(--min-target);
+  padding:0 var(--space-8);
+  border:0;border-radius:var(--radius-full);
+  background:transparent;color:var(--on-media-muted);
+  font-family:var(--font-sans);font-size:var(--text-label-medium);
+  line-height:var(--text-label-medium-lh);font-weight:var(--weight-semibold);
+  text-transform:uppercase;cursor:pointer;
+}
+.demo-capture .demo-capture__mode[aria-checked="true"]{
+  background:var(--glass-fill);color:var(--on-media);
+}
+
+/* The recording indicator. Subject truth, so it stays when the chrome goes — and it sits on a
+   glass chip, because the ceiling fade that would otherwise carry it leaves with the chrome. */
+.demo-capture .demo-capture__truth{
+  position:absolute;top:var(--space-12);left:0;right:0;
+  display:flex;justify-content:center;pointer-events:none;
+}
+.demo-capture .demo-capture__truth-chip{
+  display:inline-flex;align-items:center;gap:var(--space-8);
+  padding:var(--space-4) var(--space-12);
+  border-radius:var(--radius-full);
+  font-size:var(--text-label-medium);line-height:var(--text-label-medium-lh);
+  font-weight:var(--weight-semibold);text-transform:uppercase;
+}
+.demo-capture .demo-capture__dot{
+  width:var(--space-8);height:var(--space-8);flex:none;
+  border-radius:var(--radius-full);background:var(--live);
+  animation:mk-pulse var(--loop-pulse) var(--ease-standard) infinite;
+}
+
+/* ---- z5: system ---- */
+
+.demo-capture .demo-capture__z5{
+  display:flex;justify-content:center;align-items:flex-start;
+  padding:calc(var(--min-target) + var(--space-24)) var(--page-inset) 0;
+}
+.demo-capture .demo-capture__banner{
+  display:inline-flex;align-items:center;gap:var(--space-8);
+  padding:var(--space-8) var(--space-16);
+  border-radius:var(--radius-full);
+  font-size:var(--text-label-large);line-height:var(--text-label-large-lh);
+}
+
+/* ---- the reading matter beside the surface ---- */
+
+.demo-capture .demo-capture__status{
+  margin:0;font-family:var(--font-mono);font-size:var(--text-code);
+  line-height:var(--text-code-lh);color:var(--muted-foreground);text-align:center;
+}
+.demo-capture .demo-capture__caption{
+  margin:0;max-width:var(--container-sidebar);text-align:center;
+  font-size:var(--text-label-large);line-height:1.4;color:var(--muted-foreground);
+}
+
+.demo-capture .demo-capture__panel{display:grid;gap:var(--space-12);min-width:0;align-content:start}
+.demo-capture .demo-capture__head{
+  margin:0;font-size:var(--text-label-medium);line-height:var(--text-label-medium-lh);
+  font-weight:var(--weight-medium);color:var(--muted-foreground);
+}
+.demo-capture .demo-capture__note{
+  margin:0;font-size:var(--text-label-large);line-height:1.4;color:var(--muted-foreground);
+}
+
+.demo-capture .demo-capture__legend{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-4)}
+.demo-capture .demo-capture__row{
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--space-8);align-items:start;
+  width:100%;min-height:var(--min-target);
+  padding:var(--space-8);
+  border:var(--border-width) solid transparent;border-radius:var(--radius-md);
+  background:transparent;color:var(--foreground);
+  font:inherit;font-size:var(--text-body-medium);line-height:var(--text-body-medium-lh);
+  text-align:start;cursor:pointer;
+}
+.demo-capture .demo-capture__row:hover{background:var(--accent)}
+.demo-capture .demo-capture__row[aria-pressed="true"]{
+  background:var(--primary-soft);color:var(--primary-text);border-color:var(--primary);
+}
+.demo-capture .demo-capture__tag{
+  font-family:var(--font-mono);font-size:var(--text-code);color:var(--muted-foreground);
+}
+.demo-capture .demo-capture__row[aria-pressed="true"] .demo-capture__tag{color:var(--primary-text)}
+
+.demo-capture .demo-capture__policies{display:flex;flex-wrap:wrap;gap:var(--space-8)}
+.demo-capture .demo-capture__policy,
+.demo-capture .demo-capture__action{
+  min-height:var(--min-target);padding:0 var(--space-12);
+  border:var(--border-width) solid var(--border);border-radius:var(--radius-full);
+  background:transparent;color:var(--muted-foreground);
+  font:inherit;font-size:var(--text-label-large);cursor:pointer;justify-self:start;
+}
+.demo-capture .demo-capture__policy:hover,
+.demo-capture .demo-capture__action:hover{background:var(--accent)}
+.demo-capture .demo-capture__action{color:var(--foreground)}
+.demo-capture .demo-capture__policy[aria-checked="true"]{
+  background:var(--primary-soft);color:var(--primary-text);border-color:var(--primary);
+}
+
+/* Reduced motion. The token layer already collapses every transition here to an opacity fade and
+   stops the loops; this states the one looping mark explicitly rather than leaving it to a global
+   rule a reader of this file cannot see. */
+@media (prefers-reduced-motion:reduce){
+  .demo-capture .demo-capture__dot{animation:none}
+}

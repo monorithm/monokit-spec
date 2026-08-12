@@ -1,0 +1,139 @@
+/* honest-state-timeline — scoped chrome for the lifecycle specimen.
+ *
+ * Nothing here carries a value of its own. The colours are the semantic roles the states page
+ * names — muted for pending, because pending is the system working as designed and never
+ * alarming; info for the reconciling sweep; success for settled; warning for stalled — so light
+ * and dark follow the theme with no second set of rules. The timings are motion roles, and the
+ * sweep is the system's own `mk-shimmer` keyframe from tokens/motion.css, played once.
+ *
+ * Everything is namespaced under .demo-honest-state-timeline. The single override of the shared
+ * .demo well is written as .demo.demo-honest-state-timeline so it wins on specificity rather
+ * than on file order.
+ */
+
+.demo.demo-honest-state-timeline{display:grid;gap:var(--space-20);align-items:stretch}
+
+/* ---- controls ---- */
+.demo-honest-state-timeline .hst-controls{display:flex;flex-wrap:wrap;align-items:center;
+  gap:var(--space-12)}
+/* The toggle sits on the page surface rather than straight on the muted well: the switch track
+   IS the muted well, so on it the control would be a knob floating on nothing. */
+.demo-honest-state-timeline .hst-fail{display:inline-flex;align-items:center;gap:var(--space-8);
+  margin-inline-start:auto;padding:var(--space-8) var(--space-12);
+  background:var(--background);border-radius:var(--radius-full)}
+.demo-honest-state-timeline .hst-fail-name{font-size:var(--text-label-large);
+  line-height:var(--text-label-large-lh);color:var(--muted-foreground);cursor:pointer}
+
+/* ---- the track ----
+   Four stops, the current one lit. The rail is drawn from each stop back towards the previous
+   one with logical inset, so it mirrors under right-to-left instead of pointing the wrong way. */
+.demo-honest-state-timeline .hst-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  list-style:none;margin:0;padding:0}
+.demo-honest-state-timeline .hst-stop{position:relative;display:grid;justify-items:center;
+  gap:var(--space-8);margin:0;text-align:center;
+  font-size:var(--text-label-medium);line-height:var(--text-label-medium-lh);
+  color:var(--muted-foreground);transition:color var(--motion-state)}
+.demo-honest-state-timeline .hst-stop::before{content:"";position:absolute;
+  inset-inline-end:50%;width:100%;top:calc(var(--space-12) / 2);
+  height:var(--border-width);background:var(--border)}
+.demo-honest-state-timeline .hst-stop:first-child::before{content:none}
+
+/* Unreached stops take the page surface, not the muted well the specimen sits on — a dot filled
+   with the ground it stands on is an outline, not a stop. */
+.demo-honest-state-timeline .hst-dot{position:relative;
+  width:var(--space-12);height:var(--space-12);border-radius:var(--radius-full);
+  background:var(--background);border:var(--border-width) solid var(--input);
+  transition:background var(--motion-state),border-color var(--motion-state)}
+.demo-honest-state-timeline .hst-stop[data-state="active"]{color:var(--foreground)}
+.demo-honest-state-timeline .hst-stop[data-state="active"] .hst-dot{background:var(--info);
+  border-color:var(--info)}
+.demo-honest-state-timeline .hst-stop[data-state="done"] .hst-dot{background:var(--primary);
+  border-color:var(--primary)}
+/* The stop the run stopped on. Warning, not destructive: nobody said no. */
+.demo-honest-state-timeline .hst-stop[data-state="failed"]{color:var(--warning-text)}
+.demo-honest-state-timeline .hst-stop[data-state="failed"] .hst-dot{background:var(--warning);
+  border-color:var(--warning)}
+
+/* ---- the entity ----
+   The thing the command acts on. It carries the phase; the buttons only start it. */
+.demo-honest-state-timeline .hst-entity{position:relative;overflow:hidden;isolation:isolate;
+  display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-12);
+  padding:var(--space-16);border-radius:var(--radius-lg);
+  background:var(--background);color:var(--foreground);
+  border:var(--border-width) solid var(--border);
+  transition:background var(--motion-state),border-color var(--motion-state),
+    color var(--motion-state)}
+.demo-honest-state-timeline .hst-entity > *{position:relative;z-index:1}
+.demo-honest-state-timeline .hst-entity-name{font-size:var(--text-body-medium);
+  line-height:var(--text-body-medium-lh);font-weight:var(--weight-medium)}
+
+/* Settled: the affordance is gone and the entity itself carries the outcome. */
+.demo-honest-state-timeline[data-phase="succeeded"] .hst-entity{background:var(--success-soft);
+  border-color:var(--success);color:var(--success-text)}
+.demo-honest-state-timeline .hst-settled{margin-inline-start:auto;display:inline-flex;
+  align-items:center;gap:var(--space-8);color:var(--success-text);
+  font-size:var(--text-label-large);line-height:var(--text-label-large-lh);
+  font-weight:var(--weight-medium);
+  animation:hst-settle var(--motion-enter) both}
+/* Opacity only, so the reduced-motion collapse to a fade is the same gesture at a shorter
+   duration rather than a different one. */
+@keyframes hst-settle{from{opacity:0}to{opacity:1}}
+
+/* Rolled back: the optimistic render goes to the muted well. It does not stay looking applied. */
+.demo-honest-state-timeline[data-phase="stalled"] .hst-entity{background:var(--muted);
+  color:var(--muted-foreground)}
+
+/* ---- the pending badge ----
+   Muted well, muted ink, hairline. Reconciling wears the same chip with a different label,
+   which is the point: accepted is not success and must not look like it. */
+.demo-honest-state-timeline .hst-badge{display:inline-flex;align-items:center;gap:var(--space-8);
+  padding:var(--space-4) var(--space-12);border-radius:var(--radius-full);
+  background:var(--muted);color:var(--muted-foreground);
+  border:var(--border-width) solid var(--border);
+  font-size:var(--text-label-medium);line-height:var(--text-label-medium-lh);white-space:nowrap}
+.demo-honest-state-timeline .hst-badge[data-tone="warning"]{background:var(--warning-soft);
+  color:var(--warning-text);border-color:var(--warning)}
+/* Opacity only, on the calm loop, and static under reduced motion — the tokens' own
+   reduced-motion block stops it. */
+.demo-honest-state-timeline .hst-badge-dot{width:var(--space-8);height:var(--space-8);
+  border-radius:var(--radius-full);background:currentColor;
+  animation:mk-pulse var(--loop-pulse) var(--ease-standard) infinite}
+
+/* ---- the reconciling sweep ----
+   ONE sweep. The iteration count is declared as 1 and the element is remounted per run, so it
+   cannot loop and cannot be restarted by anything but a new command. */
+.demo-honest-state-timeline .hst-sweep{position:absolute;inset:0;z-index:0;pointer-events:none;
+  opacity:0;transition:opacity var(--motion-state);
+  background:linear-gradient(100deg,transparent 25%,var(--info-soft) 50%,transparent 75%);
+  background-size:200% 100%;background-position:100% 0}
+.demo-honest-state-timeline .hst-sweep[data-sweeping="true"]{opacity:1;
+  animation:mk-shimmer var(--duration-slowest) var(--ease-standard) 1 forwards}
+
+/* ---- stalled ----
+   Transport gave up. Warning ink on the warning well, and the retry is the affordance. */
+.demo-honest-state-timeline .hst-stalled{display:flex;flex-wrap:wrap;align-items:center;
+  gap:var(--space-12);padding:var(--space-12) var(--space-16);
+  border-radius:var(--radius-md);background:var(--warning-soft);color:var(--warning-text)}
+.demo-honest-state-timeline .hst-stalled-msg{font-size:var(--text-body-medium);
+  line-height:var(--text-body-medium-lh);font-weight:var(--weight-medium)}
+.demo-honest-state-timeline .hst-retry{margin-inline-start:auto}
+
+/* ---- the line that carries the same truth in words ---- */
+.demo-honest-state-timeline .hst-status{color:var(--foreground)}
+.demo-honest-state-timeline .hst-note{margin:0;font-size:var(--text-label-large);
+  line-height:var(--text-label-large-lh);color:var(--muted-foreground)}
+
+/* Reduced motion. The tokens already collapse durations and stop the loops; what is left is the
+   sweep, which becomes a flat info tint that fades in and out with the phase — reconciliation
+   still marked, with nothing travelling. */
+/* The attribute selector is repeated here on purpose. The sweep's animation is declared on
+   `.hst-sweep[data-sweeping="true"]` (0,3,0), and a media query contributes no specificity of its
+   own, so the plain `.hst-sweep` form (0,2,0) lost and this block was dead code that read as the
+   reduced-motion guarantee. The sweep did stop, but only because motion.css zeroes every
+   animation globally — meaning the promise was being kept by something else entirely, and would
+   have broken silently the moment that rule moved. */
+@media (prefers-reduced-motion:reduce){
+  .demo-honest-state-timeline .hst-sweep,
+  .demo-honest-state-timeline .hst-sweep[data-sweeping="true"]{animation:none;
+    background:var(--info-soft);background-position:0 0}
+}

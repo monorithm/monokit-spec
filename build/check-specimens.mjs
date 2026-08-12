@@ -104,7 +104,14 @@ for (const [kind, registry] of Object.entries(REGISTRIES)) {
    than reporting here — a run that stopped at the registry check would hide these behind it. */
 const { K } = await load(join(root, "src", "islands", "kit.jsx"));
 
-const source = readFileSync(specimens, "utf8");
+/* Every module a builder can live in, not just specimens.jsx. The ported demos are separate files
+   that receive the same `K` prop, so a K.member typo in one of them would otherwise reach a reader
+   before it reached this check. */
+const builderSources = [specimens, ...readdirSync(join(root, "src", "islands", "demos"))
+  .filter((f) => f.endsWith(".jsx"))
+  .map((f) => join(root, "src", "islands", "demos", f))];
+
+const source = builderSources.map((f) => readFileSync(f, "utf8")).join("\n");
 const reached = new Set([...source.matchAll(/\bK\.([A-Za-z_$][\w$]*)/g)].map((m) => m[1]));
 
 for (const member of reached) {

@@ -1,0 +1,111 @@
+/* motion-playground - the specimen under Roles on styles/motion.
+ *
+ * Every value here resolves from a token, including the two that matter: the subject never
+ * carries a duration or a curve of its own, because the module sets the transition from
+ * var(--motion-<role>) and the whole claim of the page is that those are the only place a
+ * duration lives. Light and dark come from the tokens too, so there is no .dark rule to keep
+ * in step.
+ */
+
+.demo.demo-motion { display: grid; gap: var(--space-16); }
+
+.demo-motion__track {
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  border: var(--border-width) solid var(--border);
+}
+
+/* The lane: the query container the travel is measured against.
+ *
+ * The inline padding is the room the celebrate spring needs. That spring passes its destination
+ * before settling back onto it, at each end of a there-and-back run, and an overshoot with
+ * nowhere to go is an overshoot a reader cannot see. It is a proportion rather than a length
+ * because the overshoot is a proportion too: the curve tops out a little above 1, so the room
+ * has to grow with the lane instead of running out on a wide window. */
+.demo-motion__rail {
+  container-type: inline-size;
+  display: flex;
+  align-items: center;
+  min-height: var(--space-32);
+  padding-inline: 15%;
+}
+
+/* One moving subject. The page above allows exactly one. */
+.demo-motion__puck {
+  flex: none;
+  width: var(--space-32);
+  height: var(--space-32);
+  border-radius: var(--radius-md);
+  background: var(--primary);
+}
+
+/* The distance is the lane's inline size less the subject's own: a fact about this layout, not a
+   number typed here. Container units resolve against the rail, percentages against the subject,
+   so the pair says "the far end" without either being written down. Only the duration and the
+   curve come from the role, which is the whole of what a reader is being asked to compare. */
+.demo-motion[data-at="end"] .demo-motion__puck { transform: translateX(calc(100cqi - 100%)); }
+[dir="rtl"] .demo-motion[data-at="end"] .demo-motion__puck {
+  transform: translateX(calc((100cqi - 100%) * -1));
+}
+
+.demo-motion__status,
+.demo-motion__settle {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-code);
+  line-height: var(--text-code-lh);
+  overflow-wrap: anywhere;
+}
+.demo-motion__status { color: var(--foreground); }
+.demo-motion__settle { color: var(--muted-foreground); }
+
+.demo-motion__facts {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8) var(--space-24);
+}
+.demo-motion__fact { display: grid; gap: var(--space-4); }
+.demo-motion__facts dt {
+  font-size: var(--text-label-medium);
+  line-height: var(--text-label-medium-lh);
+  color: var(--muted-foreground);
+}
+.demo-motion__facts dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-code);
+  line-height: var(--text-code-lh);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.demo-motion__group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+}
+.demo-motion__legend {
+  width: 100%;
+  font-size: var(--text-label-medium);
+  line-height: var(--text-label-medium-lh);
+  color: var(--muted-foreground);
+}
+
+.demo-motion__hint,
+.demo-motion__note {
+  margin: 0;
+  font-size: var(--text-label-large);
+  line-height: var(--text-label-large-lh);
+  color: var(--muted-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The module drops the transition itself while the query matches. This is the same collapse
+     declared where a stylesheet can see it, for the frames before the effect runs, and it needs
+     the weight because the transition it is overriding is an inline style. The end state still
+     arrives; what goes is the journey. */
+  .demo-motion__puck { transition: none !important; }
+}

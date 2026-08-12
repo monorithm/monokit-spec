@@ -12,6 +12,17 @@ import nav from '../nav.json';
 import '../../styles.css';
 import '../styles/site.css';
 
+/* The ported demo specimens each own a stylesheet. They are imported here rather than from their
+   own modules on purpose: build/check-specimens.mjs bundles the specimen graph with esbuild to a
+   single output file, and a CSS import anywhere in that graph makes esbuild emit a second one and
+   fail the gate. Astro collects these into the same stylesheet as the rest of the site. */
+import '../styles/demos/palette-browser.css';
+import '../styles/demos/motion-playground.css';
+import '../styles/demos/honest-state-timeline.css';
+import '../styles/demos/textscale-reflow.css';
+import '../styles/demos/feed-recomposition.css';
+import '../styles/demos/immersive-capture.css';
+
 interface Props {
   title: string;
   section: string;

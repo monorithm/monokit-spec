@@ -40,6 +40,15 @@ Components bind to a **role**, never to a raw duration. Per-component overrides 
 Enters decelerate. Exits accelerate and run one step shorter than their enter. Durations are never
 composed by arithmetic.
 
+The difference between one role and another is a difference in time, which a table cannot show.
+Press a role and watch one subject cross the lane on that role's own duration and curve, both read
+live from the properties the contract emits. The expressive spring sits beside them for contrast,
+and reduced motion collapses the crossing to an arrival.
+
+```monokit-example motion-playground
+```
+
+
 ## Springs
 
 Springs animate position and scale; durations and curves animate colour and opacity. The one

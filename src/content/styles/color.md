@@ -52,6 +52,15 @@ dark-mode status fill is a contrast bug.
 
 `success` is not `primary`, and `destructive` is never an emphasis colour.
 
+The three lists above are the values; this board is the cascade. Every chip is painted with the
+token itself and the value under it is read back out of the running document, so switching the
+theme re-resolves the board rather than re-labelling it. Press a swatch to copy what that token
+resolves to right now.
+
+```monokit-example palette-browser
+```
+
+
 ## Elevation and depth
 
 Borders and light, not shadows. Resting surfaces are flat and hairline-separated; shadows exist only
