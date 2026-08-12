@@ -39,6 +39,10 @@ These gate behaviour. Any animation they trigger uses a motion role.
 ```monokit-scale interaction.timings
 ```
 
+```monokit-figure hold-gesture-physics
+The hold gesture over time: press, the recognition threshold, and the settle that follows.
+```
+
 ## Gestures
 
 | Gesture | Meaning | Visible alternative |

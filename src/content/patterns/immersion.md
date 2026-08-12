@@ -37,6 +37,11 @@ accident.
 **The layer is resolved by placement, not by class.** A badge in chrome is z3; the same badge inline
 in the body is z1.
 
+```monokit-figure layers
+The six layers stacked, z0 at the back. Insets and interactivity differ per layer; the ordering
+does not.
+```
+
 ### Rules
 
 - Layers compose bottom-up. Nothing on a lower layer paints above a higher one.
@@ -108,6 +113,11 @@ focus scrim only once the user has explicitly moved their attention to text.
 ```
 
 ## Chrome recede and return
+
+```monokit-figure thumb-zones
+Reach on a held phone. Primary and frequent actions sit in the lower two-thirds and along the
+edges; the top corners take low-frequency navigation only.
+```
 
 Three policies, resolved per screen rather than per component.
 

@@ -302,3 +302,53 @@ pre.code code{background:none;padding:0;font-size:var(--text-code);line-height:v
    text directly inside the element. The prose paragraph rule adds a bottom margin, which lands
    INSIDE the quote's padding as 16px of dead space under the last line. */
 .doc blockquote:not(.specimen *) > :last-child{margin-bottom:0}
+
+/* ---- inlined diagrams ----
+ *
+ * The conceptual diagrams — the z0-z5 layer model, the thumb-reach map, the easing plots — are
+ * SVG rather than live specimens because their subject is not a component. There is no running
+ * thing to pin a callout to in a layer model, so the rule that anatomy must be drawn over real
+ * output does not reach them.
+ *
+ * What does reach them is the rule that nothing on this site may carry its own copy of a colour.
+ * Each shape wears a `gf-*` (fill) or `gs-*` (stroke) class, which resolves here to the same
+ * token the rest of the page uses, so a diagram follows the theme instead of being repainted for
+ * it. The literal hex in the SVG files is a fallback for viewers with no stylesheet — GitHub's
+ * blob view, mostly — and is overridden everywhere the site renders. A shape with no class keeps
+ * its literal fill on purpose: media panels and gradients are not themed.
+ */
+.mono-figure{margin:var(--space-24) 0}
+.mono-figure svg{max-width:100%;height:auto;display:block}
+.mono-figure figcaption{margin-top:var(--space-8);font-size:var(--text-label-medium);
+  color:var(--muted-foreground)}
+
+.mono-figure .gf-bg{fill:var(--background)}
+.mono-figure .gf-surface{fill:var(--card)}
+.mono-figure .gf-surface2{fill:var(--muted)}
+.mono-figure .gf-ink{fill:var(--foreground)}
+.mono-figure .gf-muted{fill:var(--muted-foreground)}
+.mono-figure .gf-brand{fill:var(--primary)}
+.mono-figure .gf-brand-ink{fill:var(--primary-foreground)}
+.mono-figure .gf-success{fill:var(--success)}
+.mono-figure .gf-warning{fill:var(--warning)}
+.mono-figure .gf-info{fill:var(--info)}
+.mono-figure .gf-danger{fill:var(--destructive)}
+.mono-figure .gf-brand-soft{fill:var(--primary-soft)}
+.mono-figure .gf-success-soft{fill:var(--success-soft)}
+.mono-figure .gf-warning-soft{fill:var(--warning-soft)}
+.mono-figure .gf-info-soft{fill:var(--info-soft)}
+.mono-figure .gf-danger-soft{fill:var(--destructive-soft)}
+.mono-figure .gf-success-text{fill:var(--success-text)}
+.mono-figure .gf-warning-text{fill:var(--warning-text)}
+.mono-figure .gf-info-text{fill:var(--info-text)}
+.mono-figure .gf-danger-text{fill:var(--destructive-text)}
+
+.mono-figure .gs-hairline{stroke:var(--border)}
+.mono-figure .gs-hairline-strong{stroke:var(--input)}
+.mono-figure .gs-ink{stroke:var(--foreground)}
+.mono-figure .gs-muted{stroke:var(--muted-foreground)}
+.mono-figure .gs-brand{stroke:var(--primary)}
+.mono-figure .gs-danger{stroke:var(--destructive)}
+.mono-figure .gs-success-text{stroke:var(--success-text)}
+.mono-figure .gs-warning-text{stroke:var(--warning-text)}
+.mono-figure .gs-danger-text{stroke:var(--destructive-text)}

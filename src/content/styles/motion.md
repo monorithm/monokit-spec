@@ -25,6 +25,11 @@ landing, a purchase succeeding, and going live.
 
 `monoOut` is the signature: near-instant launch, long soft settle.
 
+```monokit-figure motion-curves
+Each easing plotted against time, with the duration scale and the calm-versus-expressive split.
+The curve is what the numbers above mean.
+```
+
 ## Roles
 
 Components bind to a **role**, never to a raw duration. Per-component overrides are deprecated.

@@ -243,6 +243,29 @@ const DIRECTIVES = {
       <p class="example-fallback">States: ${escape(arg)}</p></div>`;
   },
 
+  /* ```monokit-figure layers``` — a diagram from assets/, inlined. Body is the caption.
+   *
+   * Inlined rather than linked as an <img> for one reason: the diagrams carry `gf-*` and `gs-*`
+   * classes on their shapes, which bind to this site's colour tokens (see .mono-figure in
+   * site.css). An <img> is an opaque document — those classes would never see the page's
+   * stylesheet, so every diagram would keep its light-mode hex fallback and sit as a white slab
+   * on the dark theme. Inlining is also why assets/*.svg does not need to be served at all: the
+   * bytes are read here, at build time, and never fetched by a reader. */
+  figure(arg, body) {
+    const name = arg.replace(/\.svg$/, "");
+    if (!/^[a-z0-9-]+$/.test(name)) return err(`"${arg}" is not a diagram name`);
+    let svg;
+    try {
+      svg = readFileSync(join(root, "assets", `${name}.svg`), "utf8");
+    } catch {
+      return err(`no diagram at assets/${name}.svg`);
+    }
+    const caption = body.trim();
+    return `<figure class="mono-figure">${svg}${
+      caption ? `<figcaption>${inlineMd(caption).replace(/^<p>|<\/p>$/g, "")}</figcaption>` : ""
+    }</figure>`;
+  },
+
   /* ```monokit-do / monokit-dont``` — a guidance pair. Body is markdown. */
   do(arg, body) { return guidance("do", body); },
   dont(arg, body) { return guidance("dont", body); },
