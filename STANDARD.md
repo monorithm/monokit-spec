@@ -7,20 +7,32 @@ second platform can implement it without reading CSS.
 ## Where authority sits
 
 ```
-specification (monorithm/monokit-design)   ← authoritative, implementation-agnostic
+this repository — src/content/**          ← the specification: authoritative,
+        │                                    implementation-agnostic
         │
-        ├── contract/*.json                ← this realization's build source
+        ├── contract/*.json               ← every canonical number, machine-readable
         │        │
-        │        ├── tokens/*.css          ← generated
-        │        └── dart/*.dart           ← generated
+        │        ├── tokens/*.css         ← generated
+        │        └── dart/*.dart          ← generated
         │
-        └── other realizations             ← conform independently
+        ├── components/**                 ← the reference realization, downstream
+        │
+        └── other realizations            ← the Flutter package, and anything after it
 ```
 
-The specification owns every canonical number. `contract/` is a machine-readable **mirror** of
-those numbers plus this realization's own resolution choices — it is the source of truth for the
-generated outputs, and nothing more. Each contract file names its owning spec doc in a `spec`
-field. **Where the two disagree, the specification wins and the contract is what changes.**
+**This repository is the specification.** It names its own constructs because every implementation
+realizes them, and it never defers to the internals of any one of them. Where a realization
+contradicts it — the React sources in `components/` included — the realization is what changes.
+
+`contract/*.json` is where the numbers actually live: a machine-readable form of what the pages
+state, and the source the generated outputs are emitted from. No page types a value by hand;
+specimens resolve from the contract at build time, which is what stops a page and the code
+disagreeing. Where a page and the contract disagree, that is a bug in one of them, not a
+precedence question — and `yarn check:prose` exists to catch the version of it that hides best.
+
+`monorithm/monokit-design` continues to serve the Flutter team as a downstream document. It is not
+a peer. It held this position until the site became the specification; `record/SITE-BRIEF.md`
+records that decision and the reasoning, and Governance states the precedence order in full.
 
 This division is the specification's own: governance retires D21 and makes the token build
 pipeline each realization's concern, while keeping the numbers themselves single-sourced upstream.
