@@ -352,3 +352,31 @@ pre.code code{background:none;padding:0;font-size:var(--text-code);line-height:v
 .mono-figure .gs-success-text{stroke:var(--success-text)}
 .mono-figure .gs-warning-text{stroke:var(--warning-text)}
 .mono-figure .gs-danger-text{stroke:var(--destructive-text)}
+
+/* ---- navigation ----
+ *
+ * Each route stays a real, separately served document — that is what keeps the values in the
+ * markup and the specification readable without JavaScript. What the browser adds here is
+ * continuity across the swap, so moving between pages reads as one surface changing rather than
+ * two documents replacing each other.
+ *
+ * The timing is the system's own `screen` role, not the browser's default: --duration-slow with
+ * --ease-decelerate, the two tokens --motion-screen is composed from. A page transition IS a
+ * screen transition, and a site built from the language it documents should not be the one place
+ * that reaches for someone else's curve. The parts are used separately because the shorthand is
+ * built for `transition`, and these are animations.
+ *
+ * Declared inside prefers-reduced-motion so that a reader who has asked for less motion gets an
+ * instant swap rather than a shortened one. The Motion page states reduced motion removes travel
+ * instead of speeding it up; disabling the transition is the honest reading of that here, and it
+ * also means browsers without cross-document view transitions simply keep today's behaviour.
+ */
+@media (prefers-reduced-motion: no-preference){
+  @view-transition{navigation:auto}
+
+  ::view-transition-old(root),
+  ::view-transition-new(root){
+    animation-duration:var(--duration-slow);
+    animation-timing-function:var(--ease-decelerate);
+  }
+}

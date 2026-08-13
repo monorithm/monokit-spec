@@ -37,6 +37,18 @@ export default defineConfig({
 
   integrations: [react()],
 
+  // Every navigation is a document swap, and the document is the cheap part: 12-44kB of HTML,
+  // with the CSS and JS content-hashed and already cached. Fetching it on hover removes the
+  // waiting from the click without giving up a real page per route.
+  //
+  // `hover` rather than `viewport`: the navigation rail lists all thirty-one pages, so a viewport
+  // strategy would fetch the entire specification on first paint to save a click that may never
+  // come.
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
+
   // A page and its trailing-slash variant are the same page. Picking one keeps every internal
   // link off a redirect, and the directive that rewrites the old hash routes builds the same shape.
   trailingSlash: 'always',
