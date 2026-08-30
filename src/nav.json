@@ -144,6 +144,18 @@
         {
           "path": "components/avatar",
           "title": "Avatar"
+        },
+        {
+          "path": "components/media-card",
+          "title": "MediaCard"
+        },
+        {
+          "path": "components/trust-badge",
+          "title": "TrustBadge"
+        },
+        {
+          "path": "components/immersive-feed",
+          "title": "ImmersiveFeed"
         }
       ]
     },
