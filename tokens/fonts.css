@@ -1,6 +1,18 @@
 /* IBM Plex superfamily, self-hosted (03-typography.md §2.1). Never a runtime CDN.
    Weights shipped: Sans 400/500/600/700, Serif 400/600, Mono 400/500.
-   Files are the "complete" cuts (Latin extended + Cyrillic + Greek) from IBM/plex. */
+   Files are the "complete" cuts (Latin extended + Cyrillic + Greek) from IBM/plex.
+
+   Two corrections, raised 30 August 2026 against the Flutter realization and
+   true of this one as well (see record/AMENDMENTS.md):
+
+   1. Neither Sans, Serif nor Mono contains Arabic. IBM Plex Sans Arabic is a
+      separate family in the superfamily, and a realization shipping Arabic must
+      bundle it and list it as a fallback, or Arabic silently renders in a
+      platform face at different metrics.
+   2. The shipped Serif and Mono cuts do not in fact carry Greek. Sans does.
+
+   A realization may also deliver Sans as one variable file rather than four
+   static cuts, provided the wght axis actually spans 100-700. */
 @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/IBMPlexSans-Regular.woff2") format("woff2")}
 @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("/assets/fonts/IBMPlexSans-Medium.woff2") format("woff2")}
 @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("/assets/fonts/IBMPlexSans-SemiBold.woff2") format("woff2")}

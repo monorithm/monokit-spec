@@ -496,6 +496,35 @@ paraphrase, which is the drift this system exists to prevent. Each page carries 
 notice and `site/content/about/status.md` lists the four unread sources. Reading them and
 correcting those pages is the next task.
 
+## Open — the Flutter realization's colour values (raised 30 August 2026)
+
+`monokit_ui` 3.2.0 adopted every specified token **name**. Nine **values** still differ, and
+they are listed here rather than changed, because each looks like a deliberate decision taken
+against a real surface rather than a drift. Each needs a ruling: the contract changes, or the
+package changes in 4.0.0.
+
+| Token | Contract | monokit_ui | The package's argument |
+|---|---|---|---|
+| `background` | `#FFFFFF` | `#F1F3F3` (mist) | The ground is mist and `card` is the white step above it. In the contract, light-mode `card` and `background` are the same white and the hairline is the card — the package separates surfaces by luminance instead, so its ladder needs the ground darker. This is the largest of the nine and the one that changes how every screen reads. |
+| `mutedText` | `#4B585B` | `#9CA8AB` | Reserved for placeholders and disabled labels rather than secondary body copy, so it sits lighter. |
+| `muted` / `accent` | `#F1F3F3` opaque | `0x0D090B0C` alpha | Alpha composites correctly on all three surfaces in the ladder; an opaque fill only works on one. |
+| `border` | `#E3E7E8` opaque | `0x14090B0C` alpha | Same reasoning. |
+| `onMedia` | `#FFFFFF` | `#F9FBFB` | The mist white, so chrome over media stays in the same neutral family as chrome elsewhere. |
+| `onMediaMuted` | `#FFFFFFB8` | `0xB8F9FBFB` | Follows `onMedia`. |
+| `glassFill` / `glassBorder` | `#FFFFFF1A` / `#FFFFFF26` | mist-tinted, and named `mistFill` / `mistLine` | The package's note says these were never glass — there is no backdrop blur behind them, only flat translucency — so it tinted them into the mist family and renamed them. The specified names now resolve onto them either way. |
+| `scrim` / `scrimStrong` | `#00000066` / `#00000099` | `0x73000000` / `0x9E000000` | Slightly heavier. No stated reason found; this one may simply be drift. |
+| status foregrounds | four tokens | one `onStatus` | The four are the same colour, so the package carries one. All four specified names resolve onto it. |
+
+A tenth, resolved rather than open: the specification's `fonts.css` describes Sans as four static
+cuts. The Flutter package ships one variable file, verified as carrying a real `wght` axis from
+100 to 700, so weights interpolate correctly. The delivery differs; the type does not. The
+contract should record the variable delivery. The same file claims the shipped Serif and Mono
+cuts carry Greek — they do not.
+
+**Also closed by that release, against the gap list below:** item 3, for Flutter. `MonoPager`
+ships arrow keys and pointer-density chevrons in the same change as the gesture, and `MonoModal`
+carries Escape plus a labelled dismiss barrier. The web realization's pager still has neither.
+
 ## Known gaps against the specification
 
 Read but not yet implemented, and not pretended otherwise:

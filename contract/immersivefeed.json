@@ -1,0 +1,27 @@
+{
+  "component": "ImmersiveFeed",
+  "spec": "20-patterns/08-immersion.md",
+  "description": "The scroll primitive for a full-viewport vertical media feed. It owns layout, gesture and resource policy, and composes the item presentation as its child. A pager cannot stand in for it: a pager assumes a countable set, and this one is unbounded.",
+  "clauses": {
+    "MUST": [
+      "Fill the viewport with one item and snap per item.",
+      "Claim the vertical axis only, and be the only gesture axis in its region.",
+      "Ship wheel and arrow-key equivalents alongside the gesture.",
+      "Decode and play the current item, prefetch its immediate neighbours, and release distant ones. Bounded memory on a low-end device is a contract, not an optimisation.",
+      "Take the data-saver mode as an input, and vary prefetch depth and decode policy by it.",
+      "Emit the exposure event itself. It is the only thing that knows what was actually seen, so every reach figure downstream depends on it rather than on an approximation.",
+      "Restore scroll position when navigation returns to it.",
+      "Keep reading order correct across recycled items, and place no live region on anything that re-renders more than once a second."
+    ],
+    "SHOULD": [
+      "Snap without animated physics under reduced motion, removing no information."
+    ],
+    "NEVER": [
+      "Page a nested media set horizontally inside itself. The set pages in the detail view, which is its own region.",
+      "Advance on a timer without a user-visible clock and a gesture that overrides it.",
+      "Reserve a slot for promoted or sponsored items."
+    ]
+  },
+  "states": ["idle", "settling", "data-saver", "offline"],
+  "tokens": ["--media-canvas", "--on-media", "--scrim", "--spring-spatial-default"]
+}
