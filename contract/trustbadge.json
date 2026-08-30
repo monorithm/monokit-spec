@@ -1,0 +1,23 @@
+{
+  "component": "TrustBadge",
+  "spec": "10-tokens/02-color-and-surface.md",
+  "description": "A tiered credential, stated without flattery or shame. It reports how far a party has been vouched for, and the lowest tier is a starting position rather than a warning.",
+  "clauses": {
+    "MUST": [
+      "Distinguish the tier by a non-colour signal as well as colour — a count of filled marks, not a hue.",
+      "Carry the tier's name as text. A badge that is only marks is a puzzle.",
+      "Give the lowest tier the same neutral treatment as every other tier.",
+      "Render legibly over media, on a scrim, at the same size it renders on a surface."
+    ],
+    "SHOULD": [
+      "Read as one node to assistive technology: the tier name and its position in the ladder, not a row of marks."
+    ],
+    "NEVER": [
+      "Use destructive or warning ink for an unattained tier. Not yet verified is not an error.",
+      "Accompany the lowest tier with the word 'unverified' or any negation of the ladder's own vocabulary.",
+      "Imply a tier the platform has not actually confirmed."
+    ]
+  },
+  "states": ["attained", "unattained"],
+  "tokens": ["--primary", "--muted-foreground", "--space-4", "--label-medium"]
+}

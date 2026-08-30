@@ -1,0 +1,23 @@
+{
+  "component": "MediaCard",
+  "spec": "20-patterns/08-immersion.md",
+  "description": "The tile realization of a media item. Same content contract as the immersive realization, recomposed for a grid — never redesigned for it.",
+  "clauses": {
+    "MUST": [
+      "Carry the same information and the same reading order as the immersive realization of the same item.",
+      "Hold one aspect ratio per grid, so the grid scans as rows rather than as a mosaic.",
+      "Render its text before its media decodes.",
+      "Keep the whole tile one hit target, with the primary action reachable without hitting a nested control."
+    ],
+    "SHOULD": [
+      "State the count when the item carries more than one medium, without requiring interaction to discover it."
+    ],
+    "NEVER": [
+      "Letterbox the media inside the tile.",
+      "Introduce a field the immersive realization does not have.",
+      "Reserve a slot for promoted or sponsored treatment."
+    ]
+  },
+  "states": ["default", "pressed", "loading"],
+  "tokens": ["--radius-lg", "--media-canvas", "--gutter-media", "--media-title", "--media-caption"]
+}
