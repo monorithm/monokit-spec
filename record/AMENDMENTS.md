@@ -536,3 +536,33 @@ Read but not yet implemented, and not pretended otherwise:
 5. **Haptics are documented, not fired** — no actuator on the web.
 6. **Spring physics are approximations**; canonical damping ratios live in `05-motion.md`.
 7. `08-immersion.md`, `09`, `10`, `11`, `13` are unread. The feed, capture, gallery and call surfaces depend on them.
+
+## Changes to the specification itself — 31 August 2026
+
+These are not realization divergences. The specification was changed, so the realization follows.
+
+### The dark ground is mist, not black
+
+`colors.dark.background` moved to the brand's night. Emerald on mist is the whole premise, and a
+near-neutral ground does not carry it into the dark theme: the new value keeps a cool slate bias
+across its channels where the old one was almost neutral. It is also the value the brand already
+uses for app icons, splash and share images, so the app ground and the brand ground are one value
+rather than two that nearly match. `card` and `popover` still step up from it, so the dark elevation
+model is unchanged. Regenerated into `tokens/colors.css` and `dart/monokit_colors.dart`.
+
+### The immersive feed is Resting, not Persistent
+
+Feed browsing moved out of the Persistent row. A feed that cannot clear its chrome cannot let anyone
+look at the thing they came to look at. Persistent still means absolute for the surfaces that keep
+it — live viewing and calls in grid.
+
+Moving it required one new rule, because this feed advances itself: **the rest timer resets when a
+new item arrives.** Without that the chrome would leave partway through every item unasked, and a
+caption carrying a rotating fact would never show its second one.
+
+### Peek is opacity only
+
+Recede keeps its small translation toward the owning edge. A held peek does not get one: it happens
+with the finger on the glass, so chrome drops to zero opacity in place and the action rail never
+changes position. On release every control is where the thumb left it. Recorded because the recede
+clause reads as though one treatment covers both, and it does not.
