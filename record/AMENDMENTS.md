@@ -525,6 +525,75 @@ cuts carry Greek — they do not.
 ships arrow keys and pointer-density chevrons in the same change as the gesture, and `MonoModal`
 carries Escape plus a labelled dismiss barrier. The web realization's pager still has neither.
 
+## The text field, and what the Atlas draws (monokit_ui 4.1.0)
+
+A conformance pass against the Monorithm Atlas found the Flutter input rendering as the exact
+inverse of this contract's own opening line. `contract/input.json` describes *"A well rather than
+a bordered box. The field recedes and the value the user typed is what reads"*; the widget shipped
+a bordered box with a transparent fill. It has been changed to the well. Four things follow from
+that, and each needs a ruling.
+
+### 1. The Input contract contradicts itself
+
+The description asks for a well. The MUST list says *"Colour its border with destructive when the
+resolved state is invalid."* A well has no border to colour. The package now signals invalid with
+the focus ring in `destructive`, shown whether or not the field has focus - which satisfies the
+intent (and the NEVER on colour-alone, since Field still words the message) while making the MUST
+literally unsatisfiable.
+
+**Ruling needed:** reword the MUST to name the ring rather than the border, or reinstate the
+border and drop the well from the description. They cannot both stand.
+
+### 2. There is no third control height
+
+`contract/space.json` defines one `controlHeight` per density. The Atlas draws three field heights
+and never anything between them: 44 for a field sharing its row, 48 for a field among other
+fields, and **56 for the field the screen exists for** - the phone number on the number screen,
+the handle on the handle screen. 56 appears seven times and never varies.
+
+44 is `controlHeight` and 48 is `row1`, so two of the three already have names. The package adds
+`controlHeightLarge` (56 touch / 48 pointer), keeping the ratio the rest of the ladder uses.
+
+**Ruling needed:** adopt `controlHeightLarge` into the density group, or rule that the large step
+is a screen-level decision and not a token.
+
+### 3. The focus ring has a gap, and `--focus-ring-width` cannot express one
+
+The Atlas draws `outline: 2px solid var(--ring)` at `outline-offset: 3px`, following the field's
+radius. The contract's values are a 3px band at 50% alpha, inherited from the shadcn reference,
+with a `ringOffset` token that no realization has ever applied.
+
+It could not be applied. Both realizations painted the ring as a shadow spread, and a shadow's
+spread begins at the border box - so the gap was unrepresentable and the ring read as a thicker
+border. The Flutter package now paints a real outline outside the bounds, and moves its defaults
+to width 2, alpha 1, offset 3.
+
+`--ring` also moves: `#9CA8AB` -> `#A9B4B7` light, `#67787C` -> `#5A686C` dark, per the Atlas.
+
+**Ruling needed:** this is system-wide - every focusable control wears it, not only fields. Either
+the contract adopts the Atlas geometry and the web realization follows, or the Atlas is wrong and
+the package reverts.
+
+### 4. Typography has no role for a value the user typed
+
+`contract/typography.json` names display, headline, title, body, label, button, code and prose. A
+field's value is none of those. The Atlas sets it at 20/600 in the large field and 14/500 below,
+against `bodyMedium`'s 14/400 - the value is content, not chrome, and it currently reads as chrome.
+
+The package resolves `headlineMedium` (20/600) and `labelLarge` (14/500) rather than inventing a
+role, which matches the metrics exactly but borrows a headline's -0.01em tracking for a string of
+digits.
+
+**Ruling needed:** add an `inputValue` role, or accept the borrowed tokens and record why.
+
+### Not adopted from the Atlas
+
+- **Horizontal padding 14px.** Off the 4pt grid the spacing group is built on. The package uses
+  12. A 2px difference against the first ungridded number in the system is not a trade worth
+  making; if 14 is deliberate, the grid needs the ruling, not the field.
+- **`DeleteAccount` sets its typed value at 14/400** where the other three medium fields use
+  14/500. Likely a drawing slip rather than a decision. Not implemented; flagged for the canvas.
+
 ## Known gaps against the specification
 
 Read but not yet implemented, and not pretended otherwise:
