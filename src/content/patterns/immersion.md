@@ -123,8 +123,8 @@ Three policies, resolved per screen rather than per component.
 
 | Policy | Behaviour | Used by |
 |---|---|---|
-| Persistent | Always visible | feed browsing, live viewing, calls in grid mode |
-| Resting | Hides after an idle delay, returns on intent | single video player, gallery, document reader, full-screen call |
+| Persistent | Always visible | live viewing, calls in grid mode |
+| Resting | Hides after an idle delay, returns on intent | the immersive feed, single video player, gallery, document reader, full-screen call |
 | Hidden | Absent until summoned | camera pre-roll, screening and preview states |
 
 **Persistent chrome is absolute.** It never auto-hides, even during a long uninterrupted watch.
@@ -136,9 +136,30 @@ recede chooses the resting policy up front.
 The idle delay is a token, and the timer resets on any interaction with a control, any scrub, and any
 pointer movement over chrome.
 
+On a feed that advances itself, the timer also resets when a new item arrives.
+A new subject arrives with its chrome, so the delay never cuts an item short and the rest fires only
+when the viewer lingers on one item past it.
+A surface whose caption carries a rotating fact depends on this: the rest must not be shorter than
+the item, or a fact never comes around.
+
 **Return is faster than recede: leaving is polite, returning is obedient.** Recede accelerates with a
 small translation toward the owning edge; return decelerates on the signature curve. The scrubber
 collapses to a hairline progress line rather than disappearing, so temporal position survives.
+
+### Peek
+
+A peek is the momentary form: chrome clears while a control or the media itself is held, and returns
+on release.
+It is a sustain rather than a toggle, which is why it does not claim a third meaning for long-press.
+
+**A peek is opacity only. Nothing translates.** Where recede is timed and unattended, a peek happens
+with the finger still on the glass, so every control keeps its coordinates and simply stops being
+drawn — the action rail above all, which never changes position. On release the thumb finds each
+control exactly where it left it. The translation toward the owning edge belongs to recede alone.
+
+A peek is an accelerator, never the only path to a clear screen. The same clearing is reachable
+without it: at pointer the chrome rests on its own and returns on movement, and from the keyboard the
+control that toggles it is a focusable button like any other.
 
 Some chrome never recedes, because it is subject truth rather than convenience: captions, the
 recording indicator, an active call timer, and the live badge while watching live.

@@ -56,6 +56,7 @@ The alternative ships in the same change as the gesture, not later.
 | Swipe row actions | hover-revealed inline actions | context-menu items |
 | Drag-dismiss | close button, always present | `Escape` |
 | Pull-to-refresh | visible refresh affordance | scoped refresh shortcut |
+| Hold to peek (clear the chrome) | none needed — chrome rests on the idle delay and returns on movement | the chrome toggle, reached by Tab |
 
 **Hover reveals, but never contains.** A hover-revealed action must also exist in the context menu.
 
