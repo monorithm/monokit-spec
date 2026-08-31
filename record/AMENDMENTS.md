@@ -537,9 +537,10 @@ that, and each needs a ruling.
 
 The description asks for a well. The MUST list says *"Colour its border with destructive when the
 resolved state is invalid."* A well has no border to colour. The package now signals invalid with
-the focus ring in `destructive`, shown whether or not the field has focus - which satisfies the
-intent (and the NEVER on colour-alone, since Field still words the message) while making the MUST
-literally unsatisfiable.
+the ring in `destructive`, shown whether or not the field has focus - which satisfies the intent
+(and the NEVER on colour-alone, since Field still words the message) while making the MUST
+literally unsatisfiable. See also the open clause in section 3: an always-on invalid ring and
+*"one ring on screen at a time"* need reconciling.
 
 **Ruling needed:** reword the MUST to name the ring rather than the border, or reinstate the
 border and drop the well from the description. They cannot both stand.
@@ -557,22 +558,32 @@ the handle on the handle screen. 56 appears seven times and never varies.
 **Ruling needed:** adopt `controlHeightLarge` into the density group, or rule that the large step
 is a screen-level decision and not a token.
 
-### 3. The focus ring has a gap, and `--focus-ring-width` cannot express one
+### 3. The focus ring was fully specified and wholly unimplemented
 
-The Atlas draws `outline: 2px solid var(--ring)` at `outline-offset: 3px`, following the field's
-radius. The contract's values are a 3px band at 50% alpha, inherited from the shadcn reference,
-with a `ringOffset` token that no realization has ever applied.
+Not a question - a gap, recorded so it is not re-derived. `contract/interaction.json` has carried a
+`focusRing` group since it was written:
 
-It could not be applied. Both realizations painted the ring as a shadow spread, and a shadow's
-spread begins at the border box - so the gap was unrepresentable and the ring read as a thicker
-border. The Flutter package now paints a real outline outside the bounds, and moves its defaults
-to width 2, alpha 1, offset 3.
+> `width: 2px`, `offset: 2px` - *"Painted OUTSIDE the control's bounds so it never shifts layout,
+> and bound to focus-visible only."*
 
-`--ring` also moves: `#9CA8AB` -> `#A9B4B7` light, `#67787C` -> `#5A686C` dark, per the Atlas.
+All three clauses were unmet in Flutter. The width was 3 at 50% alpha, inherited from the shadcn
+reference. The offset was applied by nothing. And every control but `MonoTabs` and `MonoPressable`
+showed the ring on pointer focus.
 
-**Ruling needed:** this is system-wide - every focusable control wears it, not only fields. Either
-the contract adopts the Atlas geometry and the web realization follows, or the Atlas is wrong and
-the package reverts.
+The offset could not be applied by either realization, which is the interesting part: both painted
+the ring as a shadow spread, and a spread begins at the border box. The clause was unbuildable with
+the mechanism in use, so it was quietly skipped rather than reported. `monokit_ui` 4.1.0 paints a
+real outline outside the bounds instead, and moves width to 2, alpha to 1, and `focusVisible` to
+keyboard focus only. `--ring` does not move.
+
+**Worth checking on the web:** the same shadow-spread mechanism is used there, so the same three
+clauses are likely still unmet.
+
+**One clause the contract does not settle:** the Atlas annotation adds *"one ring on screen at a
+time"*, which reads as a focus statement - only one thing holds focus - but the package also rings
+an **invalid** field whether or not it is focused, so several can show at once. `statePrecedence`
+says the mode axis composes orthogonally with the interaction axis, which supports that. Confirm
+the reading, or say that invalid needs a treatment that is not a ring.
 
 ### 4. Typography has no role for a value the user typed
 
