@@ -186,7 +186,7 @@ class MonokitColors {
   );
 
   static const MonokitColorSet dark = MonokitColorSet(
-    background: Color(0xFF090B0C),
+    background: Color(0xFF0B1113),
     foreground: Color(0xFFF9FBFB),
     card: Color(0xFF161B1D),
     cardForeground: Color(0xFFF9FBFB),
