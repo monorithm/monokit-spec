@@ -605,6 +605,43 @@ digits.
 - **`DeleteAccount` sets its typed value at 14/400** where the other three medium fields use
   14/500. Likely a drawing slip rather than a decision. Not implemented; flagged for the canvas.
 
+## Three measures the boards draw that `containers` does not carry (monokit_ui 4.4.0)
+
+Width class now resolves in Flutter, so components can finally compose by it. Two did in 4.4.0 —
+the alert caps at `content`, and the immersive feed letterboxes at `feed` above compact. Three more
+clauses could not be implemented, because the measure they name is not a token:
+
+| Board | Clause | Draws | Nearest token |
+|---|---|---|---|
+| `MonoTextarea` | *"at medium and up it caps at the field measure"* | 420 | none |
+| `MonoStepProgress` | *"at expanded the bars cap at the field measure they sit above"* | 420 | none |
+| `MonoCommandPalette` | *"panel 520 wide, top-third of the window"* | 520 | none |
+
+420 appears in two boards under the same name - **the field measure** - which reads as a real
+value rather than a drawing coincidence. 520 appears once, as the palette's own panel.
+
+**Ruling needed:** add `fieldMeasure` (420) and `palette` (520) to the containers group, or name the
+measure these clauses should use from the nine that already exist. Until then the three clauses stay
+unimplemented rather than guessed - `content` (640) and `dialogSm` (400) are both close enough to
+look right and wrong enough to be wrong.
+
+### And a panel width that agrees with nothing
+
+`MonoDialog` in Flutter defaults its panel to `maxWidth: 480`, which is **none** of the three dialog
+containers (400 / 560 / 720). The `MonoModal` board draws 400 - exactly `dialogSm` - while the
+`MonoDialog` board draws 360 inside a 640 demo frame, which may be layout rather than specification.
+
+Not changed in 4.4.0: three sources, three numbers, and a panel width is visible on every dialog in
+the product. **Ruling needed** on which of the dialog containers is the default.
+
+### A pattern worth naming
+
+This is the third vocabulary found published-and-unread. `MonokitContainers` had **zero** consumers
+before 4.4.0, as `MonokitDensity`'s row ladder had zero before 4.3.0 and `MonoWidthClass` had zero
+before 4.4.0. A token group that no realization consumes is indistinguishable from documentation,
+and nothing in either repo's gates notices. A check that fails when a contract group gains a value
+no realization reads would have caught all three.
+
 ## Known gaps against the specification
 
 Read but not yet implemented, and not pretended otherwise:
