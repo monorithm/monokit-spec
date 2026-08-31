@@ -12,7 +12,8 @@
     "D1: the design source is OKLCH; a realization may store sRGB hex. These are the verified sRGB hex.",
     "The on-media set is MODE-INVARIANT: the media canvas is always dark, on both themes.",
     "Dark mode lowers chrome energy — primary becomes the dimmer #006045 — so media and status own the brightness. #006045 is a SURFACE colour; brand as INK in dark uses sidebarPrimary.",
-    "The brand and neutral axes carry a fourth role, primaryText and mutedText, so each has an ink verified against its own soft surface — the shape every status already had. Both values are existing palette emeralds and mists given a role, not new colours."
+    "The brand and neutral axes carry a fourth role, primaryText and mutedText, so each has an ink verified against its own soft surface — the shape every status already had. Both values are existing palette emeralds and mists given a role, not new colours.",
+    "The dark ground is mist rather than black: emerald on mist has to survive the dark theme, and a neutral near-black does not carry it. card and popover still step up from it, so the elevation model is unchanged."
   ],
   "sets": {
     "light": {
@@ -175,7 +176,8 @@
     },
     "dark": {
       "background": {
-        "value": "#090B0C"
+        "value": "#0B1113",
+        "description": "Mist, not black. The dark ground keeps the cool slate bias the whole system is named for: an eight-point spread across its channels reads as dark mist, where a near-neutral three-point spread reads as black and the emerald sits on nothing. It is also the brand's night, so the app ground and the brand ground are deliberately one value rather than two that nearly match."
       },
       "foreground": {
         "value": "#F9FBFB"
