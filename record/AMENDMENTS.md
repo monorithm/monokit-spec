@@ -683,3 +683,38 @@ Recede keeps its small translation toward the owning edge. A held peek does not 
 with the finger on the glass, so chrome drops to zero opacity in place and the action rail never
 changes position. On release every control is where the thumb left it. Recorded because the recede
 clause reads as though one treatment covers both, and it does not.
+
+## The swipe grammar has no keyboard shape (monokit_ui 4.9.0)
+
+`space.json` carries `swipeActionCell` (72, *"at most two per side"*) and the list-row board draws
+the grammar — leading constructive, trailing destructive, destructive held rather than tapped. That
+is now realized as `MonoListRowSwipe`. Two idioms are specified and both are implemented: touch
+swipes the row, and pointer reveals the cells on hover.
+
+**There is no third idiom, and the question is whether there should be.**
+
+A keyboard user can neither swipe nor hover, so every action reachable only through this component
+is unreachable to them. The system's own principle answers half of it — the hold on media chrome is
+*"an accelerator for a control that already exists, never the only path"* — and read across, the
+swipe is an accelerator for actions that must also live in the row's own menu. The realization
+documents it that way and asserts nothing, because no component can verify that its caller built the
+other path.
+
+Two clauses would close it, and both need the system owner:
+
+1. **Whether the swipe grammar is normatively an accelerator.** If it is, the listrow contract should
+   say so in a NEVER — *never the only path to an action* — and the obligation lands on the caller
+   where it can actually be met. If it is not, the component owes a keyboard path and this section
+   is the wrong answer.
+
+2. **What activation means for a held action under a keyboard.** The chrome-recede clause already
+   rules that *"a hold has no keyboard shape, because a held key repeats"*, and resolves it there by
+   becoming a toggle on an existing control. A destructive list action has no such control to fall
+   back to. The plausible answer is that keyboard activation opens the confirm dialog the hold
+   replaces — the hold and the dialog being two costs for the same decision — but that is a grammar
+   this record is inventing, not one the boards draw. It is filed rather than shipped.
+
+Related: `listrow.json` MUST *"give an interactive trailing control its own tap and its own tab
+stop"*. Swipe cells are not trailing controls in that sense — they do not exist until a gesture
+reveals them — but the clause is the nearest thing the contract has to this question, and whichever
+way the ruling goes it should say how the two relate.
